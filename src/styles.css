@@ -1,0 +1,452 @@
+/* luna film website styles */
+
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Satisfy:wght@400&family=Roboto:wght@300;400;500&display=swap');
+
+/* reset everything */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #000000;
+    color: #FFFFFF;
+    line-height: 1.6;
+    overflow-x: hidden; /* no horizontal scroll */
+}
+
+/* navigation styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    padding: 15px 0;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.95);
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+/* logo styling */
+.logo {
+    font-family: 'Satisfy', cursive;
+    font-size: 2.5rem;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.logo:hover {
+    color: #FFFFFF;
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+    transform: scale(1.05); /* little grow effect */
+}
+
+/* navigation menu */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 45px;
+    align-items: center;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    font-family: 'Satisfy', cursive;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 12px 20px;
+    border-radius: 25px;
+    position: relative;
+    letter-spacing: 0.5px;
+    text-transform: none;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #FFFFFF;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #FFFFFF;
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    width: 80%;
+}
+
+/* hamburger button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+    color: #FFFFFF;
+}
+
+/* ===============================================
+   MOBILE NAVIGATION STYLES
+   =============================================== */
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 20px;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: right 0.3s ease;
+        z-index: 999;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-link {
+        font-size: 1.5rem;
+    }
+    
+    .close-menu {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        background: none;
+        border: none;
+        color: #FFFFFF;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .close-menu:hover {
+        color: #FFFFFF;
+    }
+}
+
+/* main content area */
+main {
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.page-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+}
+
+.hero-section {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-family: 'Satisfy', cursive;
+    font-size: 4.5rem;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+}
+
+.hero-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+    color: #CCCCCC;
+    font-weight: 300;
+    line-height: 1.8;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+}
+
+.hero-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    color: #CCCCCC;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* footer area styles */
+footer {
+    background: #0D0D0D;
+    padding: 40px 0 30px;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 40px;
+}
+
+.footer-logo {
+    font-family: 'Satisfy', cursive;
+    font-size: 2.8rem;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.footer-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    color: #CCCCCC;
+    font-weight: 300;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.footer-nav a {
+    color: #CCCCCC;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.footer-nav a:hover {
+    color: #FFFFFF;
+}
+
+.footer-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #FFFFFF;
+    transition: width 0.3s ease;
+}
+
+.footer-nav a:hover::after {
+    width: 100%;
+}
+
+/* social media icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    color: #CCCCCC;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 15px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.social-link svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    transition: all 0.3s ease;
+}
+
+/* Individual platform hover effects */
+.social-link.instagram:hover {
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(227, 69, 108, 0.4);
+}
+
+.social-link.youtube:hover {
+    background: #ff0000;
+    color: white;
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(255, 0, 0, 0.4);
+}
+
+.social-link.twitter:hover {
+    background: #1da1f2;
+    color: white;
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(29, 161, 242, 0.4);
+}
+
+.social-link.facebook:hover {
+    background: #1877f2;
+    color: white;
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(24, 119, 242, 0.4);
+}
+
+
+
+/* utility stuff */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* mobile responsive styles */
+
+@media (max-width: 768px) {
+    .footer-logo {
+        font-size: 3rem;
+    }
+    
+    .footer-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .footer-nav {
+        gap: 20px;
+    }
+    
+    .footer-nav a {
+        font-size: 0.85rem;
+    }
+    
+    .social-icons {
+        gap: 20px;
+    }
+    
+    .social-link {
+        font-size: 1.3rem;
+    }
+    
+    .coming-soon h1 {
+        font-size: 2.5rem;
+    }
+    
+    .coming-soon p {
+        font-size: 1rem;
+    }
+    
+    .page-content {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-logo {
+        font-size: 2.5rem;
+    }
+    
+    .footer-nav {
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+    
+    .footer-nav a {
+        font-size: 0.8rem;
+    }
+    
+    .coming-soon h1 {
+        font-size: 2rem;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+    }
+}
