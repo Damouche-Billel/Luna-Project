@@ -144,11 +144,25 @@ body {
     background-color: #CCCCCC;
 }
 
-/* ===============================================
-   MOBILE NAVIGATION STYLES
-   =============================================== */
+/* hide close button on desktop - only show in mobile */
+.close-menu {
+    display: none;
+}
 
-@media (max-width: 768px) {
+/* tablet and smaller laptop adjustments */
+@media (max-width: 1200px) and (min-width: 1025px) {
+    .nav-menu {
+        gap: 30px; /* smaller gap so links dont wrap */
+    }
+    
+    .nav-link {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+}
+
+/* bigger breakpoint to catch weird screen sizes */
+@media (max-width: 1024px) {
     .nav-container {
         padding: 0 20px;
     }
@@ -181,6 +195,7 @@ body {
         font-size: 1.5rem;
     }
     
+    /* x button only shows in mobile menu */
     .close-menu {
         position: absolute;
         top: 30px;
