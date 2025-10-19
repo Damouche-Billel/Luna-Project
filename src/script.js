@@ -17,14 +17,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // mobile menu toggle - this works fine i think
+    // mobile menu toggle - should work better now with custom hamburger
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', function() {
             navMenu.classList.add('active');
             document.body.style.overflow = 'hidden'; // stop background scrolling
         });
         
-        // close menu when clicking stuff
+        // close menu when clicking the X button
         const closeMenu = document.querySelector('.close-menu');
         if (closeMenu) {
             closeMenu.addEventListener('click', function() {
