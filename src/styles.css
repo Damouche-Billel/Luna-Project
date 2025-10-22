@@ -1,7 +1,16 @@
 /* luna film website styles */
 
-/* google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Satisfy:wght@400&family=Roboto:wght@300;400;500&display=swap');
+/* custom font - lemon love looks way better than google fonts */
+/* got this font from our designer, much more unique */
+/* but keeping satisfy for logos since it looks better there */
+@import url('https://fonts.googleapis.com/css2?family=Satisfy:wght@400&display=swap');
+@font-face {
+    font-family: 'Lemon Love';
+    src: url('fonts/Lemon Love.otf') format('opentype'),
+         url('fonts/Lemon Love.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 /* reset everything */
 * {
@@ -15,7 +24,7 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lemon Love', cursive, sans-serif;
     background-color: #000000;
     color: #FFFFFF;
     line-height: 1.6;
@@ -53,7 +62,7 @@ body {
 
 /* logo styling */
 .logo {
-    font-family: 'Satisfy', cursive;
+    font-family: 'Lemon Love', cursive;
     font-size: 2.5rem;
     color: #FFFFFF;
     text-decoration: none;
@@ -81,7 +90,7 @@ body {
 }
 
 .nav-link {
-    font-family: 'Satisfy', cursive;
+    font-family: 'Lemon Love', cursive;
     font-size: 1.1rem;
     font-weight: 400;
     color: #FFFFFF;
@@ -244,7 +253,7 @@ main {
 }
 
 .hero-title {
-    font-family: 'Satisfy', cursive;
+    font-family: 'Lemon Love', cursive;
     font-size: 4.5rem;
     color: #FFFFFF;
     margin-bottom: 30px;
@@ -253,7 +262,7 @@ main {
 }
 
 .hero-subtitle {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lemon Love', cursive;
     font-size: 1.3rem;
     color: #CCCCCC;
     font-weight: 300;
@@ -263,7 +272,7 @@ main {
 }
 
 .hero-description {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lemon Love', cursive;
     font-size: 1.1rem;
     color: #CCCCCC;
     font-weight: 300;
@@ -290,7 +299,7 @@ footer {
 }
 
 .footer-logo {
-    font-family: 'Satisfy', cursive;
+    font-family: 'Lemon Love', cursive;
     font-size: 2.8rem;
     color: #FFFFFF;
     margin-bottom: 15px;
@@ -298,7 +307,7 @@ footer {
 }
 
 .footer-subtitle {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lemon Love', cursive;
     font-size: 0.95rem;
     color: #CCCCCC;
     font-weight: 300;
@@ -317,7 +326,7 @@ footer {
 .footer-nav a {
     color: #CCCCCC;
     text-decoration: none;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lemon Love', cursive;
     font-size: 0.9rem;
     font-weight: 400;
     letter-spacing: 1px;
