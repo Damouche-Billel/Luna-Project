@@ -1,8 +1,8 @@
-// luna website javascript stuff
+// luna website javascript
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // navigation things
+    // navigation elements
     const navbar = document.querySelector('.navbar');
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // mobile menu toggle - should work better now with custom hamburger
+    // mobile menu toggle functionality
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', function() {
             navMenu.classList.add('active');
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // close menu when clicking outside too
+        // close menu when clicking outside
         navMenu.addEventListener('click', function(e) {
             if (e.target === navMenu) {
                 navMenu.classList.remove('active');
@@ -50,12 +50,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // active page highlighting stuff
+    // active page highlighting
     
     // get current page name
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     
-    // highlight current nav link - not sure if best way but it works :)
+    // highlight current nav link
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === currentPage || 
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // animation stuff
+    // scroll animations
     
     // fade in animation for elements
     const observerOptions = {
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // add click animation to social buttons
     socialLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            // little click effect
+            // click animation effect
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 this.style.transform = 'scale(1)';
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // keyboard stuff for accessibility
+    // keyboard accessibility
     
     // esc key closes mobile menu
     document.addEventListener('keydown', function(e) {
@@ -110,32 +110,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // preloader stuff - maybe add later
+    // page load animation
     
-    // simple fade in when page loads
+    // fade in on page load
     document.body.style.opacity = '0';
     setTimeout(function() {
         document.body.style.transition = 'opacity 0.5s ease';
         document.body.style.opacity = '1';
     }, 100);
-    
-    // ===============================================
-    // PERFORMANCE OPTIMIZATIONS
-    // ===============================================
-    
-    // Throttle scroll events for better performance
-    let ticking = false;
-    
-    function updateScrollEffects() {
-        // Navbar scroll effect (already handled above)
-        ticking = false;
-    }
-    
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            requestAnimationFrame(updateScrollEffects);
-            ticking = true;
-        }
-    });
     
 });

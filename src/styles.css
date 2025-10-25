@@ -1,7 +1,6 @@
 /* luna film website styles */
 
 /* custom font - film director wanted lemon-love font*/
-@import url('https://fonts.googleapis.com/css2?family=Satisfy:wght@400&display=swap');
 @font-face {
     font-family: 'Lemon Love';
     src: url('fonts/Lemon Love.otf') format('opentype'),
@@ -29,24 +28,26 @@ body {
     overflow-x: hidden; /* no horizontal scroll */
 }
 
-/* navigation styles */
+/* navigation styles - transparent by default, solid when scrolling */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(15px);
+    background: transparent; /* fully transparent at the top */
+    backdrop-filter: none;
     z-index: 1000;
     padding: 15px 0;
-    transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease; /* smooth transition effect */
+    border-bottom: none;
 }
 
 .navbar.scrolled {
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 1); /* solid black when scrolling */
+    backdrop-filter: blur(10px);
     padding: 12px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* nice shadow effect */
 }
 
 .nav-container {
@@ -227,11 +228,218 @@ body {
     }
 }
 
-/* main content area */
+/* hero greeting section styles */
+.greeting-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* full viewport height */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* positioned below navbar */
+}
+
+.greeting-gif-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.greeting-park-timelapse {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* maintain aspect ratio while filling container */
+    display: block; /* remove default image spacing */
+}
+
+/* luna title overlay positioning */
+.luna-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 3; /* positioned above background, below navigation */
+    pointer-events: none; /* prevent interaction interference */
+}
+
+.luna-title {
+    font-family: 'Lemon Love', cursive; /* custom font family */
+    font-size: 5rem;
+    font-weight: normal;
+    color: #FFFFFF;
+    text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8);
+    letter-spacing: 6px;
+    margin: 0;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: lunaReveal 2s ease-out 0.5s forwards;
+}
+
+/* luna title animations */
+@keyframes lunaReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+        letter-spacing: 12px;
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+        letter-spacing: 8px;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        letter-spacing: 6px;
+    }
+}
+
+/* subtle glow pulse after reveal */
+.luna-title::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: lunaGlow 4s ease-in-out 3s infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes lunaGlow {
+    0% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.6;
+        transform: scale(1.2);
+    }
+}
+
+/* responsive typography for mobile devices */
+@media (max-width: 768px) {
+    .luna-title {
+        font-size: 3rem;
+        letter-spacing: 3px;
+        text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+    }
+}
+
+/* responsive typography for tablets */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .luna-title {
+        font-size: 4rem;
+        letter-spacing: 4px;
+    }
+}
+
+/* content sections container */
+.content-sections {
+    position: relative;
+    z-index: 2;
+    background: #000000;
+    min-height: 100vh;
+    padding: 80px 0;
+}
+
+.section-placeholder {
+    padding: 80px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-placeholder:last-child {
+    border-bottom: none;
+}
+
+.section-placeholder h2 {
+    font-family: 'Lemon Love', cursive;
+    font-size: 3rem;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 0 0 30px 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.section-link {
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.section-link:hover {
+    color: #F9FFAF;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.placeholder-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.placeholder-content p {
+    font-family: 'Lemon Love', cursive;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* responsive adjustments for sections */
+@media (max-width: 768px) {
+    .content-sections {
+        padding: 40px 0;
+    }
+    
+    .section-placeholder {
+        padding: 50px 0;
+    }
+    
+    .section-placeholder h2 {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+    
+    .placeholder-content p {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .section-placeholder h2 {
+        font-size: 2.6rem;
+    }
+    
+    .placeholder-content p {
+        font-size: 1.1rem;
+    }
+}
+
+/* main content area for regular pages */
 main {
     min-height: 100vh;
-    padding-top: 100px;
+    padding-top: 100px; /* space for fixed navigation */
     padding-bottom: 50px;
+}
+
+/* index page main element override */
+main:has(.greeting-section) {
+    padding-top: 0; /* allow greeting section to start at viewport top */
+    padding-bottom: 0;
 }
 
 .page-content {
@@ -244,49 +452,14 @@ main {
     min-height: calc(100vh - 200px);
 }
 
-.hero-section {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.hero-title {
-    font-family: 'Lemon Love', cursive;
-    font-size: 4.5rem;
-    color: #FFFFFF;
-    margin-bottom: 30px;
-    letter-spacing: 3px;
-    text-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
-}
-
-.hero-subtitle {
-    font-family: 'Lemon Love', cursive;
-    font-size: 1.3rem;
-    color: #CCCCCC;
-    font-weight: 300;
-    line-height: 1.8;
-    letter-spacing: 1px;
-    margin-bottom: 40px;
-}
-
-.hero-description {
-    font-family: 'Lemon Love', cursive;
-    font-size: 1.1rem;
-    color: #CCCCCC;
-    font-weight: 300;
-    line-height: 1.8;
-    margin-bottom: 50px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 /* footer area styles */
 footer {
     background: #0D0D0D;
     padding: 40px 0 30px;
-    margin-top: auto;
+    margin-top: 80px; /* extra space to account for hero section positioning */
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 10; /* make sure footer stays above everything */
 }
 
 .footer-container {
@@ -415,9 +588,7 @@ footer {
     box-shadow: 0 10px 25px rgba(24, 119, 242, 0.4);
 }
 
-
-
-/* utility stuff */
+/* utility classes */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -481,10 +652,6 @@ footer {
     
     .footer-nav a {
         font-size: 0.8rem;
-    }
-    
-    .coming-soon h1 {
-        font-size: 2rem;
     }
     
     .nav-container {
