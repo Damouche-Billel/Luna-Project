@@ -1,8 +1,6 @@
 /* luna film website styles */
 
-/* custom font - lemon love looks way better than google fonts */
-/* got this font from our designer, much more unique */
-/* but keeping satisfy for logos since it looks better there */
+/* custom font - film director wanted lemon-love font*/
 @import url('https://fonts.googleapis.com/css2?family=Satisfy:wght@400&display=swap');
 @font-face {
     font-family: 'Lemon Love';
