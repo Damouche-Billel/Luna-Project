@@ -18,7 +18,8 @@
 
 html {
     scroll-behavior: smooth;
-    overflow-x: hidden; /* prevent any horizontal scrolling at root level */
+    height: 100%;
+    overflow-x: hidden; /* no sideways scrolling */
 }
 
 body {
@@ -27,56 +28,20 @@ body {
     color: #FFFFFF;
     line-height: 1.6;
     overflow-x: hidden; /* no horizontal scroll */
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    max-width: 100vw; /* ensure body never exceeds viewport width */
+    overflow-y: scroll;
+    height: 100%;
+    scroll-behavior: smooth;
 }
 
-/* ===== FULL-PAGE SCROLL SNAP LAYOUT ===== */
-/* this creates the seamless full-screen scrolling experience */
-
-/* main container that holds all sections */
-.scroll-snap-container {
-    width: 100%;
-    max-width: 100vw; /* prevent horizontal overflow */
-    height: 100vh; /* full viewport height */
-    overflow-y: scroll; /* allow vertical scrolling */
-    overflow-x: hidden; /* never allow horizontal scroll */
-    scroll-snap-type: y mandatory; /* snap vertically to each section */
-    scroll-behavior: smooth; /* smooth scrolling between sections */
-    position: relative;
+/* full-page snap effect only on home and story pages */
+body:has(.greeting-section),
+body:has(.story-hero) {
+    scroll-snap-type: y proximity; /* snaps sections into view when scrolling */
 }
 
-/* each section takes full screen and snaps into view */
-.scroll-snap-section {
-    width: 100%;
-    max-width: 100vw; /* ensure sections never exceed viewport width */
-    min-height: 100vh; /* each section fills the full viewport height */
-    height: 100vh; /* default to viewport height */
-    scroll-snap-align: start; /* snap to the top of each section */
-    scroll-snap-stop: always; /* force stop at each section */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* vertically center content */
-    align-items: center; /* horizontally center content */
-    position: relative;
-    overflow-x: hidden; /* prevent horizontal scroll within sections */
-    overflow-y: auto; /* allow vertical scroll if content overflows */
-}
-
-/* special handling for footer section */
-.footer-section {
-    min-height: 100vh;
-    height: auto; /* allow footer to be flexible */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* ensure content inside sections stays responsive */
-.scroll-snap-section > * {
-    max-width: 100%;
+/* main container */
+main {
+    width: 100vw;
     overflow-x: hidden;
 }
 
@@ -283,13 +248,15 @@ body {
 /* hero greeting section styles */
 .greeting-section {
     position: relative;
-    width: 100%;
-    height: 100vh; /* full viewport height */
+    width: 100vw;
+    height: 100dvh; /* full screen, works better on mobile browsers */
+    min-height: 100dvh;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1; /* positioned below navbar */
+    scroll-snap-align: start; /* snaps to top when scrolling */
 }
 
 .greeting-gif-container {
@@ -397,28 +364,25 @@ body {
 }
 
 /* content sections container */
-/* content sections container - full screen with all placeholders */
 .content-sections {
     position: relative;
     z-index: 2;
     background: #000000;
-    width: 100%;
-    min-height: 100vh; /* full viewport height */
-    height: auto; /* adjust to content */
-    padding: 80px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* center all placeholder sections */
-    align-items: center;
-    gap: 60px; /* spacing between placeholder sections */
+    width: 100vw;
 }
 
-/* individual placeholder sections */
 .section-placeholder {
-    width: 100%;
-    max-width: 1200px;
-    padding: 40px 20px;
+    width: 100vw;
+    height: 100dvh; /* full screen sections */
+    min-height: 100dvh;
+    padding: 80px 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start; /* snaps when scrolling */
+    overflow: hidden;
 }
 
 .section-placeholder:last-child {
@@ -463,11 +427,13 @@ body {
 /* responsive adjustments for sections */
 @media (max-width: 768px) {
     .content-sections {
-        padding: 40px 0;
+        width: 100vw;
     }
     
     .section-placeholder {
-        padding: 50px 0;
+        height: 100dvh;
+        min-height: 100dvh;
+        padding: 50px 20px;
     }
     
     .section-placeholder h2 {
@@ -495,8 +461,10 @@ body {
 /* main content area for regular pages */
 main {
     min-height: 100vh;
+    width: 100vw;
     padding-top: 100px; /* space for fixed navigation */
-    padding-bottom: 50px;
+    padding-bottom: 0; /* remove bottom padding for scroll-snap */
+    overflow-x: hidden; /* prevent horizontal scroll */
 }
 
 /* index page main element override */
@@ -522,17 +490,17 @@ main:has(.story-hero) {
 }
 
 /* footer area styles */
-/* footer styling - works within scroll snap section */
 footer {
     background: #0D0D0D;
-    padding: 60px 20px 40px;
-    width: 100%;
+    width: 100vw;
+    padding: 40px 20px 30px;
+    margin-top: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     z-index: 10; /* make sure footer stays above everything */
 }
 
-/* remove special footer margin - now handled by scroll snap */
+/* remove footer margin on story page */
 main:has(.story-hero) + footer {
     margin-top: 0;
 }
@@ -737,19 +705,18 @@ main:has(.story-hero) + footer {
 /* story page styles */
 
 /* hero section for the story page */
-/* story page hero section - full screen introduction */
 .story-hero {
     position: relative;
-    width: 100%;
-    height: 100vh; /* always full viewport height */
-    min-height: 100vh; /* ensure minimum full screen */
-    max-height: none; /* remove max-height for true full screen */
+    width: 100vw;
+    height: 100dvh; /* full screen height */
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     color: white;
     text-align: center;
+    scroll-snap-align: start; /* snaps to top */
 }
 
 .hero-background {
@@ -840,24 +807,31 @@ main:has(.story-hero) + footer {
 }
 
 /* story content section with black background */
-/* story content section with letter - full screen */
 .story-content-section {
-    padding: 80px 20px; /* padding for content spacing */
+    width: 100vw;
+    height: 100dvh; /* full screen section */
+    min-height: 100dvh;
+    padding: 80px 20px;
     background: #000000;
     position: relative;
-    width: 100%;
-    min-height: 100vh; /* full viewport height */
-    height: auto; /* allow content to determine height */
-    max-height: none; /* remove max-height for true full screen */
     display: flex;
-    align-items: center; /* center content vertically */
-    justify-content: center; /* center content horizontally */
+    align-items: flex-start;
+    justify-content: center;
+    scroll-snap-align: start; /* snaps when scrolling to this section */
+    overflow-y: auto; /* allows scrolling if letter content is too long */
+    overflow-x: hidden;
 }
 
 .container {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
 }
 
 /* centered story introduction */
@@ -893,6 +867,8 @@ main:has(.story-hero) + footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    margin-top: 40px; /* spacing from title */
 }
 
 /* story envelope and letter animation styles */
@@ -1246,7 +1222,8 @@ main:has(.story-hero) + footer {
 /* tablet and smaller screens */
 @media (max-width: 768px) {
     .story-hero {
-        height: 100vh;
+        height: 100dvh;
+        min-height: 100dvh;
     }
     
     .hero-content {
@@ -1254,8 +1231,9 @@ main:has(.story-hero) + footer {
     }
     
     .story-content-section {
-        min-height: 120vh; /* more space needed on smaller screens */
-        padding: 60px 0 150px 0;
+        height: 100dvh;
+        min-height: 100dvh;
+        padding: 60px 20px;
     }
     
     .story-intro-center {
@@ -1295,7 +1273,8 @@ main:has(.story-hero) + footer {
 /* mobile phones */
 @media (max-width: 480px) {
     .story-hero {
-        height: 100vh;
+        height: 100dvh;
+        min-height: 100dvh;
     }
     
     .hero-content {
@@ -1307,8 +1286,9 @@ main:has(.story-hero) + footer {
     }
     
     .story-content-section {
-        min-height: 130vh; /* even more space for mobile */
-        padding: 50px 0 180px 0;
+        height: 100dvh;
+        min-height: 100dvh;
+        padding: 50px 20px;
     }
     
     .story-intro-center {
@@ -1342,6 +1322,25 @@ main:has(.story-hero) + footer {
     
     .letter-content {
         padding: 25px 20px;
+    }
+    
+    .section-placeholder {
+        height: 100dvh;
+        min-height: 100dvh;
+        padding: 40px 15px;
+    }
+    
+    .section-placeholder h2 {
+        font-size: 1.8rem;
+    }
+    
+    .placeholder-content p {
+        font-size: 0.9rem;
+    }
+    
+    .greeting-section {
+        height: 100dvh;
+        min-height: 100dvh;
     }
 }
 
