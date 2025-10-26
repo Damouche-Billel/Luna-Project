@@ -119,4 +119,30 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.opacity = '1';
     }, 100);
     
+    // envelope and letter animation
+    
+    const letterContainer = document.querySelector('.letter-container');
+    
+    if (letterContainer) {
+        // click to open envelope
+        letterContainer.addEventListener('click', function() {
+            this.classList.toggle('open');
+        });
+        
+        // keyboard access - enter or space opens envelope
+        letterContainer.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.classList.toggle('open');
+            }
+        });
+        
+        // make envelope focusable for keyboard users
+        letterContainer.setAttribute('tabindex', '0');
+        
+        // screen reader accessible label
+        letterContainer.setAttribute('aria-label', 'Click to open the letter');
+        letterContainer.setAttribute('role', 'button');
+    }
+    
 });
