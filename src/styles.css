@@ -33,10 +33,10 @@ body {
     scroll-behavior: smooth;
 }
 
-/* full-page snap effect only on home and story pages */
+/* scroll snap for home and story pages */
 body:has(.greeting-section),
 body:has(.story-hero) {
-    scroll-snap-type: y proximity; /* snaps sections into view when scrolling */
+    scroll-snap-type: y proximity;
 }
 
 /* main container */
@@ -51,20 +51,20 @@ main {
     top: 0;
     left: 0;
     right: 0;
-    background: transparent; /* fully transparent at the top */
+    background: transparent;
     backdrop-filter: none;
     z-index: 1000;
     padding: 15px 0;
-    transition: all 0.4s ease; /* smooth transition effect */
+    transition: all 0.4s ease;
     border-bottom: none;
 }
 
 .navbar.scrolled {
-    background: rgba(0, 0, 0, 1); /* solid black when scrolling */
+    background: rgba(0, 0, 0, 1);
     backdrop-filter: blur(10px);
     padding: 12px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* nice shadow effect */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .nav-container {
@@ -249,14 +249,14 @@ main {
 .greeting-section {
     position: relative;
     width: 100vw;
-    height: 100dvh; /* full screen, works better on mobile browsers */
+    height: 100dvh;
     min-height: 100dvh;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1; /* positioned below navbar */
-    scroll-snap-align: start; /* snaps to top when scrolling */
+    z-index: 1;
+    scroll-snap-align: start;
 }
 
 .greeting-gif-container {
@@ -271,8 +271,8 @@ main {
 .greeting-park-timelapse {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* maintain aspect ratio while filling container */
-    display: block; /* remove default image spacing */
+    object-fit: cover;
+    display: block;
 }
 
 /* luna title overlay positioning */
@@ -373,7 +373,7 @@ main {
 
 .section-placeholder {
     width: 100vw;
-    height: 100dvh; /* full screen sections */
+    height: 100dvh;
     min-height: 100dvh;
     padding: 80px 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -381,7 +381,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    scroll-snap-align: start; /* snaps when scrolling */
+    scroll-snap-align: start;
     overflow: hidden;
 }
 
@@ -708,7 +708,7 @@ main:has(.story-hero) + footer {
 .story-hero {
     position: relative;
     width: 100vw;
-    height: 100dvh; /* full screen height */
+    height: 100dvh;
     min-height: 100dvh;
     display: flex;
     align-items: center;
@@ -716,13 +716,13 @@ main:has(.story-hero) + footer {
     overflow: hidden;
     color: white;
     text-align: center;
-    scroll-snap-align: start; /* snaps to top */
+    scroll-snap-align: start;
 }
 
 .hero-background {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background: linear-gradient(135deg, #0a0a15 0%, #0d1220 50%, #0a1f35 100%);
     z-index: -2;
 }
 
@@ -734,6 +734,66 @@ main:has(.story-hero) + footer {
         radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
         radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.02) 0%, transparent 40%),
         radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.01) 0%, transparent 30%);
+}
+
+/* stars background */
+.hero-background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(3px 3px at 20% 30%, white, transparent),
+        radial-gradient(3px 3px at 60% 70%, white, transparent),
+        radial-gradient(3px 3px at 50% 50%, white, transparent),
+        radial-gradient(3px 3px at 80% 10%, white, transparent),
+        radial-gradient(3px 3px at 90% 60%, white, transparent),
+        radial-gradient(2px 2px at 33% 50%, white, transparent),
+        radial-gradient(2px 2px at 75% 80%, white, transparent),
+        radial-gradient(2px 2px at 15% 80%, white, transparent),
+        radial-gradient(2px 2px at 45% 20%, white, transparent),
+        radial-gradient(2px 2px at 88% 35%, white, transparent),
+        radial-gradient(2px 2px at 25% 60%, white, transparent),
+        radial-gradient(2px 2px at 70% 45%, white, transparent),
+        radial-gradient(2px 2px at 10% 15%, white, transparent),
+        radial-gradient(2px 2px at 95% 90%, white, transparent),
+        radial-gradient(2px 2px at 40% 85%, white, transparent),
+        radial-gradient(2px 2px at 65% 25%, white, transparent),
+        radial-gradient(2px 2px at 30% 95%, white, transparent),
+        radial-gradient(2px 2px at 85% 50%, white, transparent),
+        radial-gradient(2px 2px at 12% 45%, white, transparent),
+        radial-gradient(2px 2px at 55% 15%, white, transparent),
+        radial-gradient(2px 2px at 92% 25%, white, transparent),
+        radial-gradient(2px 2px at 38% 75%, white, transparent),
+        radial-gradient(2px 2px at 68% 90%, white, transparent),
+        radial-gradient(2px 2px at 18% 65%, white, transparent),
+        radial-gradient(2px 2px at 48% 35%, white, transparent),
+        radial-gradient(2px 2px at 78% 55%, white, transparent),
+        radial-gradient(2px 2px at 5% 88%, white, transparent),
+        radial-gradient(2px 2px at 97% 12%, white, transparent),
+        radial-gradient(2px 2px at 42% 8%, white, transparent),
+        radial-gradient(2px 2px at 72% 68%, white, transparent);
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+    animation: starsGlow 8s ease-in-out infinite;
+}
+
+@keyframes starsGlow {
+    0%, 100% {
+        opacity: 0.9;
+        filter: brightness(1.5);
+    }
+    25% {
+        opacity: 1;
+        filter: brightness(2);
+    }
+    50% {
+        opacity: 0.85;
+        filter: brightness(1.7);
+    }
+    75% {
+        opacity: 0.95;
+        filter: brightness(1.8);
+    }
 }
 
 .hero-overlay {
@@ -809,29 +869,26 @@ main:has(.story-hero) + footer {
 /* story content section with black background */
 .story-content-section {
     width: 100vw;
-    height: 100dvh; /* full screen section */
+    height: 100dvh;
     min-height: 100dvh;
     padding: 80px 20px;
     background: #000000;
     position: relative;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    scroll-snap-align: start; /* snaps when scrolling to this section */
-    overflow-y: auto; /* allows scrolling if letter content is too long */
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .container {
     max-width: 1200px;
     width: 100%;
-    margin: auto;
+    margin: 0 auto;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100%;
 }
 
 /* centered story introduction */
@@ -868,12 +925,11 @@ main:has(.story-hero) + footer {
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 40px; /* spacing from title */
+    margin-top: 40px;
 }
 
-/* story envelope and letter animation styles */
+/* envelope and letter styles */
 
-/* envelope container with subtle floating animation */
 .letter-container {
     position: relative;
     width: 100%;
@@ -882,29 +938,45 @@ main:has(.story-hero) + footer {
     cursor: pointer;
     transition: transform 0.3s ease;
     margin: 0 auto;
-    animation: envelopeFloat 6s ease-in-out infinite;
+    animation: envelopeVibrate 1.2s ease-in-out infinite;
 }
 
-/* gentle floating effect to make envelope feel alive */
-@keyframes envelopeFloat {
+@keyframes envelopeVibrate {
     0%, 100% { 
-        transform: translateY(0) rotate(0deg); 
+        transform: translate(0, 0) rotate(0deg); 
     }
-    25% { 
-        transform: translateY(-8px) rotate(0.5deg); 
+    10% {
+        transform: translate(-2px, -1px) rotate(-1deg); 
+    }
+    20% { 
+        transform: translate(2px, 1px) rotate(1.5deg); 
+    }
+    30% { 
+        transform: translate(-1px, 1px) rotate(-1.2deg); 
+    }
+    40% { 
+        transform: translate(1px, -1px) rotate(1deg); 
     }
     50% { 
-        transform: translateY(-15px) rotate(-0.5deg); 
+        transform: translate(-2px, 0px) rotate(-1.5deg); 
     }
-    75% { 
-        transform: translateY(-8px) rotate(0.3deg); 
+    60% { 
+        transform: translate(2px, -1px) rotate(1.3deg); 
+    }
+    70% { 
+        transform: translate(-1px, 1px) rotate(-0.8deg); 
+    }
+    80% { 
+        transform: translate(1px, 0px) rotate(0.8deg); 
+    }
+    90% { 
+        transform: translate(-1px, -1px) rotate(-0.5deg); 
     }
 }
 
-/* hover effect - slight scale up and pause animation */
 .letter-container:hover {
     transform: scale(1.02);
-    animation-play-state: paused; /* stop floating when hovering */
+    animation-play-state: paused;
 }
 
 /* envelope wrapper */
@@ -1022,7 +1094,7 @@ main:has(.story-hero) + footer {
 .letter {
     position: absolute;
     width: 90%;
-    height: 580px;
+    height: 580px; /* fixed height */
     top: 38px;
     left: 50%;
     transform: translateX(-50%) translateY(125px) scale(0.95);
@@ -1073,7 +1145,6 @@ main:has(.story-hero) + footer {
     border-radius: 5px;
 }
 
-/* letter content wrapper */
 .letter-content {
     position: relative;
     padding: 38px 40px;
@@ -1111,7 +1182,6 @@ main:has(.story-hero) + footer {
     text-shadow: 0 2px 4px rgba(61, 41, 20, 0.4);
 }
 
-/* letter story content */
 .letter-body {
     font-family: 'Special Elite', monospace;
     font-size: 16px;
@@ -1178,7 +1248,11 @@ main:has(.story-hero) + footer {
     white-space: nowrap;
 }
 
-/* when envelope is opened - animation states */
+/* when envelope is opened */
+.letter-container.open {
+    animation-play-state: paused;
+}
+
 .letter-container.open .envelope {
     transform: translateY(200px);
 }
@@ -1204,7 +1278,7 @@ main:has(.story-hero) + footer {
     opacity: 0;
 }
 
-/* gentle glow effect on hover */
+/* hover glow effect */
 .envelope::before {
     content: '';
     position: absolute;
@@ -1231,7 +1305,6 @@ main:has(.story-hero) + footer {
     }
     
     .story-content-section {
-        height: 100dvh;
         min-height: 100dvh;
         padding: 60px 20px;
     }
@@ -1252,7 +1325,7 @@ main:has(.story-hero) + footer {
     }
     
     .letter {
-        height: 500px;
+        min-height: 500px;
         transform: translateX(-50%) translateY(108px) scale(0.95);
     }
     
@@ -1286,7 +1359,6 @@ main:has(.story-hero) + footer {
     }
     
     .story-content-section {
-        height: 100dvh;
         min-height: 100dvh;
         padding: 50px 20px;
     }
@@ -1307,7 +1379,7 @@ main:has(.story-hero) + footer {
     }
     
     .letter {
-        height: 420px;
+        min-height: 420px;
         transform: translateX(-50%) translateY(90px) scale(0.95);
     }
     

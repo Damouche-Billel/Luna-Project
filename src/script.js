@@ -2,29 +2,51 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // navigation elements
     const navbar = document.querySelector('.navbar');
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     
-    // navbar changes when scrolling
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
+    // navbar scroll handler
+    function handleNavbarScroll() {
+        if (window.scrollY > 50 || window.pageYOffset > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-    });
+    }
+    
+    window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+    document.addEventListener('scroll', handleNavbarScroll, { passive: true });
+    handleNavbarScroll();
+    document.addEventListener('visibilitychange', handleNavbarScroll);
+    
+    // intersection observer for scroll-snap compatibility
+    const firstSection = document.querySelector('section:first-of-type, .greeting-section, .story-hero');
+    if (firstSection) {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.intersectionRatio < 0.9) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                });
+            },
+            { threshold: [0, 0.1, 0.5, 0.9, 1] }
+        );
+        observer.observe(firstSection);
+    }
+
     
     // mobile menu toggle functionality
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', function() {
             navMenu.classList.add('active');
-            document.body.style.overflow = 'hidden'; // stop background scrolling
+            document.body.style.overflow = 'hidden';
         });
         
-        // close menu when clicking the X button
         const closeMenu = document.querySelector('.close-menu');
         if (closeMenu) {
             closeMenu.addEventListener('click', function() {
@@ -33,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Close menu when clicking on nav links
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
                 navMenu.classList.remove('active');
@@ -41,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // close menu when clicking outside
         navMenu.addEventListener('click', function(e) {
             if (e.target === navMenu) {
                 navMenu.classList.remove('active');
@@ -51,11 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // active page highlighting
-    
-    // get current page name
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     
-    // highlight current nav link
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === currentPage || 
@@ -66,8 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // scroll animations
-    
-    // fade in animation for elements
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -81,17 +96,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
     
-    // Observe all fade-in elements
     const fadeElements = document.querySelectorAll('.fade-in');
     fadeElements.forEach(el => observer.observe(el));
     
-    // social links click effects
     const socialLinks = document.querySelectorAll('.social-link');
     
-    // add click animation to social buttons
     socialLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            // click animation effect
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 this.style.transform = 'scale(1)';
@@ -100,36 +111,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // keyboard accessibility
-    
-    // esc key closes mobile menu
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
             navMenu.classList.remove('active');
             document.body.style.overflow = 'auto';
-            menuToggle.focus(); // put focus back
+            menuToggle.focus();
         }
     });
     
     // page load animation
-    
-    // fade in on page load
     document.body.style.opacity = '0';
     setTimeout(function() {
         document.body.style.transition = 'opacity 0.5s ease';
         document.body.style.opacity = '1';
     }, 100);
     
-    // envelope and letter animation
-    
+    // envelope interaction
     const letterContainer = document.querySelector('.letter-container');
     
     if (letterContainer) {
-        // click to open envelope
         letterContainer.addEventListener('click', function() {
             this.classList.toggle('open');
         });
         
-        // keyboard access - enter or space opens envelope
         letterContainer.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -137,10 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // make envelope focusable for keyboard users
         letterContainer.setAttribute('tabindex', '0');
-        
-        // screen reader accessible label
         letterContainer.setAttribute('aria-label', 'Click to open the letter');
         letterContainer.setAttribute('role', 'button');
     }
