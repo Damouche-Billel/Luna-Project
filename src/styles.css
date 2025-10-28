@@ -36,7 +36,11 @@ body {
 /* scroll snap for home and story pages */
 body:has(.greeting-section),
 body:has(.story-hero) {
-    scroll-snap-type: y proximity;
+    scroll-snap-type: y mandatory;
+}
+
+body:has(.story-hero) {
+    scroll-snap-type: none;
 }
 
 /* main container */
@@ -726,6 +730,12 @@ main:has(.story-hero) + footer {
     z-index: -2;
 }
 
+.hero-story-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .hero-background::before {
     content: '';
     position: absolute;
@@ -800,13 +810,14 @@ main:has(.story-hero) + footer {
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
-    z-index: -1;
+    z-index: 1;
 }
 
 .hero-content {
     max-width: 800px;
     padding: 0 20px;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
 }
 
 .hero-badge {
@@ -866,66 +877,56 @@ main:has(.story-hero) + footer {
     60% { transform: translateY(-5px); }
 }
 
-/* story content section with black background */
+/* story content section - no internal scroll */
 .story-content-section {
     width: 100vw;
-    height: 100dvh;
-    min-height: 100dvh;
-    padding: 80px 20px;
+    padding: 80px 20px 100px;
     background: #000000;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 100vh;
     overflow: hidden;
 }
 
+/* main content wrapper */
 .container {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    min-height: 0;
+    height: auto;
+    overflow: visible;
 }
 
 /* centered story introduction */
 .story-intro-center {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 50px;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* section title styling */
 .section-title {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
     font-weight: 300;
-    color: #ffffff; /* white text for black background */
-    margin-bottom: 20px;
+    color: #ffffff;
+    margin-bottom: 15px;
     line-height: 1.2;
 }
 
-/* section subtitle styling */
 .section-subtitle {
-    font-size: 1.3rem;
-    color: #b0b0b0; /* light grey for contrast */
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: #b0b0b0;
     font-style: italic;
     margin-bottom: 0;
 }
 
-/* letter-centered layout */
 .letter-centered-layout {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 100%;
-    margin-top: 40px;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 /* envelope and letter styles */
@@ -1305,12 +1306,15 @@ main:has(.story-hero) + footer {
     }
     
     .story-content-section {
-        min-height: 100dvh;
-        padding: 60px 20px;
+        padding: 60px 20px 80px;
     }
     
     .story-intro-center {
-        margin-bottom: 40px;
+        margin-bottom: 30px;
+    }
+    
+    .letter-centered-layout {
+        max-width: 100%;
     }
     
     /* smaller envelope for tablets */
@@ -1359,12 +1363,15 @@ main:has(.story-hero) + footer {
     }
     
     .story-content-section {
-        min-height: 100dvh;
-        padding: 50px 20px;
+        padding: 50px 15px 80px;
     }
     
     .story-intro-center {
-        margin-bottom: 30px;
+        margin-bottom: 25px;
+    }
+    
+    .letter-centered-layout {
+        max-width: 100%;
     }
     
     /* even smaller envelope for phones */

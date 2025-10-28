@@ -144,6 +144,28 @@ document.addEventListener('DOMContentLoaded', function() {
         letterContainer.setAttribute('tabindex', '0');
         letterContainer.setAttribute('aria-label', 'Click to open the letter');
         letterContainer.setAttribute('role', 'button');
+        
+        // mouse wheel scroll handling for letter content
+        const letterBody = document.querySelector('.letter-body');
+        if (letterBody) {
+            letterBody.addEventListener('wheel', function(e) {
+                // skip handling if letter is closed
+                if (!letterContainer.classList.contains('open')) {
+                    return;
+                }
+                
+                const scrollingDown = e.deltaY > 0;
+                const atTop = this.scrollTop === 0;
+                const atBottom = Math.abs(this.scrollHeight - this.scrollTop - this.clientHeight) < 1;
+                
+                // handle scroll when inside content area
+                if ((scrollingDown && !atBottom) || (!scrollingDown && !atTop)) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.scrollTop += e.deltaY;
+                }
+            });
+        }
     }
-    
+
 });
