@@ -1,5 +1,15 @@
 /* luna film website styles */
 
+/* design system variables for director's statement section */
+:root {
+    --ink-900: #0a0e1a;
+    --ink-700: #0f172a;
+    --ink-500: #1e293b;
+    --moon-200: #e2e8f0;
+    --star-100: #f8fafc;
+    --accent-gold: #fbbf24;
+}
+
 /* custom font - film director wanted lemon-love font*/
 @font-face {
     font-family: 'Lemon Love';
@@ -914,19 +924,23 @@ main:has(.story-hero) + footer {
     position: relative;
     min-height: 100vh;
     overflow: hidden;
-    /* fade in from top to blend with hero section */
+    /* fade in from top to blend with hero section, fade out at bottom */
     -webkit-mask-image: linear-gradient(to bottom,
         rgba(0, 0, 0, 0) 0%,
         rgba(0, 0, 0, 0.3) 5%,
         rgba(0, 0, 0, 0.7) 10%,
         rgba(0, 0, 0, 1) 20%,
-        rgba(0, 0, 0, 1) 100%);
+        rgba(0, 0, 0, 1) 75%,
+        rgba(0, 0, 0, 0.7) 90%,
+        rgba(0, 0, 0, 0) 100%);
     mask-image: linear-gradient(to bottom,
         rgba(0, 0, 0, 0) 0%,
         rgba(0, 0, 0, 0.3) 5%,
         rgba(0, 0, 0, 0.7) 10%,
         rgba(0, 0, 0, 1) 20%,
-        rgba(0, 0, 0, 1) 100%);
+        rgba(0, 0, 0, 1) 75%,
+        rgba(0, 0, 0, 0.7) 90%,
+        rgba(0, 0, 0, 0) 100%);
 }
 
 /* main content wrapper */
@@ -1792,5 +1806,346 @@ main:has(.story-hero) + footer {
     .letter-body {
         transition: none !important;
         animation: none !important;
+    }
+}
+
+/* ============================================
+   DIRECTOR'S STATEMENT SECTION
+   ============================================ */
+
+/* main container with dark night sky background */
+.dir-section {
+    position: relative;
+    width: 100vw;
+    min-height: auto;
+    padding: 80px 20px 80px;
+    background: 
+        linear-gradient(to bottom, 
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.9) 100%),
+        radial-gradient(ellipse at center, #0a0a15 0%, #000000 100%);
+    background-color: #000000;
+    overflow: hidden;
+    /* blend smoothly with story section above */
+    mask-image: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0) 0%, 
+        rgba(0, 0, 0, 0.3) 5%, 
+        rgba(0, 0, 0, 0.7) 10%, 
+        rgba(0, 0, 0, 1) 15%,
+        rgba(0, 0, 0, 1) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0) 0%, 
+        rgba(0, 0, 0, 0.3) 5%, 
+        rgba(0, 0, 0, 0.7) 10%, 
+        rgba(0, 0, 0, 1) 15%,
+        rgba(0, 0, 0, 1) 100%);
+}
+
+/* subtle moonlight glow effect */
+.dir-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 0;
+    background: 
+        radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 20% 80%, rgba(226, 232, 240, 0.06) 0%, transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(248, 250, 252, 0.03) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.dir-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: 
+        inset 0 0 80px rgba(251, 191, 36, 0.05),
+        inset 0 0 120px rgba(226, 232, 240, 0.03);
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 0;
+}
+
+/* starfield layer with lots of stars */
+.dir-starfield {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        /* bright stars */
+        radial-gradient(2px 2px at 15% 25%, white, transparent),
+        radial-gradient(1.5px 1.5px at 85% 15%, white, transparent),
+        radial-gradient(2px 2px at 45% 60%, white, transparent),
+        radial-gradient(1px 1px at 75% 80%, white, transparent),
+        radial-gradient(2px 2px at 25% 45%, white, transparent),
+        radial-gradient(1.5px 1.5px at 60% 30%, white, transparent),
+        radial-gradient(2px 2px at 90% 70%, white, transparent),
+        radial-gradient(1px 1px at 10% 85%, white, transparent),
+        radial-gradient(2px 2px at 55% 10%, white, transparent),
+        radial-gradient(1.5px 1.5px at 35% 90%, white, transparent),
+        radial-gradient(1px 1px at 70% 50%, white, transparent),
+        radial-gradient(2px 2px at 20% 70%, white, transparent),
+        radial-gradient(1px 1px at 80% 35%, white, transparent),
+        radial-gradient(2px 2px at 50% 75%, white, transparent),
+        radial-gradient(1.5px 1.5px at 40% 20%, white, transparent),
+        radial-gradient(1px 1px at 65% 95%, white, transparent),
+        radial-gradient(2px 2px at 92% 40%, white, transparent),
+        radial-gradient(1px 1px at 12% 55%, white, transparent),
+        radial-gradient(1.5px 1.5px at 48% 88%, white, transparent),
+        radial-gradient(2px 2px at 78% 62%, white, transparent),
+        /* medium stars */
+        radial-gradient(1.5px 1.5px at 33% 33%, white, transparent),
+        radial-gradient(1px 1px at 88% 22%, white, transparent),
+        radial-gradient(1.5px 1.5px at 52% 8%, white, transparent),
+        radial-gradient(1px 1px at 18% 48%, white, transparent),
+        radial-gradient(2px 2px at 68% 68%, white, transparent),
+        radial-gradient(1px 1px at 42% 92%, white, transparent),
+        radial-gradient(1.5px 1.5px at 95% 55%, white, transparent),
+        radial-gradient(1px 1px at 8% 12%, white, transparent),
+        radial-gradient(2px 2px at 72% 18%, white, transparent),
+        radial-gradient(1px 1px at 28% 82%, white, transparent),
+        /* smaller dimmer stars */
+        radial-gradient(1px 1px at 22% 15%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 62% 42%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 38% 65%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 82% 85%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 5% 28%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 97% 8%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 58% 52%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 15% 78%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 77% 28%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 32% 5%, rgba(255,255,255,0.7), transparent);
+    background-size: 200% 200%;
+    opacity: 0.9;
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* crescent moon watermark */
+.dir-moon-watermark {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 120px;
+    height: 120px;
+    color: var(--moon-200);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* content container */
+.dir-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* intro section with badge and title */
+.dir-intro {
+    text-align: center;
+    margin-bottom: 50px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.dir-section.is-visible .dir-intro {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dir-badge {
+    display: inline-block;
+    padding: 6px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--moon-200);
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.dir-title {
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 300;
+    color: var(--star-100);
+    margin-bottom: 12px;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+}
+
+.dir-subtitle {
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+}
+
+/* single column layout for statement */
+.dir-content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: start;
+    justify-items: center;
+}
+
+/* statement card with frosted glass effect */
+.dir-statement-card {
+    max-width: 820px;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+}
+
+.dir-section.is-visible .dir-statement-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dir-statement-body {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 35px 40px;
+    backdrop-filter: blur(20px);
+    margin-bottom: 25px;
+}
+
+.dir-statement-body p {
+    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 18px;
+}
+
+.dir-statement-body p:last-of-type {
+    margin-bottom: 0;
+}
+
+/* director signature at end of statement */
+.dir-signature {
+    text-align: right;
+    font-size: 1rem !important;
+    color: var(--moon-200) !important;
+    font-style: italic;
+    margin-top: 25px !important;
+}
+
+/* call-to-action button */
+.dir-cta-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.dir-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 14px;
+    font-family: 'Lemon Love', cursive, sans-serif;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+}
+
+.dir-btn:focus {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+}
+
+.dir-btn-solid {
+    background: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+    color: var(--ink-900);
+    font-weight: bold;
+}
+
+.dir-btn-solid:hover {
+    background: #fcd34d;
+    border-color: #fcd34d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(251, 191, 36, 0.3);
+}
+
+/* tablet and mobile adjustments */
+@media (max-width: 900px) {
+    .dir-section {
+        padding: 60px 20px 50px;
+    }
+
+    .dir-content-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .dir-intro {
+        margin-bottom: 40px;
+    }
+
+    .dir-statement-body {
+        padding: 30px 25px;
+    }
+
+    .dir-moon-watermark {
+        width: 100px;
+        height: 100px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .dir-section {
+        padding: 50px 15px 40px;
+    }
+
+    .dir-intro {
+        margin-bottom: 30px;
+    }
+
+    .dir-statement-body {
+        padding: 20px 18px;
+    }
+
+    .dir-cta-row {
+        flex-direction: column;
+    }
+
+    .dir-btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px 24px;
+    }
+
+    .dir-moon-watermark {
+        width: 80px;
+        height: 80px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+/* respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .dir-starfield {
+        will-change: auto;
+    }
+
+    .dir-intro,
+    .dir-statement-card {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .dir-btn:hover {
+        transform: none;
     }
 }

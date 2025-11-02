@@ -264,3 +264,59 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
+/* ============================================
+   DIRECTOR'S STATEMENT SECTION
+   ============================================ */
+
+// check if user prefers reduced motion
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// fade in section when it comes into view
+const dirSection = document.querySelector('.dir-section');
+
+if (dirSection && !prefersReducedMotion) {
+    const dirObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
+    });
+
+    dirObserver.observe(dirSection);
+}
+
+// add subtle parallax to starfield on scroll
+const dirStarfield = document.querySelector('.dir-starfield');
+
+if (dirStarfield && !prefersReducedMotion) {
+    let ticking = false;
+
+    function updateParallax() {
+        const scrolled = window.pageYOffset;
+        const sectionTop = dirSection?.offsetTop || 0;
+        const sectionHeight = dirSection?.offsetHeight || 0;
+        
+        // only move stars when section is visible
+        if (scrolled + window.innerHeight > sectionTop && scrolled < sectionTop + sectionHeight) {
+            const relativeScroll = scrolled - sectionTop;
+            const parallaxValue = relativeScroll * 0.15;
+            dirStarfield.style.transform = `translateY(${Math.min(parallaxValue, 12)}px)`;
+        }
+        
+        ticking = false;
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', requestTick, { passive: true });
+}
