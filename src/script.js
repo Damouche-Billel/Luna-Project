@@ -1,4 +1,4 @@
-// luna website javascript
+// luna website js
 
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     
-    // navbar scroll handler
+    // handle navbar on scroll
     function handleNavbarScroll() {
         if (window.scrollY > 50 || window.pageYOffset > 50) {
             navbar.classList.add('scrolled');
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     handleNavbarScroll();
     document.addEventListener('visibilitychange', handleNavbarScroll);
     
-    // intersection observer for scroll-snap compatibility
+    // intersection observer for scroll snap
     const firstSection = document.querySelector('section:first-of-type, .greeting-section, .story-hero');
     if (firstSection) {
         const observer = new IntersectionObserver(
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     
-    // mobile menu toggle functionality
+    // mobile menu toggle
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', function() {
             navMenu.classList.add('active');
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // active page highlighting
+    // highlight current page
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     
     navLinks.forEach(link => {
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // scroll animations
+    // fade in animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // keyboard accessibility
+    // escape key closes mobile menu
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
             navMenu.classList.remove('active');
@@ -119,38 +119,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // page load animation
+    // page load fade in
     document.body.style.opacity = '0';
     setTimeout(function() {
         document.body.style.transition = 'opacity 0.5s ease';
         document.body.style.opacity = '1';
     }, 100);
     
-    // envelope interaction
-    const letterContainer = document.querySelector('.letter-container');
+    // storyline envelope
+    const storylineContainer = document.querySelector('.storyline-envelope');
     
-    if (letterContainer) {
-        letterContainer.addEventListener('click', function() {
+    if (storylineContainer) {
+        storylineContainer.addEventListener('click', function() {
             this.classList.toggle('open');
         });
         
-        letterContainer.addEventListener('keydown', function(e) {
+        storylineContainer.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 this.classList.toggle('open');
             }
         });
         
-        letterContainer.setAttribute('tabindex', '0');
-        letterContainer.setAttribute('aria-label', 'Click to open the letter');
-        letterContainer.setAttribute('role', 'button');
+        storylineContainer.setAttribute('tabindex', '0');
+        storylineContainer.setAttribute('aria-label', 'Click to open the letter');
+        storylineContainer.setAttribute('role', 'button');
         
-        // mouse wheel scroll handling for letter content
+        // handle scroll for letter content
         const letterBody = document.querySelector('.letter-body');
         if (letterBody) {
             letterBody.addEventListener('wheel', function(e) {
-                // skip handling if letter is closed
-                if (!letterContainer.classList.contains('open')) {
+                // ignore if closed
+                if (!storylineContainer.classList.contains('open')) {
                     return;
                 }
                 
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const atTop = this.scrollTop === 0;
                 const atBottom = Math.abs(this.scrollHeight - this.scrollTop - this.clientHeight) < 1;
                 
-                // handle scroll when inside content area
+                // handle scrolling inside letter
                 if ((scrollingDown && !atBottom) || (!scrollingDown && !atTop)) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -167,5 +167,100 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+    
+    // trailer envelope with video
+    const trailerContainer = document.querySelector('.trailer-envelope');
+    
+    if (trailerContainer) {
+        const trailerVideo = document.getElementById('trailerVideo');
+        const closeBtn = trailerContainer.querySelector('.video-close-btn');
+        
+        // mobile check
+        const isMobile = () => window.innerWidth <= 480;
+        
+        // click to play (desktop only)
+        trailerContainer.addEventListener('click', function(e) {
+            // let iframe handle on mobile
+            if (isMobile()) {
+                return;
+            }
+            
+            // ignore close button clicks
+            if (e.target.closest('.video-close-btn')) {
+                return;
+            }
+            
+            if (!this.classList.contains('open')) {
+                this.classList.add('open');
+                // play video via YouTube API
+                if (trailerVideo) {
+                    trailerVideo.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                }
+            }
+        });
+        
+        // close button
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                trailerContainer.classList.remove('open');
+                // pause on close
+                if (trailerVideo) {
+                    trailerVideo.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                }
+            });
+        }
+        
+        // keyboard support (desktop only)
+        trailerContainer.addEventListener('keydown', function(e) {
+            // ignore on mobile
+            if (isMobile()) {
+                return;
+            }
+            
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.classList.toggle('open');
+                
+                if (this.classList.contains('open') && trailerVideo) {
+                    trailerVideo.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                } else if (trailerVideo) {
+                    trailerVideo.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                }
+            }
+        });
+        
+        // accessibility attrs for desktop
+        if (!isMobile()) {
+            trailerContainer.setAttribute('tabindex', '0');
+            trailerContainer.setAttribute('aria-label', 'Click to watch trailer');
+            trailerContainer.setAttribute('role', 'button');
+        }
+    }
+    
+    // click outside to close
+    document.addEventListener('click', function(e) {
+        // mobile check
+        const isMobile = window.innerWidth <= 480;
+        
+        // close storyline if clicking outside
+        if (storylineContainer && storylineContainer.classList.contains('open')) {
+            if (!storylineContainer.contains(e.target)) {
+                storylineContainer.classList.remove('open');
+            }
+        }
+        
+        // close trailer if clicking outside (desktop only)
+        if (!isMobile && trailerContainer && trailerContainer.classList.contains('open')) {
+            if (!trailerContainer.contains(e.target)) {
+                trailerContainer.classList.remove('open');
+                // pause on close
+                const trailerVideo = document.getElementById('trailerVideo');
+                if (trailerVideo) {
+                    trailerVideo.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                }
+            }
+        }
+    });
 
 });

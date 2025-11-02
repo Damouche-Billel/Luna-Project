@@ -93,38 +93,67 @@
                     <p class="section-subtitle">Two artists, one destiny under the London moon</p>
                 </div>
                 
-                <!-- letter-centered layout -->
-                <div class="letter-centered-layout">
-                    <!-- envelope with letter inside -->
-                    <div class="letter-container" id="letterContainer">
-                        <!-- envelope part -->
-                        <div class="envelope">
-                            <div class="envelope-paper"></div>
-                            <div class="envelope-flap"></div>
-                        </div>
-                        
-                        <!-- the letter content -->
-                        <div class="letter">
-                            <div class="letter-content">
-                                <div class="letter-header">A Story Unfolds</div>
-                                <h1 class="letter-title">LUNA</h1>
-                                <div class="letter-body">
-                                    <p>Luna, a designer and hobby painter, is obsessed with the night. She often paints late above the city, yearning for a soul mate —a muse who inspires her and whom she inspires in return.</p>
-                                    
-                                    <p>She notices white paper with black-ink printed verses on the wall. To her surprise, the poems are about her paintings. She dares not paint anymore, fearing that someone is following her, and she begins selling her artwork.</p>
-                                    
-                                    <p>Meanwhile, the mysterious poet, Tyler Waves, illegally posts his poems on the street walls. One evening, he notices a painting behind a window that precisely depicts the poem he is about to post that night. He invites Luna to meet him in his poem in the light of the Moon.</p>
-                                    
-                                    <p>That night, her friend Tara convinced her to go to the edge of the town to meet this mysterious poet.</p>
-                                    
-                                    <p>Under the soft glow of London's streetlights and the watchful eye of the moon, two artistic souls prepare to discover that sometimes the most beautiful stories are written not in paint or poetry alone, but in the magical space where both converge.</p>
+                <!-- dual envelope layout -->
+                <div class="envelopes-grid">
+                    
+                    <!-- storyline envelope -->
+                    <div class="envelope-wrapper">
+                        <div class="letter-container storyline-envelope" id="storylineContainer">
+                            <!-- envelope with handwritten label -->
+                            <div class="envelope">
+                                <div class="envelope-paper"></div>
+                                <div class="envelope-flap"></div>
+                                <span class="envelope-label">Storyline</span>
+                            </div>
+                            
+                            <!-- the letter content -->
+                            <div class="letter">
+                                <div class="letter-content">
+                                    <div class="letter-header">A Story Unfolds</div>
+                                    <h1 class="letter-title">LUNA</h1>
+                                    <div class="letter-body">
+                                        <p>Luna, a designer and hobby painter, is obsessed with the night. She often paints late above the city, yearning for a soul mate —a muse who inspires her and whom she inspires in return.</p>
+                                        
+                                        <p>She notices white paper with black-ink printed verses on the wall. To her surprise, the poems are about her paintings. She dares not paint anymore, fearing that someone is following her, and she begins selling her artwork.</p>
+                                        
+                                        <p>Meanwhile, the mysterious poet, Tyler Waves, illegally posts his poems on the street walls. One evening, he notices a painting behind a window that precisely depicts the poem he is about to post that night. He invites Luna to meet him in his poem in the light of the Moon.</p>
+                                        
+                                        <p>That night, her friend Tara convinced her to go to the edge of the town to meet this mysterious poet.</p>
+                                        
+                                        <p>Under the soft glow of London's streetlights and the watchful eye of the moon, two artistic souls prepare to discover that sometimes the most beautiful stories are written not in paint or poetry alone, but in the magical space where both converge.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- click hint for user -->
-                        <div class="click-hint">Click to open letter</div>
                     </div>
+                    
+                    <!-- trailer envelope -->
+                    <div class="envelope-wrapper">
+                        <div class="letter-container trailer-envelope" id="trailerContainer">
+                            <!-- envelope with handwritten label -->
+                            <div class="envelope">
+                                <div class="envelope-paper trailer-paper"></div>
+                                <div class="envelope-flap trailer-flap"></div>
+                                <span class="envelope-label">Trailer</span>
+                            </div>
+                            
+                            <!-- the video content -->
+                            <div class="letter trailer-video">
+                                <div class="video-container">
+                                    <button class="video-close-btn" aria-label="Close video">&times;</button>
+                                    <iframe 
+                                        id="trailerVideo"
+                                        src="https://www.youtube.com/embed/4J-mhsLwUDQ?enablejsapi=1" 
+                                        title="LUNA Trailer" 
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </section>
