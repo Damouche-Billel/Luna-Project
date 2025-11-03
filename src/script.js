@@ -17,9 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     window.addEventListener('scroll', handleNavbarScroll, { passive: true });
-    document.addEventListener('scroll', handleNavbarScroll, { passive: true });
     handleNavbarScroll();
-    document.addEventListener('visibilitychange', handleNavbarScroll);
     
     // intersection observer for scroll snap
     const firstSection = document.querySelector('section:first-of-type, .greeting-section, .story-hero');
