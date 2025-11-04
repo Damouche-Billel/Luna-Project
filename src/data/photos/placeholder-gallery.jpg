@@ -1,0 +1,11 @@
+﻿<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="galleryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0a15;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#galleryGrad)"/>
+  <rect x="50" y="100" width="200" height="200" fill="none" stroke="#fbbf24" stroke-width="3" opacity="0.4"/>
+  <text x="300" y="220" font-family="Arial" font-size="24" fill="#e2e8f0" text-anchor="middle">Gallery Image</text>
+</svg>

@@ -85,49 +85,252 @@
                 </div>
             </div>
         </div>
-    
-    <!-- content sections -->
-    <div class="content-sections">
-        <!-- story section -->
-        <section class="section-placeholder story-section">
-            <h2><a href="story.html" class="section-link">Story</a></h2>
-            <div class="placeholder-content">
-                <p>Discover the heartfelt narrative behind LUNA...</p>
+
+        <!-- cinematic story teaser -->
+        <section class="story-teaser-section" aria-labelledby="storyTeaserHeading">
+            <div class="story-teaser-stars" aria-hidden="true"></div>
+            <div class="story-teaser-container">
+                <div class="story-teaser-content">
+                    <h2 id="storyTeaserHeading" class="teaser-heading">
+                        A night in London.<br>
+                        Two hearts.<br>
+                        One orbit.
+                    </h2>
+                    <p class="teaser-summary">
+                        When chance encounters become destiny, and handwritten letters bridge the space between strangers, 
+                        two souls discover that love isn't found—it's felt in the details, 
+                        whispered through the London night.
+                    </p>
+                    <div class="teaser-keywords">
+                        <span class="keyword">Connection</span>
+                        <span class="keyword-divider" aria-hidden="true">•</span>
+                        <span class="keyword">Distance</span>
+                        <span class="keyword-divider" aria-hidden="true">•</span>
+                        <span class="keyword">Reflection</span>
+                    </div>
+                    <div class="teaser-actions">
+                        <a href="story.html" class="teaser-btn teaser-btn-primary">Read the full story</a>
+                        <a href="story.html#trailer" class="teaser-btn teaser-btn-secondary">Watch the trailer</a>
+                    </div>
+                </div>
             </div>
         </section>
-        
+
         <!-- cast & crew section -->
-        <section class="section-placeholder cast-section">
-            <h2><a href="cast.html" class="section-link">Cast & Crew</a></h2>
-            <div class="placeholder-content">
-                <p>Meet the talented individuals who brought LUNA to life...</p>
+        <section class="cast-crew-section" aria-labelledby="castCrewHeading">
+            <div class="cast-crew-stars" aria-hidden="true"></div>
+            <div class="cast-crew-container">
+                <!-- section header -->
+                <div class="cast-crew-header">
+                    <div class="header-left">
+                        <h2 id="castCrewHeading" class="cast-crew-title">Cast & Crew</h2>
+                        <p class="cast-crew-subtitle">The people behind LUNA</p>
+                    </div>
+                    <a href="cast.html" class="view-all-link" aria-label="View all cast and crew members">
+                        View all <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+
+                <!-- carousel -->
+                <div class="cast-carousel" role="region" aria-roledescription="carousel" aria-label="Cast and crew members">
+                    <button class="carousel-nav carousel-prev" aria-label="Previous cast members" aria-controls="castTrack">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="carousel-viewport">
+                        <ul class="carousel-track" id="castTrack">
+                            <!-- Richard Kovacs - Director -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <div class="avatar-monogram">RK</div>
+                                        <div class="avatar-moon" aria-hidden="true">☾</div>
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Richard Kovacs</h3>
+                                        <p class="card-role">Director</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- Brianna Gibson - Producer -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <div class="avatar-monogram">BG</div>
+                                        <div class="avatar-moon" aria-hidden="true">☾</div>
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Brianna Gibson</h3>
+                                        <p class="card-role">Producer</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- Julia Rowlands - Luna Hope -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <div class="avatar-monogram">JR</div>
+                                        <div class="avatar-moon" aria-hidden="true">☾</div>
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Julia Rowlands</h3>
+                                        <p class="card-role">Luna Hope</p>
+                                        <p class="card-character">as Luna Hope</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- Daniel Palazzi - Tyler Waves -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <div class="avatar-monogram">DP</div>
+                                        <div class="avatar-moon" aria-hidden="true">☾</div>
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Daniel Palazzi</h3>
+                                        <p class="card-role">Actor</p>
+                                        <p class="card-character">as Tyler Waves</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- Mahil Kotadoo - DOP -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <div class="avatar-monogram">MK</div>
+                                        <div class="avatar-moon" aria-hidden="true">☾</div>
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Mahil Kotadoo</h3>
+                                        <p class="card-role">Director of Photography</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- Ema Paise - Tara Amber -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <div class="avatar-monogram">EP</div>
+                                        <div class="avatar-moon" aria-hidden="true">☾</div>
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Ema Paise</h3>
+                                        <p class="card-role">Actor</p>
+                                        <p class="card-character">as Tara Amber</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- Daniel Luke Smith - 1st AD -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <div class="avatar-monogram">DS</div>
+                                        <div class="avatar-moon" aria-hidden="true">☾</div>
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Daniel Luke Smith</h3>
+                                        <p class="card-role">1st Assistant Director</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- Charlie Richmond - Gaffer -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <div class="avatar-monogram">CR</div>
+                                        <div class="avatar-moon" aria-hidden="true">☾</div>
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Charlie Richmond</h3>
+                                        <p class="card-role">Gaffer</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- Keli Kobina Asorwoe-Osmunda - Sound -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <div class="avatar-monogram">KA</div>
+                                        <div class="avatar-moon" aria-hidden="true">☾</div>
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Keli Kobina Asorwoe-Osmunda</h3>
+                                        <p class="card-role">Sound Recordist</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- Phoebe Hunter Gordon - Set Designer -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <div class="avatar-monogram">PG</div>
+                                        <div class="avatar-moon" aria-hidden="true">☾</div>
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Phoebe Hunter Gordon</h3>
+                                        <p class="card-role">Set Designer</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- Jarrahkeh Jarra - Executive Producer -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <div class="avatar-monogram">JJ</div>
+                                        <div class="avatar-moon" aria-hidden="true">☾</div>
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Jarrahkeh Jarra</h3>
+                                        <p class="card-role">Executive Producer</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- Anastasiia Tkhir - VFX -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <div class="avatar-monogram">AT</div>
+                                        <div class="avatar-moon" aria-hidden="true">☾</div>
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Anastasiia Tkhir</h3>
+                                        <p class="card-role">VFX Artist</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button class="carousel-nav carousel-next" aria-label="Next cast members" aria-controls="castTrack">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- pagination dots -->
+                <div class="carousel-pagination" role="tablist" aria-label="Carousel pages"></div>
+
+                <!-- cta button -->
+                <div class="cast-crew-cta">
+                    <a href="cast.html" class="meet-team-btn">Meet the full team</a>
+                </div>
             </div>
         </section>
-        
-        <!-- gallery section -->
-        <section class="section-placeholder gallery-section">
-            <h2><a href="gallery.html" class="section-link">Gallery</a></h2>
-            <div class="placeholder-content">
-                <p>Explore behind-the-scenes moments and stills from the film...</p>
-            </div>
-        </section>
-        
-        <!-- faq section -->
-        <section class="section-placeholder faq-section">
-            <h2><a href="faq.html" class="section-link">FAQ</a></h2>
-            <div class="placeholder-content">
-                <p>Find answers to frequently asked questions about LUNA...</p>
-            </div>
-        </section>
-        
-        <!-- contact section -->
-        <section class="section-placeholder contact-section">
-            <h2><a href="contact.html" class="section-link">Contact Us</a></h2>
-            <div class="placeholder-content">
-                <p>Get in touch with the LUNA team...</p>
-            </div>
-        </section>
-    </div>
+    </main>
     
     <!-- footer area -->
     <footer>

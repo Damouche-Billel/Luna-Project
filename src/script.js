@@ -318,3 +318,135 @@ if (dirStarfield && !prefersReducedMotion) {
 
     window.addEventListener('scroll', requestTick, { passive: true });
 }
+
+// ============================================
+// CAST & CREW CAROUSEL
+// ============================================
+
+function initCastCarousel() {
+    const carousel = document.querySelector('.cast-carousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.carousel-track');
+    const prevBtn = carousel.querySelector('.carousel-prev');
+    const nextBtn = carousel.querySelector('.carousel-next');
+    const paginationContainer = document.querySelector('.carousel-pagination');
+    const cards = Array.from(track.querySelectorAll('.cast-card'));
+
+    if (!track || !prevBtn || !nextBtn || !paginationContainer || cards.length === 0) return;
+
+    let currentIndex = 0;
+    let cardsPerView = 4;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function calculateCardsPerView() {
+        const width = window.innerWidth;
+        if (width < 480) return 1;
+        if (width < 768) return 2;
+        if (width < 1200) return 3;
+        return 4;
+    }
+
+    function updateCarouselPosition() {
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 28;
+        const translateX = -(currentIndex * (cardWidth + gap));
+        
+        track.style.transition = prefersReducedMotion ? 'none' : 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        track.style.transform = `translateX(${translateX}px)`;
+        updatePagination();
+        updateNavButtons();
+    }
+
+    function createPagination() {
+        const totalPages = Math.ceil(cards.length / cardsPerView);
+        paginationContainer.innerHTML = '';
+        
+        for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement('button');
+            dot.classList.add('pagination-dot');
+            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            dot.addEventListener('click', () => goToSlide(i));
+            paginationContainer.appendChild(dot);
+        }
+        
+        updatePagination();
+    }
+
+    function updatePagination() {
+        const dots = paginationContainer.querySelectorAll('.pagination-dot');
+        const activeIndex = Math.floor(currentIndex / cardsPerView);
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === activeIndex);
+            dot.toggleAttribute('aria-current', index === activeIndex);
+        });
+    }
+
+    function updateNavButtons() {
+        const maxIndex = Math.max(0, cards.length - cardsPerView);
+        
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex >= maxIndex;
+        prevBtn.setAttribute('aria-disabled', currentIndex === 0);
+        nextBtn.setAttribute('aria-disabled', currentIndex >= maxIndex);
+    }
+
+    function goToSlide(pageIndex) {
+        currentIndex = Math.min(pageIndex * cardsPerView, cards.length - cardsPerView);
+        updateCarouselPosition();
+    }
+
+    function goToPrev() {
+        if (currentIndex > 0) {
+            currentIndex = Math.max(0, currentIndex - cardsPerView);
+            updateCarouselPosition();
+        }
+    }
+
+    function goToNext() {
+        const maxIndex = Math.max(0, cards.length - cardsPerView);
+        if (currentIndex < maxIndex) {
+            currentIndex = Math.min(maxIndex, currentIndex + cardsPerView);
+            updateCarouselPosition();
+        }
+    }
+
+    function handleKeyboard(event) {
+        if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            goToPrev();
+        } else if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            goToNext();
+        }
+    }
+
+    prevBtn.addEventListener('click', goToPrev);
+    nextBtn.addEventListener('click', goToNext);
+    carousel.addEventListener('keydown', handleKeyboard);
+
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const newCardsPerView = calculateCardsPerView();
+            if (newCardsPerView !== cardsPerView) {
+                cardsPerView = newCardsPerView;
+                currentIndex = 0;
+                createPagination();
+                updateCarouselPosition();
+            }
+        }, 250);
+    });
+
+    cardsPerView = calculateCardsPerView();
+    createPagination();
+    updateCarouselPosition();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCastCarousel);
+} else {
+    initCastCarousel();
+}
