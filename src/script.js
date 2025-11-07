@@ -460,3 +460,75 @@ if (document.readyState === 'loading') {
 } else {
     initGalleryReveal();
 }
+
+// reviews carousel interaction handler
+function initReviewsCarousel() {
+    const track = document.querySelector('.reviews-track');
+    const slides = document.querySelectorAll('.review-slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const dotsContainer = document.querySelector('.carousel-dots');
+    
+    if (!track || slides.length === 0) return;
+    
+    let currentIndex = 0;
+    
+    // dynamically generate navigation dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.classList.add('dot');
+        dot.setAttribute('aria-label', `Go to review ${index + 1}`);
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+    
+    const dots = document.querySelectorAll('.dot');
+    
+    // navigate to a specific review slide
+    function goToSlide(index) {
+        currentIndex = index;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        updateDots();
+        updateButtons();
+    }
+    
+    // highlight the active navigation dot
+    function updateDots() {
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    // disable navigation buttons at carousel boundaries
+    function updateButtons() {
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === slides.length - 1;
+    }
+    
+    // handle previous and next button clicks
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) goToSlide(currentIndex - 1);
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < slides.length - 1) goToSlide(currentIndex + 1);
+    });
+    
+    // enable arrow key navigation
+    track.parentElement.parentElement.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft' && currentIndex > 0) {
+            goToSlide(currentIndex - 1);
+        } else if (e.key === 'ArrowRight' && currentIndex < slides.length - 1) {
+            goToSlide(currentIndex + 1);
+        }
+    });
+    
+    updateButtons();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initReviewsCarousel);
+} else {
+    initReviewsCarousel();
+}
