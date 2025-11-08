@@ -532,3 +532,84 @@ if (document.readyState === 'loading') {
 } else {
     initReviewsCarousel();
 }
+
+// FAQ accordion interaction
+function initFAQAccordion() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    if (faqItems.length === 0) return;
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // close all other FAQ items
+            faqItems.forEach(otherItem => {
+                otherItem.classList.remove('active');
+            });
+            
+            // toggle current item
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+}
+
+// smooth scroll for anchor links
+function initSmoothScroll() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href === '#') return;
+            
+            e.preventDefault();
+            const target = document.querySelector(href);
+            
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// contact form submission handler
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    
+    if (!form) return;
+    
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // get form values
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+        };
+        
+        // simple success feedback (customize as needed)
+        alert('Thank you for your message! We will get back to you soon.');
+        form.reset();
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        initFAQAccordion();
+        initSmoothScroll();
+        initContactForm();
+    });
+} else {
+    initFAQAccordion();
+    initSmoothScroll();
+    initContactForm();
+}
