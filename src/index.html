@@ -25,7 +25,7 @@
     <meta name="twitter:title" content="LUNA - A Short Romance Film">
     <meta name="twitter:description" content="A cinematic short romance film set against the London night skyline.">
 </head>
-<body>
+<body id="homepage">
     <!-- navigation bar -->
     <nav class="navbar">
         <div class="nav-container">
@@ -475,44 +475,32 @@
             </div>
         </section>
 
-        <!-- contact section -->
-        <section class="contact-section" id="contact">
-            <div class="section-inner">
-                <h2 class="section-title">Get in Touch</h2>
-                <p class="section-subtitle">We'd love to hear from you.</p>
+        <!-- combined contact + visit section -->
+        <section class="contact-visit-section" id="contact">
+            <div class="contact-visit-container">
+                <!-- contact cta panel -->
+                <div class="contact-panel">
+                    <h2 class="panel-title">Stay in orbit with LUNA</h2>
+                    <p class="panel-description">
+                        Have a question, collaboration idea, or just want to share your thoughts about the film? 
+                        We'd love to hear from you.
+                    </p>
+                    <a href="contact.html" class="contact-cta">
+                        Get in touch →
+                    </a>
+                </div>
                 
-                <!-- contact form -->
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" id="name" name="name" class="form-input" required>
-                    </div>
+                <!-- visit us panel -->
+                <div class="visit-panel">
+                    <h2 class="panel-title">Visit us</h2>
+                    <p class="panel-subtitle">Where LUNA came to life</p>
+                    <p class="visit-address">
+                        SAE Institute London<br>
+                        SAE House, 297 Kingsland Rd<br>
+                        London E8 4DD, United Kingdom
+                    </p>
                     
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" name="email" class="form-input" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-                
-                <!-- helper link to FAQ -->
-                <p class="form-helper">
-                    Prefer quick answers? <a href="faq.html" class="faq-link">Explore our FAQs</a>
-                </p>
-            </div>
-        </section>
-
-        <!-- map section -->
-        <section class="map-section" id="location">
-            <div class="map-container">
-                <div class="map-content">
-                    <!-- compact square map on left -->
+                    <!-- embedded map -->
                     <div class="map-wrapper" role="region" aria-label="Map: SAE Institute London">
                         <iframe 
                             class="map-iframe"
@@ -521,23 +509,6 @@
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
-                    </div>
-                    
-                    <!-- text content on right -->
-                    <div class="map-header">
-                        <h2 class="map-title">Visit us</h2>
-                        <p class="map-address">SAE Institute London — SAE House, 297 Kingsland Road, London E8 4DD</p>
-                        
-                        <!-- links below text -->
-                        <div class="map-footer">
-                            <a href="https://www.google.com/maps/dir/?api=1&destination=SAE+Institute+London,297+Kingsland+Road,London+E8+4DD" 
-                               target="_blank" 
-                               rel="noopener noreferrer" 
-                               class="directions-link">
-                                Get directions →
-                            </a>
-                            <a href="#contact" class="contact-link-map">Need help? Contact us</a>
-                        </div>
                     </div>
                 </div>
             </div>

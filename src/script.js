@@ -258,7 +258,7 @@ if (dirSection && !prefersReducedMotion) {
     dirObserver.observe(dirSection);
 }
 
-// add subtle parallax to starfield on scroll
+// parallax on starfield
 const dirStarfield = document.querySelector('.dir-starfield');
 
 if (dirStarfield && !prefersReducedMotion) {
@@ -473,7 +473,7 @@ function initReviewsCarousel() {
     
     let currentIndex = 0;
     
-    // dynamically generate navigation dots
+    // generate navigation dots
     slides.forEach((_, index) => {
         const dot = document.createElement('button');
         dot.classList.add('dot');
@@ -558,8 +558,8 @@ function initFAQAccordion() {
     });
 }
 
-// smooth scroll for anchor links
-function initSmoothScroll() {
+// scroll for anchor links
+function initScrollForAnchors() {
     const links = document.querySelectorAll('a[href^="#"]');
     
     links.forEach(link => {
@@ -602,14 +602,69 @@ function initContactForm() {
     });
 }
 
+// scroll animations
+function initScrollAnimations() {
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) return;
+    
+    // Fade-in sections on scroll
+    const sections = document.querySelectorAll('.story-teaser-section, .cast-crew-section, .gallery-section, .reviews-section, .contact-visit-section');
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -80px 0px'
+    });
+    
+    sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(40px)';
+        section.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        sectionObserver.observe(section);
+    });
+    
+    // parallax for hero background
+    const heroGif = document.querySelector('.greeting-park-timelapse');
+    if (heroGif) {
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    const heroSection = document.querySelector('.greeting-section');
+                    
+                    if (heroSection && scrolled < window.innerHeight) {
+                        heroGif.style.transform = `translateY(${scrolled * 0.4}px)`;
+                    }
+                    
+                    ticking = false;
+                });
+                
+                ticking = true;
+            }
+        });
+    }
+}
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         initFAQAccordion();
-        initSmoothScroll();
+        initScrollForAnchors();
         initContactForm();
+        initScrollAnimations();
     });
 } else {
     initFAQAccordion();
-    initSmoothScroll();
+    initScrollForAnchors();
     initContactForm();
+    initScrollAnimations();
 }
