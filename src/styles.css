@@ -79,7 +79,7 @@ body {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 45px;
+    gap: 38px;
     align-items: center;
 }
 
@@ -230,7 +230,7 @@ body {
 /* main content area */
 main {
     min-height: 100vh;
-    padding-top: 100px;
+    /* padding-top: 100px; */
     padding-bottom: 50px;
 }
 
