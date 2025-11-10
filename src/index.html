@@ -88,7 +88,6 @@
 
         <!-- story introduction section -->
         <section class="story-teaser-section" aria-labelledby="storyTeaserHeading">
-            <div class="story-teaser-stars" aria-hidden="true"></div>
             <div class="story-teaser-container">
                 <div class="story-teaser-content">
                     <h2 id="storyTeaserHeading" class="teaser-heading">
@@ -118,7 +117,6 @@
 
         <!-- meet the team section -->
         <section class="cast-crew-section" aria-labelledby="castCrewHeading">
-            <div class="cast-crew-stars" aria-hidden="true"></div>
             <div class="cast-crew-container">
                 <!-- section title and description -->
                 <div class="cast-crew-header">
@@ -333,7 +331,6 @@
 
         <!-- photo gallery preview -->
         <section class="gallery-section" aria-labelledby="galleryHeading">
-            <div class="gallery-stars" aria-hidden="true"></div>
             <div class="gallery-container">
                 <!-- section title and description -->
                 <div class="gallery-header">
@@ -504,11 +501,45 @@
                     <div class="map-wrapper" role="region" aria-label="Map: SAE Institute London">
                         <iframe 
                             class="map-iframe"
+                            style="filter: invert(90%) hue-rotate(180deg)"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.789!2d-0.0747!3d51.5478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb3b3e3e3e3%3A0x1234567890abcdef!2sSAE%20Institute%20London!5e0!3m2!1sen!2suk!4v1234567890123!5m2!1sen!2suk"
                             allowfullscreen
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- newsletter section -->
+        <section class="newsletter-section" id="newsletter">
+            <div class="newsletter-container">
+                <div class="newsletter-content">
+                    <h2 class="newsletter-title">Stay in the Loop!</h2>
+                    <p class="newsletter-subtitle">
+                        Be the first to receive newsletters, exclusive updates, festival news, and behind-the-scenes stories from LUNA.
+                    </p>
+                    
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="newsletter-input-wrapper">
+                            <input 
+                                type="email" 
+                                id="newsletterEmail"
+                                class="newsletter-input" 
+                                placeholder="Enter your email"
+                                required
+                                aria-label="Email address"
+                            />
+                            <button type="submit" class="newsletter-button">
+                                Stay Connected
+                            </button>
+                        </div>
+                        <p class="newsletter-privacy">No spam. Just moonlight and film updates.</p>
+                    </form>
+                    
+                    <div class="newsletter-success" id="newsletterSuccess" role="status" aria-live="polite">
+                        <p>Welcome to the orbit.</p>
                     </div>
                 </div>
             </div>

@@ -610,7 +610,7 @@ function initScrollAnimations() {
     if (prefersReducedMotion) return;
     
     // Fade-in sections on scroll
-    const sections = document.querySelectorAll('.story-teaser-section, .cast-crew-section, .gallery-section, .reviews-section, .contact-visit-section');
+    const sections = document.querySelectorAll('.story-teaser-section, .cast-crew-section, .gallery-section, .reviews-section, .contact-visit-section, .newsletter-section');
     
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -655,16 +655,83 @@ function initScrollAnimations() {
     }
 }
 
+// newsletter form
+function initNewsletter() {
+    const form = document.getElementById('newsletterForm');
+    const successMessage = document.getElementById('newsletterSuccess');
+    
+    if (!form) return;
+    
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const email = document.getElementById('newsletterEmail').value;
+        
+        // fade out form
+        form.classList.add('submitted');
+        
+        // show success message
+        setTimeout(() => {
+            successMessage.classList.add('visible');
+        }, 600);
+        
+        // optional: send to backend/service
+        console.log('Newsletter signup:', email);
+    });
+}
+
+// director statement parallax and fade-in
+function initDirectorStatement() {
+    const directorSection = document.querySelector('.director-statement-section');
+    const directorLayout = document.querySelector('.director-layout');
+    const directorHeading = document.querySelector('.director-heading');
+    
+    if (!directorSection || !directorLayout) return;
+    
+    // fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                directorLayout.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+    
+    observer.observe(directorSection);
+    
+    // parallax effect for heading
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (!prefersReducedMotion && directorHeading) {
+        window.addEventListener('scroll', () => {
+            const rect = directorSection.getBoundingClientRect();
+            const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+            
+            if (scrollPercent >= 0 && scrollPercent <= 1) {
+                const translateY = (scrollPercent - 0.5) * 30;
+                directorHeading.style.transform = `translateY(${translateY}px)`;
+            }
+        }, { passive: true });
+    }
+}
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         initFAQAccordion();
         initScrollForAnchors();
         initContactForm();
         initScrollAnimations();
+        initNewsletter();
+        initDirectorStatement();
     });
 } else {
     initFAQAccordion();
     initScrollForAnchors();
     initContactForm();
     initScrollAnimations();
+    initNewsletter();
+    initDirectorStatement();
 }
+
