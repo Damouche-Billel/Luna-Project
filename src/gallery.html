@@ -24,10 +24,8 @@
     <!-- navigation section -->
     <nav class="navbar">
         <div class="nav-container">
-            <!-- the logo bit -->
             <a href="index.html" class="logo">LUNA</a>
             
-            <!-- main menu for desktop -->
             <ul class="nav-menu">
                 <button class="close-menu" aria-label="Close Menu">&times;</button>
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
@@ -38,7 +36,6 @@
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
             </ul>
             
-            <!-- hamburger menu for mobile -->
             <button class="menu-toggle" aria-label="Open Menu">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
@@ -49,62 +46,163 @@
 
     <!-- =====Main Content For Slideshow=========== -->
     <main>
-      <div class="wrap">
-        <div class="frame" id="paintingFrame">
-
-          <div class="slideshow" id="slideshow">
-            <div class="track" id="track">
-              <div class="slide" data-index="0">
-                <img src="">
-                <div class="caption" data-pos="bottom">
-                  <div class="meta">
-                    <h3>Image 1</h3>
-                    <p>Exploring warm highlights and sea mist. Behind-the-scenes: charcoal sketches and palette notes.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="slide" data-index="1">
-                <img src="" >
-                <div class="caption" data-pos="top">
-                  <div class="meta">
-                    <h3>Image 2</h3>
-                    <p>Info About Image here</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="slide" data-index="2">
-                <img src="" >
-                <div class="caption" data-pos="bottom">
-                  <div class="meta">
-                    <h3> Image 3</h3>
-                    <p>Info about Image Here</p>
-                  </div>
+<!-- First Slideshow -->
+<div class="wrap">
+  <div class="frame" id="paintingFrame">
+    <div class="slideshow" id="slideshow1">
+      <div class="track" id="track1">
+        <!-- 6 slides total set here -->
 
 
-                  
-                </div>
-              </div>
+        <div class="slide" data-index="0">
+              <div class="meta">
+              <h3>Image 1</h3>
+              <p>Exploring warm highlights and sea mist. Behind-the-scenes notes.</p>
+          <img src="story-hero.png" alt="Behind the scenes 1">
+          <div class="caption" data-pos="bottom">
             </div>
-
-            <button class="nav-btn nav-left" id="prevBtn" aria-label="Previous">
-              <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
-            </button>
-            <button class="nav-btn nav-right" id="nextBtn" aria-label="Next">
-              <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path></svg>
-            </button>
-            <div class="dots" id="dots"></div>
           </div>
+        </div>
 
-          <aside class="side">
-            <div class="title-box">
-              <div class="desc">Hover the main slideshow to start the automatic flow. Use arrows to pause & control.</div>
+        <div class="slide" data-index="1">
+            <div class="meta">
+              <h3>Image 2</h3>
+              <p>Camera tests and production sketches.</p>
+              <img src="story-hero.png" alt="Behind the scenes 2">
+          <div class="caption" data-pos="top">
             </div>
-          </aside>
+          </div>
+        </div>
 
+        <div class="slide" data-index="2">
+            <div class="meta">
+              <h3>Image 3</h3>
+              <p>Color grading preview still.</p>
+              <img src="story-hero.png" alt="Behind the scenes 3">
+          <div class="caption" data-pos="bottom">
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="3">
+            <div class="meta">
+              <h3>Image 4</h3>
+              <p>Lighting test under moonlight filter.</p>
+              <img src="story-hero.png" alt="Behind the scenes 4">
+          <div class="caption" data-pos="top">
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="4">
+            <div class="meta">
+              <h3>Image 5</h3>
+              <p>On-location night setup.</p>
+              <img src="story-hero.png" alt="Behind the scenes 5">
+          <div class="caption" data-pos="bottom">
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="5">
+            <div class="meta">
+              <h3>Image 6</h3>
+              <p>Final take capture.</p>
+              <img src="story-hero.png" alt="Behind the scenes 6">
+          <div class="caption" data-pos="top">
+            </div>
+          </div>
         </div>
       </div>
+
+      <button class="nav-btn nav-left" id="prevBtn1" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+      </button>
+      <button class="nav-btn nav-right" id="nextBtn1" aria-label="Next">
+        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path></svg>
+      </button>
+      <div class="dots" id="dots1"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Second Slideshow -->
+<div class="wrap second-gallery">
+  <div class="frame" id="paintingFrame2">
+    <div class="slideshow" id="slideshow2">
+      <div class="track" id="track2">
+        <!-- 6 slides total -->
+        <div class="slide" data-index="0">
+          <div class="meta">
+              <h3>Still 1</h3>
+              <p>A quiet night in London, bathed in silver moonlight.</p>
+          <img src="Luna Background.jpg" alt="Still 1">
+          <div class="caption" data-pos="bottom">
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="1">
+          <img src="" alt="Still 2">
+          <div class="caption" data-pos="top">
+            <div class="meta">
+              <h3>Still 2</h3>
+              <p>Emotion and reflection — the heart of LUNA.</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="2">
+          <img src="" alt="Still 3">
+          <div class="caption" data-pos="bottom">
+            <div class="meta">
+              <h3>Still 3</h3>
+              <p>The final frame: love, loss, and the glow of the moon.</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="3">
+          <img src="" alt="Still 4">
+          <div class="caption" data-pos="top">
+            <div class="meta">
+              <h3>Still 4</h3>
+              <p>.</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="4">
+          <img src="" alt="Still 5">
+          <div class="caption" data-pos="bottom">
+            <div class="meta">
+              <h3>Still 5</h3>
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="5">
+          <img src="" alt="Still 6">
+          <div class="caption" data-pos="top">
+            <div class="meta">
+              <h3>Still 6</h3>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="nav-btn nav-left" id="prevBtn2" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+      </button>
+      <button class="nav-btn nav-right" id="nextBtn2" aria-label="Next">
+        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path></svg>
+      </button>
+      <div class="dots" id="dots2"></div>
+    </div>
+  </div>
+</div>
+
+        <!-- Poster Section -->
+        <section class="poster-section">
+            <h2 class="poster-title">Official LUNA Poster</h2>
+            <div class="poster-container">
+                <img src="HMPG_01.jpg" alt="Official LUNA Poster" class="poster-image">
+            </div>
+        </section>
     </main>
 
     <!-- footer area -->
@@ -123,18 +221,9 @@
             </nav>
 
             <div class="social-icons fade-in">
-                <!-- social icons preserved -->
-                <a href="https://www.instagram.com/lunafilm_official" target="_blank" rel="noopener noreferrer" class="social-link instagram" aria-label="Follow us on Instagram">
-                    <i class="fa-brands fa-instagram"></i>
+        <a href="https://www.instagram.com/lunafilm2025/" class="social-link instagram" aria-label="Follow us on Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/lunafilm.2025" class="social-link facebook" aria-label="Like us on Facebook"><i class="fa-brands fa-facebook"></i></a>
                 </a>
-                <a href="https://www.youtube.com/@lunafilm_official" target="_blank" rel="noopener noreferrer" class="social-link youtube" aria-label="Subscribe on YouTube">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a href="https://twitter.com/lunafilm_2025" target="_blank" rel="noopener noreferrer" class="social-link twitter" aria-label="Follow us on Twitter">
-                    <i class="fa-brands fa-x-twitter"></i>
-                </a>
-                <a href="https://www.facebook.com/lunafilm.2025" target="_blank" rel="noopener noreferrer" class="social-link facebook" aria-label="Like us on Facebook">
-                    <i class="fa-brands fa-facebook"></i>
                 </a>
             </div>
         </div>
