@@ -673,10 +673,19 @@ function initNewsletter() {
         // show success message
         setTimeout(() => {
             successMessage.classList.add('visible');
+            
+            // fade out after 3 seconds
+            setTimeout(() => {
+                successMessage.classList.add('fade-out');
+                
+                // reset form after fade out completes
+                setTimeout(() => {
+                    form.classList.remove('submitted');
+                    successMessage.classList.remove('visible', 'fade-out');
+                    form.reset();
+                }, 1500);
+            }, 3000);
         }, 600);
-        
-        // optional: send to backend/service
-        console.log('Newsletter signup:', email);
     });
 }
 
@@ -725,6 +734,7 @@ if (document.readyState === 'loading') {
         initScrollAnimations();
         initNewsletter();
         initDirectorStatement();
+        initNewsletterPopup();
     });
 } else {
     initFAQAccordion();
@@ -733,5 +743,76 @@ if (document.readyState === 'loading') {
     initScrollAnimations();
     initNewsletter();
     initDirectorStatement();
+    initNewsletterPopup();
 }
 
+/* newsletter popup */
+function initNewsletterPopup() {
+    const popup = document.getElementById('newsletterPopup');
+    if (!popup) return;
+    
+    const closeBtn = document.getElementById('popupClose');
+    const form = document.getElementById('popupForm');
+    const emailInput = document.getElementById('popupEmail');
+    const content = document.getElementById('popupContent');
+    const success = document.getElementById('popupSuccess');
+    
+    let hasShown = false;
+    
+    /* show popup after 20 seconds */
+    setTimeout(() => {
+        if (!hasShown) {
+            hasShown = true;
+            requestAnimationFrame(() => {
+                popup.classList.remove('hidden');
+                popup.classList.add('visible');
+            });
+        }
+    }, 20000);
+    
+    /* hide popup */
+    function hidePopup() {
+        popup.classList.remove('visible');
+        popup.classList.add('hidden');
+    }
+    
+    /* handle form submit */
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const email = emailInput.value.trim();
+        if (!email) return;
+        
+        content.style.display = 'none';
+        success.classList.add('visible');
+        
+        setTimeout(() => {
+            hidePopup();
+            
+            setTimeout(() => {
+                form.reset();
+                content.style.display = 'block';
+                success.classList.remove('visible');
+            }, 600);
+        }, 2000);
+    });
+    
+    /* handle close button */
+    closeBtn.addEventListener('click', () => {
+        hidePopup();
+    });
+    
+    /* handle click outside */
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            hidePopup();
+        }
+    });
+    
+    /* handle escape key */
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && popup.classList.contains('visible')) {
+            hidePopup();
+        }
+    });
+}

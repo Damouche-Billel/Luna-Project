@@ -241,6 +241,30 @@
         </div>
     </footer>
     
+    <!-- newsletter popup -->
+    <div class="newsletter-popup" id="newsletterPopup" role="dialog" aria-labelledby="popupTitle" aria-modal="true">
+        <button class="popup-close" id="popupClose" aria-label="Close newsletter popup">&times;</button>
+        <div class="popup-content" id="popupContent">
+            <h3 class="popup-title" id="popupTitle">Join the Circle!</h3>
+            <p class="popup-subtitle">Get updates and exclusive content.</p>
+            <form class="popup-form" id="popupForm">
+                <input 
+                    type="email" 
+                    class="popup-input" 
+                    id="popupEmail" 
+                    placeholder="Your email address"
+                    required
+                    aria-label="Email address"
+                />
+                <button type="submit" class="popup-button">Subscribe</button>
+                <p class="popup-privacy">We respect your privacy. Unsubscribe anytime.</p>
+            </form>
+        </div>
+        <div class="popup-success" id="popupSuccess">
+            <p>You're subscribed.</p>
+        </div>
+    </div>
+    
     <!-- my javascript file -->
     <script src="script.js"></script>
 </body>
