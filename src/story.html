@@ -24,7 +24,83 @@
     <meta property="og:title" content="Story - LUNA Film">
     <meta property="og:description" content="Discover the story behind LUNA - A romantic short film set in London.">
     <meta property="og:type" content="website">
+    
+    <!-- SEO OPTIMIZATION -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Movie",
+          "@id": "https://example.com/#movie",
+          "name": "LUNA",
+          "description": "A cinematic short romance film exploring connection, distance, and reflection. Two souls discover that love isn't found—it's felt in the details, whispered through the London night.",
+          "genre": ["Romance", "Drama", "Short Film"],
+          "keywords": "Connection, London Short Film, Reflection, Romance, London, Short Film",
+          "image": "https://example.com/data/photos/story-hero.png",
+          "director": {
+            "@type": "Person",
+            "name": "Richard Kovacs"
+          },
+          "locationCreated": {
+            "@type": "Place",
+            "name": "London",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "London",
+              "addressCountry": "UK"
+            }
+          }
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://example.com/story.html#narrative",
+          "name": "The Story of LUNA",
+          "description": "An exploration of the narrative and creative vision behind the short film LUNA",
+          "author": {
+            "@type": "Person",
+            "name": "Richard Kovacs",
+            "jobTitle": "Writer & Director"
+          },
+          "about": {
+            "@id": "https://example.com/#movie"
+          },
+          "mainEntity": {
+            "@id": "https://example.com/#movie"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://example.com/story.html",
+          "url": "https://example.com/story.html",
+          "name": "Story - LUNA Film",
+          "description": "Discover the story behind LUNA, a romantic short film about connection and distance set in London",
+          "mainEntityOfPage": {
+            "@id": "https://example.com/#movie"
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://example.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Story",
+                "item": "https://example.com/story.html"
+              }
+            ]
+          }
+        }
+      ]
+    }
+    </script>
 </head>
+
 <body>
     <!-- navigation section -->
     <nav class="navbar">

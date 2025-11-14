@@ -24,6 +24,65 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LUNA - A Short Romance Film">
     <meta name="twitter:description" content="A cinematic short romance film set against the London night skyline.">
+    
+    <!-- SEO OPTIMIZATION -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://example.com/#website",
+          "url": "https://example.com/",
+          "name": "LUNA Film",
+          "description": "A cinematic short romance film set against the London night skyline",
+          "publisher": {
+            "@id": "https://example.com/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://example.com/#organization",
+          "name": "LUNA Film Production",
+          "url": "https://example.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://example.com/data/photos/poster-placeholder.jpg"
+          }
+        },
+        {
+          "@type": "Movie",
+          "@id": "https://example.com/#movie",
+          "name": "LUNA",
+          "alternateName": "LUNA - A Short Romance Film",
+          "description": "A cinematic short romance film exploring connection, distance, and reflection. Two souls discover that love isn't found—it's felt in the details, whispered through the London night.",
+          "genre": ["Romance", "Drama", "Short Film"],
+          "contentRating": "Not Rated",
+          "image": "https://example.com/data/photos/poster-placeholder.jpg",
+          "potentialAction": {
+            "@type": "WatchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://example.com/story.html#trailer"
+            }
+          },
+          "director": {
+            "@type": "Person",
+            "name": "Richard Kovacs"
+          },
+          "locationCreated": {
+            "@type": "Place",
+            "name": "London",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "London",
+              "addressCountry": "UK"
+            }
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body id="homepage">
     <!-- navigation bar -->
@@ -142,10 +201,7 @@
                             <!-- director -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar">
-                                        <div class="avatar-monogram">RK</div>
-                                        <div class="avatar-moon" aria-hidden="true">☾</div>
-                                    </div>
+                                    <div class="card-avatar"></div>
                                     <div class="card-info">
                                         <h3 class="card-name">Richard Kovacs</h3>
                                         <p class="card-role">Director</p>
@@ -156,10 +212,7 @@
                             <!-- producer -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar">
-                                        <div class="avatar-monogram">BG</div>
-                                        <div class="avatar-moon" aria-hidden="true">☾</div>
-                                    </div>
+                                    <div class="card-avatar"></div>
                                     <div class="card-info">
                                         <h3 class="card-name">Brianna Gibson</h3>
                                         <p class="card-role">Producer</p>
@@ -170,10 +223,7 @@
                             <!-- lead actress -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar">
-                                        <div class="avatar-monogram">JR</div>
-                                        <div class="avatar-moon" aria-hidden="true">☾</div>
-                                    </div>
+                                    <div class="card-avatar"></div>
                                     <div class="card-info">
                                         <h3 class="card-name">Julia Rowlands</h3>
                                         <p class="card-role">Actor</p>
@@ -185,10 +235,7 @@
                             <!-- lead actor -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar">
-                                        <div class="avatar-monogram">DP</div>
-                                        <div class="avatar-moon" aria-hidden="true">☾</div>
-                                    </div>
+                                    <div class="card-avatar"></div>
                                     <div class="card-info">
                                         <h3 class="card-name">Daniel Palazzi</h3>
                                         <p class="card-role">Actor</p>
@@ -200,10 +247,7 @@
                             <!-- director of photography -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar">
-                                        <div class="avatar-monogram">MK</div>
-                                        <div class="avatar-moon" aria-hidden="true">☾</div>
-                                    </div>
+                                    <div class="card-avatar"></div>
                                     <div class="card-info">
                                         <h3 class="card-name">Mahil Kotadoo</h3>
                                         <p class="card-role">Director of Photography</p>
@@ -214,10 +258,7 @@
                             <!-- supporting actress -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar">
-                                        <div class="avatar-monogram">EP</div>
-                                        <div class="avatar-moon" aria-hidden="true">☾</div>
-                                    </div>
+                                    <div class="card-avatar"></div>
                                     <div class="card-info">
                                         <h3 class="card-name">Ema Paise</h3>
                                         <p class="card-role">Actor</p>
@@ -229,10 +270,7 @@
                             <!-- first assistant director -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar">
-                                        <div class="avatar-monogram">DS</div>
-                                        <div class="avatar-moon" aria-hidden="true">☾</div>
-                                    </div>
+                                    <div class="card-avatar"></div>
                                     <div class="card-info">
                                         <h3 class="card-name">Daniel Luke Smith</h3>
                                         <p class="card-role">1st Assistant Director</p>
@@ -243,10 +281,7 @@
                             <!-- lighting gaffer -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar">
-                                        <div class="avatar-monogram">CR</div>
-                                        <div class="avatar-moon" aria-hidden="true">☾</div>
-                                    </div>
+                                    <div class="card-avatar"></div>
                                     <div class="card-info">
                                         <h3 class="card-name">Charlie Richmond</h3>
                                         <p class="card-role">Gaffer</p>
@@ -257,10 +292,7 @@
                             <!-- sound recordist -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar">
-                                        <div class="avatar-monogram">KA</div>
-                                        <div class="avatar-moon" aria-hidden="true">☾</div>
-                                    </div>
+                                    <div class="card-avatar"></div>
                                     <div class="card-info">
                                         <h3 class="card-name">Keli Kobina Asorwoe-Osmunda</h3>
                                         <p class="card-role">Sound Recordist</p>
@@ -271,10 +303,7 @@
                             <!-- set designer -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar">
-                                        <div class="avatar-monogram">PG</div>
-                                        <div class="avatar-moon" aria-hidden="true">☾</div>
-                                    </div>
+                                    <div class="card-avatar"></div>
                                     <div class="card-info">
                                         <h3 class="card-name">Phoebe Hunter Gordon</h3>
                                         <p class="card-role">Set Designer</p>
@@ -285,10 +314,7 @@
                             <!-- executive producer -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar">
-                                        <div class="avatar-monogram">JJ</div>
-                                        <div class="avatar-moon" aria-hidden="true">☾</div>
-                                    </div>
+                                    <div class="card-avatar"></div>
                                     <div class="card-info">
                                         <h3 class="card-name">Jarrahkeh Jarra</h3>
                                         <p class="card-role">Executive Producer</p>
@@ -299,10 +325,7 @@
                             <!-- vfx artist -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar">
-                                        <div class="avatar-monogram">AT</div>
-                                        <div class="avatar-moon" aria-hidden="true">☾</div>
-                                    </div>
+                                    <div class="card-avatar"></div>
                                     <div class="card-info">
                                         <h3 class="card-name">Anastasiia Tkhir</h3>
                                         <p class="card-role">VFX Artist</p>
