@@ -659,33 +659,94 @@ function initScrollAnimations() {
 function initNewsletter() {
     const form = document.getElementById('newsletterForm');
     const successMessage = document.getElementById('newsletterSuccess');
+    const submitBtn = form ? form.querySelector('.newsletter-button') : null;
     
     if (!form) return;
     
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        const email = document.getElementById('newsletterEmail').value;
+        const emailInput = document.getElementById('newsletterEmail');
+        const email = emailInput.value.trim();
         
-        // fade out form
-        form.classList.add('submitted');
+        if (!email) return;
         
-        // show success message
-        setTimeout(() => {
-            successMessage.classList.add('visible');
+        // disable button during submission
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Subscribing...';
+        }
+        
+        try {
+            // send to PHP backend
+            const response = await fetch('api/newsletter-subscribe.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email })
+            });
             
-            // fade out after 3 seconds
-            setTimeout(() => {
-                successMessage.classList.add('fade-out');
+            // Check if response is ok and has content
+            if (!response.ok) {
+                const text = await response.text();
+                console.error('Server response:', text);
+                throw new Error(`Server error: ${response.status}`);
+            }
+            
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                const text = await response.text();
+                console.error('Non-JSON response:', text);
+                throw new Error('Server returned invalid response');
+            }
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                // fade out form
+                form.classList.add('submitted');
                 
-                // reset form after fade out completes
+                // update success message
+                const successText = successMessage.querySelector('p');
+                if (successText) successText.textContent = data.message;
+                
+                // show success message
                 setTimeout(() => {
-                    form.classList.remove('submitted');
-                    successMessage.classList.remove('visible', 'fade-out');
-                    form.reset();
-                }, 1500);
-            }, 3000);
-        }, 600);
+                    successMessage.classList.add('visible');
+                    
+                    // fade out after 3 seconds
+                    setTimeout(() => {
+                        successMessage.classList.add('fade-out');
+                        
+                        // reset form after fade out completes
+                        setTimeout(() => {
+                            form.classList.remove('submitted');
+                            successMessage.classList.remove('visible', 'fade-out');
+                            form.reset();
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.textContent = 'Stay Connected';
+                            }
+                        }, 1500);
+                    }, 3000);
+                }, 600);
+            } else {
+                // show error
+                alert(data.message || 'Subscription failed. Please try again.');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Stay Connected';
+                }
+            }
+        } catch (error) {
+            console.error('Newsletter subscription error:', error);
+            alert('Unable to connect to server. Please try again later.');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Stay Connected';
+            }
+        }
     });
 }
 
@@ -777,24 +838,74 @@ function initNewsletterPopup() {
     }
     
     /* handle form submit */
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const email = emailInput.value.trim();
         if (!email) return;
         
-        content.style.display = 'none';
-        success.classList.add('visible');
+        const submitBtn = form.querySelector('.popup-button');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Subscribing...';
+        }
         
-        setTimeout(() => {
-            hidePopup();
+        try {
+            // send to PHP backend
+            const response = await fetch('api/newsletter-subscribe.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email })
+            });
             
-            setTimeout(() => {
-                form.reset();
-                content.style.display = 'block';
-                success.classList.remove('visible');
-            }, 600);
-        }, 2000);
+            // Check if response is ok
+            if (!response.ok) {
+                const text = await response.text();
+                console.error('Server response:', text);
+                throw new Error(`Server error: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                content.style.display = 'none';
+                
+                // update success message
+                const successText = success.querySelector('p');
+                if (successText) successText.textContent = data.message;
+                
+                success.classList.add('visible');
+                
+                setTimeout(() => {
+                    hidePopup();
+                    
+                    setTimeout(() => {
+                        form.reset();
+                        content.style.display = 'block';
+                        success.classList.remove('visible');
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Subscribe';
+                        }
+                    }, 600);
+                }, 2000);
+            } else {
+                alert(data.message || 'Subscription failed. Please try again.');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Subscribe';
+                }
+            }
+        } catch (error) {
+            console.error('Newsletter popup error:', error);
+            alert('Unable to connect to server. Please try again later.');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Subscribe';
+            }
+        }
     });
     
     /* handle close button */
