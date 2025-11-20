@@ -230,10 +230,11 @@ body {
 /* main content area */
 main {
     min-height: 100vh;
-    /* padding-top: 100px; */
     padding-bottom: 50px;
 }
-
+.reviews-page main {
+    padding: 100px;    
+}
 .page-content {
     max-width: 1400px;
     margin: 0 auto;
@@ -503,8 +504,9 @@ footer {
 
 .reviews-title {
     font-family: 'Lemon Love', cursive;
-    font-size: 3.5rem;
-    color: #FFFFFF;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: #FFF;
     margin-bottom: 20px;
     letter-spacing: 2px;
     text-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
@@ -793,3 +795,69 @@ footer {
 .blog-readmore:hover {
     color: #fff;
 }
+
+/* BLOG POST PAGE */
+
+.blog-post-section {
+    max-width: 900px;
+    margin: 120px auto;
+    padding: 0 20px;
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #e6b980;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.back-button:hover {
+    color: #fff;
+}
+
+.post-title {
+    font-size: 2.3rem;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.post-date {
+    color: #aaa;
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+.post-image-container {
+    margin-bottom: 30px;
+}
+
+.post-image {
+    width: 100%;
+    border-radius: 18px;
+    object-fit: cover;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+}
+
+.post-content {
+    color: #ddd;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.post-content h2 {
+    font-size: 1.6rem;
+    margin: 30px 0 10px;
+    color: #fff;
+}
+
+.post-content p {
+    margin-bottom: 18px;
+}
+
+.back-button.bottom {
+    margin-top: 40px;
+}
+
