@@ -497,7 +497,7 @@ footer {
 /* REVIEWS PAGE STYLING    */
 /* ======================= */
 
-.reviews-section {
+/* .reviews-section {
     text-align: center;
     width: 100%;
 }
@@ -505,10 +505,10 @@ footer {
 .reviews-title {
     font-family: 'Lemon Love', cursive;
     font-size: 2.4rem;
-    font-weight: 600;
-    color: #FFF;
-    margin-bottom: 20px;
     letter-spacing: 2px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
     text-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
 }
 
@@ -568,10 +568,10 @@ footer {
     font-family: 'Lemon Love', cursive;
     font-size: 0.95rem;
     color: #AAAAAA;
-}
+} */
 
 /* responsive adjustments */
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
     .reviews-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
@@ -602,32 +602,35 @@ footer {
     .review-card {
         padding: 20px;
     }
-}
+} */
 
 /* ======================= */
 /* REVIEWS PAGE STYLING    */
 /* ======================= */
 
 .reviews-section {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
     text-align: center;
     width: 100%;
 }
 
 .reviews-title {
-    font-family: 'Lemon Love', cursive;
-    font-size: 3.5rem;
-    color: #FFFFFF;
-    margin-bottom: 20px;
+    /* font-family: 'Lemon Love', cursive; */
+    font-size: 2.4rem;
     letter-spacing: 2px;
+    font-weight: 600;
+    color: #FFF;
+    margin-bottom: 0.5rem;
     text-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
 }
 
 .reviews-subtitle {
     font-family: 'Lemon Love', cursive;
-    font-size: 1.3rem;
-    color: #CCCCCC;
-    margin-bottom: 60px;
-    letter-spacing: 1px;
+    font-size: 1.1rem;
+    color: #aaa;
+    margin-bottom: 3rem;
 }
 
 .reviews-subtitle span {
@@ -728,12 +731,18 @@ footer {
     font-weight: 600;
     color: #fff;
     margin-bottom: 0.5rem;
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
 }
 
 .section-subtitle {
     font-size: 1.1rem;
     color: #aaa;
     margin-bottom: 3rem;
+}
+
+.section-subtitle span{
+    color: #FFFFFF;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .blog-grid {
