@@ -2147,6 +2147,12 @@ main:has(.story-hero) + footer {
     transition: all 0.3s ease;
 }
 
+.card-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .card-link:hover .card-avatar,
 .card-link:focus .card-avatar {
     box-shadow: 
@@ -2549,29 +2555,32 @@ main:has(.story-hero) + footer {
     transform: translateY(0);
 }
 
-.gallery-link {
-    display: block;
-    text-decoration: none;
-    overflow: hidden;
-    border-radius: 8px;
-    position: relative;
-}
-
 .image-wrapper {
     position: relative;
     width: 100%;
-    padding-bottom: 110%;
+    padding-bottom: 56.25%;
     overflow: hidden;
     border-radius: 8px;
     background: linear-gradient(135deg, var(--ink-700) 0%, var(--ink-900) 100%);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease;
+    cursor: default;
 }
 
-.gallery-link:hover .image-wrapper,
-.gallery-link:focus .image-wrapper {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    transform: scale(1.02);
+.gallery-item:hover .image-wrapper {
+    transform: translateY(-8px);
+    box-shadow: 
+        0 12px 48px rgba(0, 0, 0, 0.5),
+        0 0 0 2px rgba(251, 191, 36, 0.3);
+}
+
+.image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .image-placeholder {
@@ -2971,14 +2980,65 @@ main:has(.story-hero) + footer {
 
 
 /* ============================================
+   BLOG CTA SECTION
+   ============================================ */
+
+.blog-cta {
+    padding: 60px 40px;
+    background: transparent;
+    margin-top: -40px;
+}
+
+.blog-cta-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 60px 40px;
+    border-top: 1px solid rgba(251, 191, 36, 0.1);
+}
+
+.blog-title {
+    font-family: 'Lemon Love', cursive;
+    font-size: clamp(1.5rem, 3vw, 1.75rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    margin: 0 0 12px;
+    color: #fbbf24;
+}
+
+.blog-subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 28px;
+    line-height: 1.5;
+}
+
+.blog-link {
+    display: inline-block;
+    padding: 12px 28px;
+    background: transparent;
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    border-radius: 4px;
+    color: #fbbf24;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+.blog-link:hover {
+    background: rgba(251, 191, 36, 0.15);
+    border-color: #fbbf24;
+    transform: translateY(-2px);
+}
+
+/* ============================================
    COMBINED CONTACT + VISIT SECTION
    ============================================ */
 
 .contact-visit-section {
-    padding: 120px 40px;
+    padding: 80px 40px;
     background: transparent;
-    position: relative;
-    overflow: hidden;
 }
 
 .contact-visit-container {
@@ -2986,95 +3046,55 @@ main:has(.story-hero) + footer {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: start;
+    gap: 32px;
 }
 
 .contact-panel,
-.visit-panel,
 .newsletter-panel {
-    background: rgba(10, 14, 26, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(251, 191, 36, 0.15);
-    border-radius: 16px;
-    padding: 48px;
-    transition: all 0.3s ease;
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
+    background: transparent;
+    border: 1px solid rgba(251, 191, 36, 0.1);
+    border-radius: 4px;
+    padding: 40px;
+    transition: border-color 0.3s ease;
 }
 
 .contact-panel:hover,
-.visit-panel:hover,
 .newsletter-panel:hover {
-    transform: translateY(-4px);
-    border-color: rgba(251, 191, 36, 0.3);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(251, 191, 36, 0.1);
+    border-color: rgba(251, 191, 36, 0.2);
 }
 
 .panel-title {
     font-family: "Lemon Love", serif;
-    font-size: clamp(1.75rem, 3vw, 2rem);
+    font-size: clamp(1.5rem, 3vw, 1.75rem);
     color: var(--star-100);
-    margin-bottom: 20px;
-    letter-spacing: 0.5px;
-    line-height: 1.2;
-}
-
-.panel-subtitle {
-    font-size: 1.0625rem;
-    color: rgba(251, 191, 36, 0.8);
     margin-bottom: 16px;
-    font-weight: 500;
+    letter-spacing: 0.02em;
+    font-weight: 400;
 }
 
 .panel-description {
-    font-size: 1.0625rem;
-    line-height: 1.7;
-    color: var(--moon-200);
-    margin-bottom: 32px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 28px;
 }
 
 .contact-cta {
     display: inline-block;
-    padding: 16px 32px;
-    background: linear-gradient(135deg, var(--accent-gold) 0%, #f59e0b 100%);
-    color: var(--ink-900);
-    font-weight: 600;
-    font-size: 1.0625rem;
+    padding: 12px 28px;
+    background: transparent;
+    color: var(--accent-gold);
+    font-weight: 500;
+    font-size: 1rem;
     text-decoration: none;
-    border-radius: 8px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 20px rgba(251, 191, 36, 0.2);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    border-radius: 4px;
+    transition: all 0.3s ease;
 }
 
 .contact-cta:hover {
-    transform: translateX(4px);
-    box-shadow: 0 6px 30px rgba(251, 191, 36, 0.3);
-    background: linear-gradient(135deg, #fcd34d 0%, var(--accent-gold) 100%);
-}
-
-.visit-address {
-    font-size: 1.0625rem;
-    line-height: 1.8;
-    color: var(--moon-200);
-    margin-bottom: 28px;
-}
-
-.visit-panel .map-wrapper {
-    width: 100%;
-    height: 320px;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(251, 191, 36, 0.1);
-}
-
-.visit-panel .map-iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    filter: grayscale(0.3) contrast(1.1);
+    border-color: rgba(251, 191, 36, 0.4);
+    background: rgba(251, 191, 36, 0.05);
 }
 
 @media (max-width: 1024px) {
@@ -3136,7 +3156,7 @@ main:has(.story-hero) + footer {
 }
 
 /* ============================================
-   NEWSLETTER SECTION (LEGACY STYLES - NOW MOVED TO PANEL)
+   NEWSLETTER SECTION
    ============================================ */
 
 /* Newsletter panel specific styles */
@@ -3181,6 +3201,7 @@ main:has(.story-hero) + footer {
 }
 
 .newsletter-panel .newsletter-success {
+    display: none;
     position: static;
     transform: none;
     background: rgba(251, 191, 36, 0.1);
@@ -3189,6 +3210,13 @@ main:has(.story-hero) + footer {
     padding: 16px;
     margin-top: 16px;
     text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.newsletter-panel .newsletter-success.visible {
+    display: block;
+    opacity: 1;
 }
 
 .newsletter-panel .newsletter-success p {
@@ -3251,68 +3279,55 @@ main:has(.story-hero) + footer {
 /* input wrapper */
 .newsletter-input-wrapper {
     display: flex;
-    gap: 12px;
-    max-width: 520px;
-    margin: 0 auto 16px;
-    padding: 8px;
-    background: rgba(15, 23, 42, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    backdrop-filter: blur(20px);
-    transition: all 0.3s ease;
-}
-
-.newsletter-input-wrapper:focus-within {
-    border-color: rgba(251, 191, 36, 0.3);
-    background: rgba(15, 23, 42, 0.6);
-    box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.06),
-                0 8px 32px rgba(251, 191, 36, 0.12);
+    gap: 8px;
+    margin-bottom: 12px;
 }
 
 /* email input */
 .newsletter-input {
     flex: 1;
-    padding: 16px 20px;
-    background: transparent;
-    border: none;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(251, 191, 36, 0.1);
+    border-radius: 4px;
     color: #FFFFFF;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-family: 'Poppins', sans-serif;
     outline: none;
+    transition: all 0.3s ease;
+}
+
+.newsletter-input:focus {
+    border-color: rgba(251, 191, 36, 0.3);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .newsletter-input::placeholder {
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.3);
 }
 
 /* subscribe button */
 .newsletter-button {
-    padding: 16px 32px;
-    background: linear-gradient(135deg, var(--accent-gold) 0%, #f59e0b 100%);
-    color: #000000;
-    font-size: 1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 8px;
+    padding: 12px 24px;
+    background: transparent;
+    color: var(--accent-gold);
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    border-radius: 4px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
     white-space: nowrap;
-    letter-spacing: 0.3px;
 }
 
 .newsletter-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(251, 191, 36, 0.35);
-    background: linear-gradient(135deg, #fcd34d 0%, #fbbf24 100%);
-}
-
-.newsletter-button:active {
-    transform: translateY(0);
+    border-color: rgba(251, 191, 36, 0.4);
+    background: rgba(251, 191, 36, 0.05);
 }
 
 .newsletter-button:focus {
-    outline: 2px solid var(--accent-gold);
-    outline-offset: 3px;
+    outline: 2px solid rgba(251, 191, 36, 0.3);
+    outline-offset: 2px;
 }
 
 /* privacy text */
@@ -3395,6 +3410,7 @@ main:has(.story-hero) + footer {
 
 /* success message */
 .newsletter-success {
+    display: none;
     position: fixed;
     top: 20px;
     left: 50%;
@@ -3411,6 +3427,7 @@ main:has(.story-hero) + footer {
 }
 
 .newsletter-success.visible {
+    display: block;
     opacity: 1;
 }
 
