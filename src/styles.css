@@ -719,19 +719,6 @@ main:has(.story-hero) + footer {
     text-align: center;
 }
 
-.hero-badge {
-    display: inline-block;
-    padding: 8px 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 25px;
-    font-size: 14px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: var(--space-5);
-    backdrop-filter: blur(10px);
-}
-
 .hero-title {
     font-size: clamp(2.6rem, 6.8vw, 5.2rem);
     font-weight: 300;
@@ -755,25 +742,6 @@ main:has(.story-hero) + footer {
     margin-right: auto;
 }
 
-.hero-scroll-indicator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    opacity: 0.5;
-    transition: opacity 0.3s ease;
-}
-
-.hero-scroll-indicator:hover {
-    opacity: 0.8;
-}
-
-.hero-scroll-indicator span {
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
 /* desktop hero positioning */
 @media (min-width: 1024px) {
     .hero-content {
@@ -788,10 +756,6 @@ main:has(.story-hero) + footer {
     .hero-description {
         margin-left: 0;
         margin-right: 0;
-    }
-    
-    .hero-scroll-indicator {
-        align-items: flex-start;
     }
 }
 
@@ -1934,20 +1898,6 @@ main:has(.story-hero) + footer {
 .teaser-btn-primary:focus {
     background: #fcd34d;
     box-shadow: 0 6px 16px rgba(251, 191, 36, 0.5);
-    transform: translateY(-2px);
-}
-
-.teaser-btn-secondary {
-    color: var(--moon-200);
-    border-color: rgba(226, 232, 240, 0.25);
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.teaser-btn-secondary:hover,
-.teaser-btn-secondary:focus {
-    background: rgba(226, 232, 240, 0.08);
-    border-color: rgba(226, 232, 240, 0.5);
-    color: var(--star-100);
     transform: translateY(-2px);
 }
 
@@ -3737,9 +3687,7 @@ main:has(.story-hero) + footer {
     .teaser-btn:hover,
     .teaser-btn:focus,
     .teaser-btn-primary:hover,
-    .teaser-btn-primary:focus,
-    .teaser-btn-secondary:hover,
-    .teaser-btn-secondary:focus {
+    .teaser-btn-primary:focus {
         transform: none;
     }
     
