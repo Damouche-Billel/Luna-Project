@@ -5,7 +5,7 @@ $sql="CREATE TABLE reviews(
     name VARCHAR(255) NOT NULL,
     rating INT NOT NULL,
     message TEXT NOT NULL,
-    approved TINYINT(1) DEFAULT 0,
+    approved TINYINT(1) DEFAULT 1,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );";
 

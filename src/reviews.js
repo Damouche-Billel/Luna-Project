@@ -1,55 +1,73 @@
+// reviews.js
 document.addEventListener("DOMContentLoaded", () => {
-loadReviews();
+    loadReviews();
 
+    const form = document.getElementById("reviewForm");
+    const successBox = document.getElementById("successMessage");
 
-const form = document.getElementById("reviewForm");
-const success = document.getElementById("successMessage");
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
+        const formData = new FormData(form);
 
-form.addEventListener("submit", async (e) => {
-e.preventDefault();
+        try {
+            const response = await fetch("submit_review.php", {
+                method: "POST",
+                body: formData
+            });
 
+            const data = await response.json();
+            console.log(data);
 
-const data = new FormData(form);
+            if (data.status === "ok") {
+                // показываем сообщение
+                successBox.textContent = data.message || "Thanks you for your review!";
+                successBox.style.display = "block";
 
+                // очищаем форму
+                form.reset();
 
-const req = await fetch("submit_review.php", {
-method: "POST",
-body: data
+                // обновляем список отзывов
+                loadReviews();
+
+                // прячем сообщение через пару секунд
+                setTimeout(() => {
+                    successBox.style.display = "none";
+                }, 4000);
+            } else {
+                alert(data.message || "There was an error sending your review..");
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Server connection error.");
+        }
+    });
 });
-
-
-const res = await req.text();
-console.log(res);
-
-
-success.style.display = "block";
-setTimeout(() => success.style.display = "none", 4000);
-
-
-form.reset();
-loadReviews();
-});
-});
-
 
 async function loadReviews() {
-const list = document.getElementById("reviewsList");
-list.innerHTML = "";
+    const list = document.getElementById("reviewsList");
+    list.innerHTML = "";
 
+    try {
+        const response = await fetch("load_reviews.php");
+        const reviews = await response.json();
 
-const req = await fetch("load_reviews.php");
-const reviews = await req.json();
+        if (!Array.isArray(reviews)) return;
 
+        reviews.forEach(r => {
+            const card = document.createElement("div");
+            card.className = "review-card";
 
-reviews.forEach(r => {
-const div = document.createElement("div");
-div.className = "review-card";
-div.innerHTML = `
-<div class="review-name">${r.name}</div>
-<div class="review-rating">${"★".repeat(r.rating)}</div>
-<div class="review-message">${r.message}</div>
-`;
-list.appendChild(div);
-});
+            card.innerHTML = `
+                <div class="review-name">${r.name}</div>
+                <div class="review-rating">${"★".repeat(r.rating)}</div>
+                <div class="review-message">${r.message}</div>
+            `;
+
+            list.appendChild(card);
+        });
+
+    } catch (err) {
+        console.error("Error loading reviews:", err);
+    }
 }

@@ -61,50 +61,52 @@
         <div class="page-content">
             <section class="reviews-section fade-in">
                 <h1 class="section-title">Audience Reviews</h1>
-                <p class="section-subtitle">
-                    Share your experience watching <em>LUNA</em>.
-                </p>
+                <p class="section-subtitle">Share your experience watching <em>LUNA</em>.</p>
 
-                <div id="successMessage" class="success-message" style="display: none">
-                    ************** Thanks for your review! **************
+                <!-- Сообщение об успехе -->
+                <div id="successMessage" class="success-message" style="display:none;">
+                    Thanks you for your review!
                 </div>
 
+                <!-- Форма -->
                 <div class="review-form-container">
                     <h2 class="form-title">Leave Your Review</h2>
 
-                    <form id="reviewForm" action="submit_review.php" method="POST">
+                    <form id="reviewForm" method="POST">
                         <div class="form-group">
-                            <label>Your Name *</label>
-                            <input type="text" name="name" required />
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required>
                         </div>
 
                         <div class="form-group">
-                            <label>Rating *</label>
-                            <select name="rating" required>
-                                <option disabled selected>Select rating</option>
+                            <label for="rating">Rating *</label>
+                            <select id="rating" name="rating" required>
+                                <option value="" disabled selected>Select rating</option>
                                 <option value="5">★★★★★ Excellent</option>
                                 <option value="4">★★★★☆ Very Good</option>
-                                <option value="3">★★★☆☆ Fairly Good</option>
+                                <option value="3">★★★☆☆ Good</option>
                                 <option value="2">★★☆☆☆ Fair</option>
                                 <option value="1">★☆☆☆☆ Poor</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label>Your Review *</label>
-                            <textarea name="message" required></textarea>
+                            <label for="message">Your Review *</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
                         </div>
 
-                        <button type="submit" class="submit-review-btn">
-                            Submit Review
-                        </button>
+                        <button type="submit" class="submit-review-btn">Submit Review</button>
                     </form>
                 </div>
 
-                <div id="reviewsList" class="reviews-list"></div>
+                <!-- Список отзывов -->
+                <div id="reviewsList" class="reviews-grid">
+                    <!-- карточки добавляет JS -->
+                </div>
             </section>
 
             <script src="reviews.js"></script>
+
         </div>
     </main>
 
