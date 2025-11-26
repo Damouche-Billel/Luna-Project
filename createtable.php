@@ -1,7 +1,7 @@
 <?php
 include_once "database_connection.php";
 $sql="CREATE TABLE reviews(
-    id INT(12) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     rating INT NOT NULL,
     message TEXT NOT NULL,

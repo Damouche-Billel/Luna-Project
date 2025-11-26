@@ -1,5 +1,5 @@
 <?php
-require 'database.php';
+require './database.php';
 
 
 $result = $conn->query("SELECT * FROM reviews WHERE approved = 1 ORDER BY id DESC");
