@@ -1,8 +1,0 @@
-{
-    "name": "my-php-project",
-    "description": "A simple PHP project",
-    "require": {
-      "php": "^7.4 || ^8.0"
-    }
-  }
-  
