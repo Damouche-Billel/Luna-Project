@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const formData = new FormData(form);
 
         try {
-            const response = await fetch("submit_review.php", {
+            const response = await fetch("PHP/Luna-Project/submit_review.php", {
                 method: "POST",
                 body: formData
             });
