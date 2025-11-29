@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUNA - A Short Romance Film</title>
+    <meta name="description" content="LUNA - A cinematic short romance film set against the London night skyline. Experience love, passion, and emotion in this beautiful visual story.">
+    
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    
+    <!-- open graph meta tags -->
+    <meta property="og:title" content="LUNA - A Short Romance Film">
+    <meta property="og:description" content="A cinematic short romance film set against the London night skyline.">
+    <meta property="og:type" content="website">
+    
+    <!-- twitter card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LUNA - A Short Romance Film">
+    <meta name="twitter:description" content="A cinematic short romance film set against the London night skyline.">
+    
+    <!-- SEO OPTIMIZATION -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://example.com/#website",
+          "url": "https://example.com/",
+          "name": "LUNA Film",
+          "description": "A cinematic short romance film set against the London night skyline",
+          "publisher": {
+            "@id": "https://example.com/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://example.com/#organization",
+          "name": "LUNA Film Production",
+          "url": "https://example.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://example.com/data/photos/poster-placeholder.jpg"
+          }
+        },
+        {
+          "@type": "Movie",
+          "@id": "https://example.com/#movie",
+          "name": "LUNA",
+          "alternateName": "LUNA - A Short Romance Film",
+          "description": "A cinematic short romance film exploring connection, distance, and reflection. Two souls discover that love isn't found—it's felt in the details, whispered through the London night.",
+          "genre": ["Romance", "Drama", "Short Film"],
+          "contentRating": "Not Rated",
+          "image": "https://example.com/data/photos/poster-placeholder.jpg",
+          "potentialAction": {
+            "@type": "WatchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://example.com/story.html#trailer"
+            }
+          },
+          "director": {
+            "@type": "Person",
+            "name": "Richard Kovacs"
+          },
+          "locationCreated": {
+            "@type": "Place",
+            "name": "London",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "London",
+              "addressCountry": "UK"
+            }
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body id="homepage">
+    <!-- navigation bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- site logo -->
+            <a href="index.html" class="logo">LUNA</a>
+            
+            <!-- desktop navigation menu -->
+            <ul class="nav-menu">
+                <!-- close menu button -->
+                <button class="close-menu" aria-label="Close Menu">&times;</button>
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="story.html" class="nav-link">Story</a>
+                </li>
+                <li class="nav-item">
+                    <a href="cast.html" class="nav-link">Cast & Crew</a>
+                </li>
+                <li class="nav-item">
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact Us</a>
+                </li>
+            </ul>
+            
+            <!-- mobile menu toggle -->
+            <button class="menu-toggle" aria-label="Open Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- main content area -->
+    <main>
+        <!-- hero greeting section -->
+        <div class="greeting-section">
+            <div class="greeting-gif-container">
+                <!-- park timelapse background video -->
+                <img src="data/gif/greeting_bg.gif" 
+                     alt="Beautiful park timelapse showing the romantic atmosphere of LUNA" 
+                     class="greeting-park-timelapse"
+                     loading="lazy">
+                
+                <!-- luna title overlay -->
+                <div class="luna-overlay">
+                    <h1 class="luna-title">LUNA</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- story introduction section -->
+        <section class="story-teaser-section" aria-labelledby="storyTeaserHeading">
+            <div class="story-teaser-container">
+                <div class="story-teaser-content">
+                    <h2 id="storyTeaserHeading" class="teaser-heading">
+                        A night in London.<br>
+                        Two hearts.<br>
+                        One orbit.
+                    </h2>
+                    <p class="teaser-summary">
+                        When chance encounters become destiny, and handwritten letters bridge the space between strangers, 
+                        two souls discover that love isn't found—it's felt in the details, 
+                        whispered through the London night.
+                    </p>
+                    <div class="teaser-keywords">
+                        <span class="keyword">Connection</span>
+                        <span class="keyword-divider" aria-hidden="true">•</span>
+                        <span class="keyword">Distance</span>
+                        <span class="keyword-divider" aria-hidden="true">•</span>
+                        <span class="keyword">Reflection</span>
+                    </div>
+                    <div class="teaser-actions">
+                        <a href="story.html" class="teaser-btn teaser-btn-primary">Read the full story</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- meet the team section -->
+        <section class="cast-crew-section" aria-labelledby="castCrewHeading">
+            <div class="cast-crew-container">
+                <!-- section title and description -->
+                <div class="cast-crew-header">
+                    <div class="header-left">
+                        <h2 id="castCrewHeading" class="cast-crew-title">Cast & Crew</h2>
+                        <p class="cast-crew-subtitle">The people behind LUNA</p>
+                    </div>
+                    <a href="cast.html" class="view-all-link" aria-label="View all cast and crew members">
+                        View all <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+
+                <!-- team member carousel -->
+                <div class="cast-carousel" role="region" aria-roledescription="carousel" aria-label="Cast and crew members">
+                    <button class="carousel-nav carousel-prev" aria-label="Previous cast members" aria-controls="castTrack">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="carousel-viewport">
+                        <ul class="carousel-track" id="castTrack">
+                            <!-- director -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar"></div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Richard Kovacs</h3>
+                                        <p class="card-role">Director</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- producer -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar"></div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Brianna Gibson</h3>
+                                        <p class="card-role">Producer</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- lead actress -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <img src="data/photos/Headshots - Luna/LUNA.jpg" alt="Julia Rowlands" loading="lazy">
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Julia Rowlands</h3>
+                                        <p class="card-role">Actor</p>
+                                        <p class="card-character">as Luna Hope</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- lead actor -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <img src="data/photos/Headshots - Luna/Tyler.jpg" alt="Daniel Palazzi" loading="lazy">
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Daniel Palazzi</h3>
+                                        <p class="card-role">Actor</p>
+                                        <p class="card-character">as Tyler Waves</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- director of photography -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <img src="data/photos/Headshots - Luna/Mahil.jpg" alt="Mahil Kotadoo" loading="lazy">
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Mahil Kotadoo</h3>
+                                        <p class="card-role">Director of Photography</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- supporting actress -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <img src="data/photos/Headshots - Luna/Tara.jpg" alt="Ema Paise" loading="lazy">
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Ema Paise</h3>
+                                        <p class="card-role">Actor</p>
+                                        <p class="card-character">as Tara Amber</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- first assistant director -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar">
+                                        <img src="data/photos/Headshots - Luna/Daniel.jpg" alt="Daniel Luke Smith" loading="lazy">
+                                    </div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Daniel Luke Smith</h3>
+                                        <p class="card-role">1st Assistant Director</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- lighting gaffer -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar"></div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Charlie Richmond</h3>
+                                        <p class="card-role">Gaffer</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- sound recordist -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar"></div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Keli Kobina Asorwoe-Osmunda</h3>
+                                        <p class="card-role">Sound Recordist</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- set designer -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar"></div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Phoebe Hunter Gordon</h3>
+                                        <p class="card-role">Set Designer</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- executive producer -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar"></div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Jarrahkeh Jarra</h3>
+                                        <p class="card-role">Executive Producer</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <!-- vfx artist -->
+                            <li class="cast-card">
+                                <a href="cast.html" class="card-link">
+                                    <div class="card-avatar"></div>
+                                    <div class="card-info">
+                                        <h3 class="card-name">Anastasiia Tkhir</h3>
+                                        <p class="card-role">VFX Artist</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button class="carousel-nav carousel-next" aria-label="Next cast members" aria-controls="castTrack">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- carousel navigation dots -->
+                <div class="carousel-pagination" role="tablist" aria-label="Carousel pages"></div>
+
+                <!-- call to action -->
+                <div class="cast-crew-cta">
+                    <a href="cast.html" class="meet-team-btn">Meet the full team</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- photo gallery preview -->
+        <section class="gallery-section" aria-labelledby="galleryHeading">
+            <div class="gallery-container">
+                <!-- section title and description -->
+                <div class="gallery-header">
+                    <div class="header-left">
+                        <h2 id="galleryHeading" class="gallery-title">Gallery</h2>
+                        <p class="gallery-subtitle">Moments from the world of LUNA.</p>
+                    </div>
+                    <a href="gallery.html" class="view-gallery-link" aria-label="View full gallery">
+                        View full gallery <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+
+                <!-- image grid layout -->
+                <div class="gallery-grid">
+                    <article class="gallery-item" data-reveal>
+                        <div class="image-wrapper">
+                            <img src="data/photos/Stills/S03_Still00000000.png" alt="LUNA film still" loading="lazy">
+                        </div>
+                    </article>
+
+                    <article class="gallery-item" data-reveal>
+                        <div class="image-wrapper">
+                            <img src="data/photos/Stills/S06_Still00000000.png" alt="LUNA film still" loading="lazy">
+                        </div>
+                    </article>
+
+                    <article class="gallery-item" data-reveal>
+                        <div class="image-wrapper">
+                            <img src="data/photos/Stills/S14_Still00000000.png" alt="LUNA film still" loading="lazy">
+                        </div>
+                    </article>
+
+                    <article class="gallery-item" data-reveal>
+                        <div class="image-wrapper">
+                            <img src="data/photos/Stills/S18_Still00000000.png" alt="LUNA film still" loading="lazy">
+                        </div>
+                    </article>
+
+                    <article class="gallery-item" data-reveal>
+                        <div class="image-wrapper">
+                            <img src="data/photos/Stills/S25_Still00000000.png" alt="LUNA film still" loading="lazy">
+                        </div>
+                    </article>
+
+                    <article class="gallery-item" data-reveal>
+                        <div class="image-wrapper">
+                            <img src="data/photos/Stills/S27_Still00000000.png" alt="LUNA film still" loading="lazy">
+                        </div>
+                    </article>
+                </div>
+
+                <!-- call to action -->
+                <div class="gallery-cta">
+                    <a href="gallery.html" class="explore-gallery-btn">Explore the full gallery</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- reviews carousel section -->
+        <section class="reviews-section">
+            <div class="reviews-container">
+                <!-- main section title -->
+                <h2 class="reviews-title">Audience Reviews</h2>
+
+                <!-- interactive carousel with navigation -->
+                <div class="reviews-carousel">
+                    <button class="carousel-btn prev-btn" aria-label="Previous review"><</button>
+                    
+                    <div class="reviews-track-container">
+                        <div class="reviews-track">
+                            <!-- first review -->
+                            <div class="review-slide">
+                                <div class="star-rating" aria-label="5 out of 5 stars">★★★★★</div>
+                                <p class="review-quote">"A hauntingly beautiful exploration of love. Every frame feels like poetry in motion."</p>
+                                <cite class="review-author">— Sarah M.</cite>
+                            </div>
+
+                            <!-- second review -->
+                            <div class="review-slide">
+                                <div class="star-rating" aria-label="5 out of 5 stars">★★★★★</div>
+                                <p class="review-quote">"LUNA captures modern romance with stunning visual storytelling and emotional depth."</p>
+                                <cite class="review-author">— Film Collective</cite>
+                            </div>
+
+                            <!-- third review -->
+                            <div class="review-slide">
+                                <div class="star-rating" aria-label="5 out of 5 stars">★★★★★</div>
+                                <p class="review-quote">"A cinematic gem that stays with you. Intimate, artistic, and unforgettable."</p>
+                                <cite class="review-author">— Marcus L.</cite>
+                            </div>
+
+                            <!-- fourth review -->
+                            <div class="review-slide">
+                                <div class="star-rating" aria-label="4 out of 5 stars">★★★★☆</div>
+                                <p class="review-quote">"Beautiful cinematography and a touching story that reminds you why cinema matters."</p>
+                                <cite class="review-author">— Cinema Review</cite>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-btn next-btn" aria-label="Next review">></button>
+                </div>
+
+                <!-- pagination dots (generated by JavaScript) -->
+                <div class="carousel-dots"></div>
+
+                <!-- link to full reviews page -->
+                <a href="reviews.html" class="view-all-reviews">View all reviews</a>
+            </div>
+        </section>
+
+        <!-- combined contact + newsletter section -->
+        <section class="contact-visit-section" id="contact">
+            <div class="contact-visit-container">
+                <!-- contact cta panel -->
+                <div class="contact-panel">
+                    <h2 class="panel-title">Any questions?</h2>
+                    <p class="panel-description">
+                        Have a question, collaboration idea, or just want to share your thoughts about the film? 
+                        We'd love to hear from you.
+                    </p>
+                    <a href="contact.html" class="contact-cta">
+                        Get in touch →
+                    </a>
+                </div>
+                
+                <!-- newsletter panel -->
+                <div class="newsletter-panel">
+                    <h2 class="panel-title">Stay in the Loop!</h2>
+                    <p class="panel-description">
+                        Be the first to receive newsletters, exclusive updates, festival news, and behind-the-scenes stories from LUNA.
+                    </p>
+                    
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="newsletter-input-wrapper">
+                            <input 
+                                type="email" 
+                                id="newsletterEmail"
+                                class="newsletter-input" 
+                                placeholder="Enter your email"
+                                required
+                                aria-label="Email address"
+                            />
+                            <button type="submit" class="newsletter-button">
+                                Stay Connected
+                            </button>
+                        </div>
+                        <p class="newsletter-privacy">No spam. Just moonlight and film updates.</p>
+                    </form>
+                    
+                    <div class="newsletter-success" id="newsletterSuccess" role="status" aria-live="polite">
+                        <p>You're subscribed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- blog section -->
+    <section class="blog-cta">
+        <div class="blog-cta-content">
+            <h2 class="blog-title">Behind the Scenes</h2>
+            <p class="blog-subtitle">Explore stories from the making of LUNA</p>
+            <a href="blog.html" class="blog-link">Read the Blog</a>
+        </div>
+    </section>
+    
+    <!-- newsletter popup -->
+    <div class="newsletter-popup" id="newsletterPopup" role="dialog" aria-labelledby="popupTitle" aria-modal="true">
+        <button class="popup-close" id="popupClose" aria-label="Close newsletter popup">&times;</button>
+        <div class="popup-content" id="popupContent">
+            <h3 class="popup-title" id="popupTitle">Join the Circle!</h3>
+            <p class="popup-subtitle">Get updates and exclusive content.</p>
+            <form class="popup-form" id="popupForm">
+                <input 
+                    type="email" 
+                    class="popup-input" 
+                    id="popupEmail" 
+                    placeholder="Your email address"
+                    required
+                    aria-label="Email address"
+                />
+                <button type="submit" class="popup-button">Subscribe</button>
+                <p class="popup-privacy">We respect your privacy. Unsubscribe anytime.</p>
+            </form>
+        </div>
+        <div class="popup-success" id="popupSuccess">
+            <p>You're subscribed.</p>
+        </div>
+    </div>
+    
+    <!-- footer area -->
+    <footer>
+        <div class="footer-container">
+            <!-- footer logo -->
+            <div class="footer-logo fade-in">LUNA</div>
+            
+            <!-- footer subtitle -->
+            <div class="footer-subtitle fade-in">A Short Romance Film | © 2025</div>
+            
+            <!-- footer navigation -->
+            <nav class="footer-nav fade-in">
+                <a href="index.html">Home</a>
+                <a href="story.html">Story</a>
+                <a href="cast.html">Cast</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            
+            <!-- directors's social media links -->
+            <div class="social-icons fade-in">
+                <a href="https://www.instagram.com/lunafilm2025/" target="_blank" rel="noopener noreferrer" class="social-link instagram" aria-label="Follow us on Instagram">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+
+                <a href="https://www.facebook.com/SheeNdruMMerboY/" target="_blank" rel="noopener noreferrer" class="social-link facebook" aria-label="Like us on Facebook">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- my javascript file -->
+    <script src="script.js"></script>
+</body>
+</html>
