@@ -1,5 +1,4 @@
 // luna website javascript stuff
-
 document.addEventListener('DOMContentLoaded', function() {
     
     // navigation things
@@ -120,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
     
     // ===============================================
-    // PERFORMANCE OPTIMIZATIONS - Changes to ensure pages performs smoothly
+    // PERFORMANCE OPTIMIZATIONS - Changes to ensure pages will perform smoothly
     // ===============================================
     
     // Throttle scroll events for better performance
@@ -173,15 +172,20 @@ document.querySelectorAll(".faq-question").forEach(button => {
     const INTERVAL = 3000;
 
     // Ensure track matches slideshow width
-    function resizeSlides() {
-      const slideWidth = slideshow.clientWidth;
-      slides.forEach(slide => {
-        slide.style.minWidth = `${slideWidth}px`;
-        slide.style.maxWidth = `${slideWidth}px`;
-      });
-      track.style.width = `${slideWidth * slides.length}px`;
-      updateUI();
-    }
+ function resizeSlides() {
+    const slideWidth = slideshow.getBoundingClientRect().width;
+
+    slides.forEach(slide => {
+        slide.style.minWidth = slideWidth + "px";
+        slide.style.maxWidth = slideWidth + "px";
+    });
+
+    // Ensure track fits 100% on all devices
+    track.style.width = (slideWidth * slides.length) + "px";
+
+    updateUI();
+}
+
 
     // Build dots dynamically
     dotsWrap.innerHTML = "";
