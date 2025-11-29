@@ -15,25 +15,24 @@
     <link rel="stylesheet" href="styles.css">
 
     <!-- font awesome icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        crossorigin="anonymous">
-
-    <!-- Open Graph Meta Tags -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    
+    <!-- Open Graph Meta Tags FOR SEO -->
     <meta property="og:title" content="Gallery - LUNA Film">
     <meta property="og:description" content="Explore behind-the-scenes photos and stills from LUNA short film.">
     <meta property="og:type" content="website">
 </head>
 
 <body>
-    <!-- navigation section -->
+    <!-- navigation bar -->
     <nav class="navbar">
         <div class="nav-container">
-            <!-- the logo bit -->
+            <!-- site logo -->
             <a href="index.html" class="logo">LUNA</a>
-
-            <!-- main menu for desktop -->
+            
+            <!-- desktop navigation menu -->
             <ul class="nav-menu">
-                <!-- x button to close menu -->
+                <!-- close menu button -->
                 <button class="close-menu" aria-label="Close Menu">&times;</button>
                 <li class="nav-item">
                     <a href="index.html" class="nav-link">Home</a>
@@ -48,6 +47,9 @@
                     <a href="gallery.html" class="nav-link">Gallery</a>
                 </li>
                 <li class="nav-item">
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                </li>
+                <li class="nav-item">
                     <a href="faq.html" class="nav-link">FAQ</a>
                 </li>
                 <li class="nav-item">
@@ -60,8 +62,8 @@
                     <a href="contact.html" class="nav-link">Contact Us</a>
                 </li>
             </ul>
-
-            <!-- hamburger menu for mobile -->
+            
+            <!-- mobile menu toggle -->
             <button class="menu-toggle" aria-label="Open Menu">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
@@ -70,49 +72,194 @@
         </div>
     </nav>
 
-    <!-- ===============================================
-         MAIN CONTENT AREA
-         =============================================== -->
+    <!-- =====Main Content For Slideshow=========== -->
     <main>
-        <div class="page-content">
-            <!-- Content removed -->
+      <h1> Gallery Page</h1>
+
+<!-- First Slideshow -->
+<div class="wrap">
+  <div class="frame" id="paintingFrame">
+    <div class="slideshow" id="slideshow1">
+      <div class="track" id="track1">
+        <!-- 6 slides total set here -->
+
+
+        <div class="slide" data-index="0">
+              <div class="meta">
+              <h3>Image 1</h3>
+          <img src="data/photos/BTS/Behind The Scenes 1.jpeg" alt="Behind the scenes 1">
+          <div class="caption" data-pos="bottom">
+            </div>
+          </div>
         </div>
+
+        <div class="slide" data-index="1">
+            <div class="meta">
+              <h3>Image 2</h3>
+              <img src="data/photos/BTS/Behind The Scenes 2.jpeg" alt="Behind the scenes 2">
+          <div class="caption" data-pos="top">
+            </div>
+          </div>
+        </div>
+
+        <div class="slide" data-index="2">
+            <div class="meta">
+              <h3>Image 3</h3>
+              <img src="data/photos/BTS/Behind The Scenes 3.jpeg" alt="Behind the scenes 3">
+          <div class="caption" data-pos="bottom">
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="3">
+            <div class="meta">
+              <h3>Image 4</h3>
+              <img src="data/photos/BTS/Behind The Scenes 4.jpeg" alt="Behind the scenes 4">
+          <div class="caption" data-pos="top">
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="4">
+            <div class="meta">
+              <h3>Image 5</h3>
+              <img src="data/photos/Stills/Slideshow Image 7.jpeg" alt="Behind the scenes 5">
+          <div class="caption" data-pos="bottom">
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="5">
+            <div class="meta">
+              <h3>Image 6</h3>
+              <img src="data/photos/BTS/Behind The Scenes 5.jpeg" alt="Behind the scenes 6">
+          <div class="caption" data-pos="top">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="nav-btn nav-left" id="prevBtn1" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+      </button>
+      <button class="nav-btn nav-right" id="nextBtn1" aria-label="Next">
+        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path></svg>
+      </button>
+      <div class="dots" id="dots1"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Second Slideshow -->
+<div class="wrap second gallery">
+  <div class="frame" id="paintingFrame2">
+    <div class="slideshow2" id="slideshow2">
+      <div class="track" id="track2">
+        <!-- 6 slides total -->
+        <div class="slide" data-index="0">
+          <div class="meta2">
+              <h4>Still 1</h4>
+              <p></p>
+          <img src="data/photos/Stills/Luna Painting.jpeg" alt="Still 1">
+          <div class="caption" data-pos="bottom">
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="1">
+          <div class="meta">
+              <h4>Still 2</h4>
+          <img src="data/photos/Stills/Luna Slideshow Image 2.jpeg" alt="Still 2">
+          <div class="caption" data-pos="top">
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="2">
+          <div class="meta">
+              <h4>Still 3</h4>
+          <img src="data/photos/Stills/Slideshow Image 3.jpeg" alt="Still 3">
+          <div class="caption" data-pos="bottom">
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="3">
+          <div class="meta">
+              <h4>Still 4</h4>
+          <img src="data/photos/Stills/Slideshow Image 4.jpeg" alt="Still 4">
+          <div class="caption" data-pos="top">
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="4">
+           <div class="meta">
+              <h4>Still 5</h4>
+          <img src="data/photos/Stills/Slideshow Image 5.jpeg" alt="Still 5">
+          <div class="caption" data-pos="bottom">
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="5">
+            <div class="meta">
+              <h4>Still 6</h4>
+          <img src="data/photos/Stills/Slideshow Image 6.jpeg" alt="Still 6">
+          <div class="caption" data-pos="top">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="nav-btn nav-left" id="prevBtn2" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+      </button>
+      <button class="nav-btn nav-right" id="nextBtn2" aria-label="Next">
+        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path></svg>
+      </button>
+      <div class="dots" id="dots2"></div>
+    </div>
+  </div>
+</div>
+
+        <!-- Poster Section -->
+        <section class="poster-section">
+            <h2 class="poster-title">Official LUNA Poster</h2>
+            <div class="poster-container">
+                <img src="data/photos/Stills/HMPG_01.jpg" alt="Official LUNA Poster" class="poster-image">
+            </div>
+        </section>
     </main>
 
     <!-- footer area -->
     <footer>
         <div class="footer-container">
-            <!-- big logo -->
+            <!-- footer logo -->
             <div class="footer-logo fade-in">LUNA</div>
-
-            <!-- subtitle text -->
+            
+            <!-- footer subtitle -->
             <div class="footer-subtitle fade-in">A Short Romance Film | © 2025</div>
-
-            <!-- footer links -->
+            
+            <!-- footer navigation -->
             <nav class="footer-nav fade-in">
                 <a href="index.html">Home</a>
                 <a href="story.html">Story</a>
                 <a href="cast.html">Cast</a>
                 <a href="gallery.html">Gallery</a>
+                <a href="reviews.html">Reviews</a>
                 <a href="faq.html">FAQ</a>
                 <a href="reviews.html">Reviews</a>
                 <a href="blog.html">Blog</a>
                 <a href="contact.html">Contact</a>
             </nav>
-
-            <!-- director's social links -->
+            
+            <!-- directors's social media links -->
             <div class="social-icons fade-in">
-                <a href="https://www.instagram.com/richardkcinematics/" target="_blank" rel="noopener noreferrer"
-                    class="social-link instagram" aria-label="Follow us on Instagram">
+                <a href="https://www.instagram.com/lunafilm2025/" target="_blank" rel="noopener noreferrer" class="social-link instagram" aria-label="Follow us on Instagram">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path
                             d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                     </svg>
                 </a>
 
-
-                <a href="https://www.facebook.com/SheeNdruMMerboY/" target="_blank" rel="noopener noreferrer"
-                    class="social-link facebook" aria-label="Like us on Facebook">
+                <a href="https://www.facebook.com/SheeNdruMMerboY/" target="_blank" rel="noopener noreferrer" class="social-link facebook" aria-label="Like us on Facebook">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path
                             d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -125,5 +272,4 @@
     <!-- my javascript file -->
     <script src="script.js"></script>
 </body>
-
 </html>
