@@ -15,21 +15,21 @@
     <!-- font awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
     
-    <!-- Open Graph Meta Tags -->
+    <!-- Open Graph Meta Tags FOR SEO -->
     <meta property="og:title" content="Gallery - LUNA Film">
     <meta property="og:description" content="Explore behind-the-scenes photos and stills from LUNA short film.">
     <meta property="og:type" content="website">
 </head>
 <body>
-    <!-- navigation section -->
+    <!-- navigation bar -->
     <nav class="navbar">
         <div class="nav-container">
-            <!-- the logo bit -->
+            <!-- site logo -->
             <a href="index.html" class="logo">LUNA</a>
             
-            <!-- main menu for desktop -->
+            <!-- desktop navigation menu -->
             <ul class="nav-menu">
-                <!-- x button to close menu -->
+                <!-- close menu button -->
                 <button class="close-menu" aria-label="Close Menu">&times;</button>
                 <li class="nav-item">
                     <a href="index.html" class="nav-link">Home</a>
@@ -54,7 +54,7 @@
                 </li>
             </ul>
             
-            <!-- hamburger menu for mobile -->
+            <!-- mobile menu toggle -->
             <button class="menu-toggle" aria-label="Open Menu">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
@@ -62,24 +62,173 @@
             </button>
         </div>
     </nav>
-    
-    <!-- Main Content Area -->
+
+    <!-- =====Main Content For Slideshow=========== -->
     <main>
-        <div class="page-content">
-            <!-- Content removed -->
+      <h1> Gallery Page</h1>
+
+<!-- First Slideshow -->
+<div class="wrap">
+  <div class="frame" id="paintingFrame">
+    <div class="slideshow" id="slideshow1">
+      <div class="track" id="track1">
+        <!-- 6 slides total set here -->
+
+
+        <div class="slide" data-index="0">
+              <div class="meta">
+              <h3>Image 1</h3>
+          <img src="data/photos/BTS/Behind The Scenes 1.jpeg" alt="Behind the scenes 1">
+          <div class="caption" data-pos="bottom">
+            </div>
+          </div>
         </div>
+
+        <div class="slide" data-index="1">
+            <div class="meta">
+              <h3>Image 2</h3>
+              <img src="data/photos/BTS/Behind The Scenes 2.jpeg" alt="Behind the scenes 2">
+          <div class="caption" data-pos="top">
+            </div>
+          </div>
+        </div>
+
+        <div class="slide" data-index="2">
+            <div class="meta">
+              <h3>Image 3</h3>
+              <img src="data/photos/BTS/Behind The Scenes 3.jpeg" alt="Behind the scenes 3">
+          <div class="caption" data-pos="bottom">
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="3">
+            <div class="meta">
+              <h3>Image 4</h3>
+              <img src="data/photos/BTS/Behind The Scenes 4.jpeg" alt="Behind the scenes 4">
+          <div class="caption" data-pos="top">
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="4">
+            <div class="meta">
+              <h3>Image 5</h3>
+              <img src="data/photos/Stills/Slideshow Image 7.jpeg" alt="Behind the scenes 5">
+          <div class="caption" data-pos="bottom">
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="5">
+            <div class="meta">
+              <h3>Image 6</h3>
+              <img src="data/photos/BTS/Behind The Scenes 5.jpeg" alt="Behind the scenes 6">
+          <div class="caption" data-pos="top">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="nav-btn nav-left" id="prevBtn1" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+      </button>
+      <button class="nav-btn nav-right" id="nextBtn1" aria-label="Next">
+        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path></svg>
+      </button>
+      <div class="dots" id="dots1"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Second Slideshow -->
+<div class="wrap second gallery">
+  <div class="frame" id="paintingFrame2">
+    <div class="slideshow2" id="slideshow2">
+      <div class="track" id="track2">
+        <!-- 6 slides total -->
+        <div class="slide" data-index="0">
+          <div class="meta2">
+              <h4>Still 1</h4>
+              <p></p>
+          <img src="data/photos/Stills/Luna Painting.jpeg" alt="Still 1">
+          <div class="caption" data-pos="bottom">
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="1">
+          <div class="meta">
+              <h4>Still 2</h4>
+          <img src="data/photos/Stills/Luna Slideshow Image 2.jpeg" alt="Still 2">
+          <div class="caption" data-pos="top">
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="2">
+          <div class="meta">
+              <h4>Still 3</h4>
+          <img src="data/photos/Stills/Slideshow Image 3.jpeg" alt="Still 3">
+          <div class="caption" data-pos="bottom">
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="3">
+          <div class="meta">
+              <h4>Still 4</h4>
+          <img src="data/photos/Stills/Slideshow Image 4.jpeg" alt="Still 4">
+          <div class="caption" data-pos="top">
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="4">
+           <div class="meta">
+              <h4>Still 5</h4>
+          <img src="data/photos/Stills/Slideshow Image 5.jpeg" alt="Still 5">
+          <div class="caption" data-pos="bottom">
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="slide" data-index="5">
+            <div class="meta">
+              <h4>Still 6</h4>
+          <img src="data/photos/Stills/Slideshow Image 6.jpeg" alt="Still 6">
+          <div class="caption" data-pos="top">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="nav-btn nav-left" id="prevBtn2" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+      </button>
+      <button class="nav-btn nav-right" id="nextBtn2" aria-label="Next">
+        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path></svg>
+      </button>
+      <div class="dots" id="dots2"></div>
+    </div>
+  </div>
+</div>
+
+        <!-- Poster Section -->
+        <section class="poster-section">
+            <h2 class="poster-title">Official LUNA Poster</h2>
+            <div class="poster-container">
+                <img src="data/photos/Stills/HMPG_01.jpg" alt="Official LUNA Poster" class="poster-image">
+            </div>
+        </section>
     </main>
-    
+
     <!-- footer area -->
     <footer>
         <div class="footer-container">
-            <!-- big logo -->
+            <!-- footer logo -->
             <div class="footer-logo fade-in">LUNA</div>
             
-            <!-- subtitle text -->
+            <!-- footer subtitle -->
             <div class="footer-subtitle fade-in">A Short Romance Film | © 2025</div>
             
-            <!-- footer links -->
+            <!-- footer navigation -->
             <nav class="footer-nav fade-in">
                 <a href="index.html">Home</a>
                 <a href="story.html">Story</a>
@@ -90,7 +239,7 @@
                 <a href="contact.html">Contact</a>
             </nav>
             
-            <!-- director's social links -->
+            <!-- directors's social media links -->
             <div class="social-icons fade-in">
                 <a href="https://www.instagram.com/lunafilm2025/" target="_blank" rel="noopener noreferrer" class="social-link instagram" aria-label="Follow us on Instagram">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -106,7 +255,7 @@
             </div>
         </div>
     </footer>
-    
+
     <!-- my javascript file -->
     <script src="script.js"></script>
 </body>
