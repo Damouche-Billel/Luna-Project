@@ -7,23 +7,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     
-    // navbar is now always solid - no need for scroll detection
-    // const firstSection = document.querySelector('section:first-of-type, .greeting-section, .story-hero');
-    // if (firstSection) {
-    //     const observer = new IntersectionObserver(
-    //         (entries) => {
-    //             entries.forEach(entry => {
-    //                 if (entry.intersectionRatio < 0.9) {
-    //                     navbar.classList.add('scrolled');
-    //                 } else {
-    //                     navbar.classList.remove('scrolled');
-    //                 }
-    //             });
-    //         },
-    //         { threshold: [0, 0.1, 0.5, 0.9, 1] }
-    //     );
-    //     observer.observe(firstSection);
-    // }
+    const firstSection = document.querySelector('section:first-of-type, .greeting-section, .story-hero, main');
+    if (firstSection && navbar) {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.intersectionRatio < 0.9) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                });
+            },
+            { threshold: [0, 0.1, 0.5, 0.9, 1] }
+        );
+        observer.observe(firstSection);
+    }
+    
+    let scrollTimer;
+    window.addEventListener('scroll', () => {
+        if (navbar) {
+            clearTimeout(scrollTimer);
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            }
+            scrollTimer = setTimeout(() => {
+                if (window.scrollY <= 50) {
+                    navbar.classList.remove('scrolled');
+                }
+            }, 100);
+        }
+    });
 
     
     // mobile menu toggle
