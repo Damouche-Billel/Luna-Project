@@ -60,12 +60,6 @@ body:has(.greeting-section) {
     scroll-snap-type: y mandatory;
 }
 
-/* main container */
-main {
-    width: 100vw;
-    overflow-x: hidden;
-}
-
 /* nav starts transparent, gets solid on scroll */
 .navbar {
     position: fixed;
@@ -76,7 +70,7 @@ main {
     backdrop-filter: none;
     z-index: 1000;
     padding: 15px 0;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     border-bottom: none;
 }
 
@@ -86,6 +80,14 @@ main {
     padding: 12px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-trigger {
+    height: 1px;
+    width: 100%;
+    display: block;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-container {
@@ -275,8 +277,12 @@ main {
     padding-bottom: 50px;
 }
 .reviews-page main {
-    padding: 100px 20px;
+    padding: 70px 20px 100px;
     min-height: 100vh;
+}
+
+.blog-page main {
+    padding-top: 70px;
 }
 
 .reviews-page .page-content {
@@ -3270,6 +3276,14 @@ textarea {
     border-top: 1px solid rgba(251, 191, 36, 0.1);
 }
 
+.blog-cta-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .blog-title {
     font-family: 'Lemon Love', cursive;
     font-size: clamp(1.5rem, 3vw, 1.75rem);
@@ -3303,6 +3317,38 @@ textarea {
     background: rgba(251, 191, 36, 0.15);
     border-color: #fbbf24;
     transform: translateY(-2px);
+}
+
+.imdb-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    background: transparent;
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    border-radius: 4px;
+    color: #fbbf24;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+.imdb-link .ticket-icon {
+    width: 20px;
+    height: 20px;
+    filter: invert(77%) sepia(57%) saturate(468%) hue-rotate(358deg) brightness(103%) contrast(97%);
+    transition: transform 0.3s ease;
+}
+
+.imdb-link:hover {
+    background: rgba(251, 191, 36, 0.15);
+    border-color: #fbbf24;
+    transform: translateY(-2px);
+}
+
+.imdb-link:hover .ticket-icon {
+    transform: scale(1.1);
 }
 
 /* ============================================
@@ -4211,52 +4257,31 @@ textarea {
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 360px) {
-  .faq-section {
-    padding: 60px 15px;
-  }
+    .faq-section {
+        padding: 40px 10px;
+    }
 
-  .faq-title {
-    margin-bottom: 35px;
-    font-size: 1.8rem;
-  }
+    .faq-title {
+        margin-bottom: 35px;
+        font-size: 1.6rem;
+    }
 
-  .faq-question {
-    font-size: 1rem;
-    padding: 16px 18px;
-  }
+    .faq-question {
+        font-size: 1rem;
+        padding: 16px 18px;
+    }
 
-  .faq-answer p {
-    font-size: 0.9rem;
-  }
-}
+    .faq-answer p {
+        font-size: 0.9rem;
+    }
 
-@media (max-width: 360px) {
-  .faq-section {
-    padding: 40px 10px;
-  }
+    .faq-item {
+        width: 100%;
+    }
 
-  .faq-title {
-    font-size: 1.6rem;
-  }
-
-  .faq-item {
-    width: 100%;
-  }
-
-  .faq-question i {
-    font-size: 1rem;
-  }
-}
-
-:root {
-  --bg: #0f0f10;
-  --card: #0f1720;
-  --accent: #e7b76a;
-  --muted: rgba(255, 255, 255, 0.08);
-  --glass: rgba(255, 255, 255, 0.04);
-  --radius: 18px;
-  --gap: 16px;
-  --text: #f3f4f6;
+    .faq-question i {
+        font-size: 1rem;
+    }
 }
 
 /* ========== Gallery Slideshow CSS Stuff ========== */

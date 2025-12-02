@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     
-    const firstSection = document.querySelector('section:first-of-type, .greeting-section, .story-hero, main');
+    // intersection observer for navbar on scroll
+    const firstSection = document.querySelector('.nav-trigger, section:first-of-type, .greeting-section, .story-hero');
     if (firstSection && navbar) {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -22,22 +23,18 @@ document.addEventListener('DOMContentLoaded', function() {
             { threshold: [0, 0.1, 0.5, 0.9, 1] }
         );
         observer.observe(firstSection);
-    }
-    
-    let scrollTimer;
-    window.addEventListener('scroll', () => {
-        if (navbar) {
-            clearTimeout(scrollTimer);
+    } else if (navbar) {
+        // fallback: if no section found, use scroll position
+        const toggleNavByScroll = () => {
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
-            scrollTimer = setTimeout(() => {
-                if (window.scrollY <= 50) {
-                    navbar.classList.remove('scrolled');
-                }
-            }, 100);
-        }
-    });
+        };
+        toggleNavByScroll();
+        window.addEventListener('scroll', toggleNavByScroll);
+    }
 
     
     // mobile menu toggle

@@ -17,12 +17,15 @@
 </head>
 
 <body class="reviews-page">
-    <!-- navigation -->
+    <!-- navigation bar -->
     <nav class="navbar">
         <div class="nav-container">
+            <!-- site logo -->
             <a href="index.html" class="logo">LUNA</a>
-
+            
+            <!-- desktop navigation menu -->
             <ul class="nav-menu">
+                <!-- close menu button -->
                 <button class="close-menu" aria-label="Close Menu">&times;</button>
                 <li class="nav-item">
                     <a href="index.html" class="nav-link">Home</a>
@@ -36,9 +39,11 @@
                 <li class="nav-item">
                     <a href="gallery.html" class="nav-link">Gallery</a>
                 </li>
-                <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
                 <li class="nav-item">
-                    <a href="reviews.html" class="nav-link active">Reviews</a>
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a href="faq.html" class="nav-link">FAQ</a>
                 </li>
                 <li class="nav-item">
                     <a href="blog.html" class="nav-link">Blog</a>
@@ -46,8 +51,10 @@
                 <li class="nav-item">
                     <a href="contact.html" class="nav-link">Contact Us</a>
                 </li>
-            </ul>
 
+            </ul>
+            
+            <!-- mobile menu toggle -->
             <button class="menu-toggle" aria-label="Open Menu">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
@@ -58,8 +65,10 @@
 
     <!-- main content -->
     <main>
-        <div class="page-content">
-            <section class="reviews-section fade-in">
+        <section class="nav-trigger" aria-hidden="true"></section>
+        <section class="page-hero">
+            <div class="page-content">
+                <div class="reviews-section fade-in">
                 <h1 class="section-title">Audience Reviews</h1>
                 <p class="section-subtitle">Share your experience watching <em>LUNA</em>.</p>
 
@@ -103,11 +112,12 @@
                 <div id="reviewsList" class="reviews-grid">
                     <!-- карточки добавляет JS -->
                 </div>
-            </section>
+                </div>
 
-            <script src="reviews.js"></script>
+                <script src="reviews.js"></script>
 
-        </div>
+            </div>
+        </section>
     </main>
 
     <!-- footer -->
