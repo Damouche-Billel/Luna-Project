@@ -738,6 +738,30 @@ main:has(.story-hero) + footer {
     color: #AAAAAA;
 }
 
+.success-message {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 8px;
+    padding: 16px 24px;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+    color: #22c55e;
+    font-size: 1rem;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* responsive adjustments */
 @media (max-width: 1200px) {
     .reviews-grid {
