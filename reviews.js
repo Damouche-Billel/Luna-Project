@@ -1,5 +1,8 @@
-// reviews.js
+console.log("reviews.js loaded!");
+
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM ready");
+
     loadReviews();
 
     const form = document.getElementById("reviewForm");
@@ -7,44 +10,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
+        console.log("Form submitted");
 
-        const formData = new FormData(form);
+        const data = new FormData(form);
 
         try {
-            const response = await fetch("PHP/Luna-Project/submit_review.php", {
+            const response = await fetch("submit_review.php", {
                 method: "POST",
-                body: formData
+                body: data
             });
 
-            const data = await response.json();
-            console.log(data);
+            const result = await response.json();
+            console.log("Server response:", result);
 
-            if (data.status === "ok") {
-                // показываем сообщение
-                successBox.textContent = data.message || "Thanks you for your review!";
+            if (result.status === "ok") {
+                successBox.textContent = result.message;
                 successBox.style.display = "block";
 
-                // очищаем форму
                 form.reset();
-
-                // обновляем список отзывов
                 loadReviews();
 
-                // прячем сообщение через пару секунд
                 setTimeout(() => {
                     successBox.style.display = "none";
                 }, 4000);
+
             } else {
-                alert(data.message || "There was an error sending your review..");
+                alert(result.message);
             }
+
         } catch (err) {
-            console.error(err);
+            console.error("Fetch error:", err);
             alert("Server connection error.");
         }
     });
 });
 
 async function loadReviews() {
+    console.log("Loading reviews...");
     const list = document.getElementById("reviewsList");
     list.innerHTML = "";
 
@@ -52,11 +54,11 @@ async function loadReviews() {
         const response = await fetch("load_reviews.php");
         const reviews = await response.json();
 
-        if (!Array.isArray(reviews)) return;
+        console.log("Loaded reviews:", reviews);
 
         reviews.forEach(r => {
             const card = document.createElement("div");
-            card.className = "review-card";
+            card.classList.add("review-card");
 
             card.innerHTML = `
                 <div class="review-name">${r.name}</div>
@@ -68,6 +70,6 @@ async function loadReviews() {
         });
 
     } catch (err) {
-        console.error("Error loading reviews:", err);
+        console.error("Reviews loading failed", err);
     }
 }
