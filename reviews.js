@@ -1,8 +1,6 @@
-console.log("reviews.js loaded!");
+console.log("reviews.js loaded");
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOM ready");
-
     loadReviews();
 
     const form = document.getElementById("reviewForm");
@@ -12,30 +10,43 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         console.log("Form submitted");
 
-        const data = new FormData(form);
+        const formData = new FormData(form);
 
         try {
             const response = await fetch("submit_review.php", {
                 method: "POST",
-                body: data
+                body: formData
             });
 
-            const result = await response.json();
-            console.log("Server response:", result);
+            // читаем JSON с сервера
+            const data = await response.json();
+            console.log("Server response:", data);
 
-            if (result.status === "ok") {
-                successBox.textContent = result.message;
-                successBox.style.display = "block";
+            if (data.status === "ok") {
+                // показываем уведомление
+                successBox.style.display = "flex";   // сделать видимым (flex, т.к. мы так оформили)
+                // даём кадровую задержку, чтобы transition сработал
+                requestAnimationFrame(() => {
+                    successBox.classList.add("visible");
+                });
 
+                // очищаем форму
                 form.reset();
+
+                // подгружаем обновлённый список отзывов
                 loadReviews();
 
+                // через 5 секунд плавно прячем уведомление
                 setTimeout(() => {
-                    successBox.style.display = "none";
-                }, 4000);
+                    successBox.classList.remove("visible");
+                    setTimeout(() => {
+                        successBox.style.display = "none";
+                    }, 400); // время совпадает с transition в CSS
+                }, 5000);
 
             } else {
-                alert(result.message);
+                // если сервер вернул ошибку
+                alert(data.message || "Error while sending review.");
             }
 
         } catch (err) {
@@ -46,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function loadReviews() {
-    console.log("Loading reviews...");
     const list = document.getElementById("reviewsList");
     list.innerHTML = "";
 
@@ -55,6 +65,8 @@ async function loadReviews() {
         const reviews = await response.json();
 
         console.log("Loaded reviews:", reviews);
+
+        if (!Array.isArray(reviews)) return;
 
         reviews.forEach(r => {
             const card = document.createElement("div");
@@ -70,6 +82,6 @@ async function loadReviews() {
         });
 
     } catch (err) {
-        console.error("Reviews loading failed", err);
+        console.error("Reviews loading failed:", err);
     }
 }
