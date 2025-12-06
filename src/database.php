@@ -1,7 +1,7 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$pass = '';           
+$host = '127.0.0.1';
+$user = 'admin';
+$pass = 'admin123';           
 $db   = 'luna_reviews_db';   
 
 $conn = new mysqli($host, $user, $pass, $db);
