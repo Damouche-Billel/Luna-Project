@@ -1,5 +1,4 @@
-console.log("reviews.js loaded");
-
+// reviews.js
 document.addEventListener("DOMContentLoaded", () => {
     loadReviews();
 
@@ -8,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        console.log("Form submitted");
 
         const formData = new FormData(form);
 
@@ -18,39 +16,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: formData
             });
 
-            // читаем JSON с сервера
             const data = await response.json();
-            console.log("Server response:", data);
+            console.log(data);
 
             if (data.status === "ok") {
-                // показываем уведомление
-                successBox.style.display = "flex";   // сделать видимым (flex, т.к. мы так оформили)
-                // даём кадровую задержку, чтобы transition сработал
-                requestAnimationFrame(() => {
-                    successBox.classList.add("visible");
-                });
+                // показываем сообщение
+                successBox.textContent = data.message || "Thanks you for your review!";
+                successBox.style.display = "block";
 
                 // очищаем форму
                 form.reset();
 
-                // подгружаем обновлённый список отзывов
+                // обновляем список отзывов
                 loadReviews();
 
-                // через 5 секунд плавно прячем уведомление
+                // прячем сообщение через пару секунд
                 setTimeout(() => {
-                    successBox.classList.remove("visible");
-                    setTimeout(() => {
-                        successBox.style.display = "none";
-                    }, 400); // время совпадает с transition в CSS
-                }, 5000);
-
+                    successBox.style.display = "none";
+                }, 4000);
             } else {
-                // если сервер вернул ошибку
-                alert(data.message || "Error while sending review.");
+                alert(data.message || "There was an error sending your review..");
             }
-
         } catch (err) {
-            console.error("Fetch error:", err);
+            console.error(err);
             alert("Server connection error.");
         }
     });
@@ -64,13 +52,11 @@ async function loadReviews() {
         const response = await fetch("load_reviews.php");
         const reviews = await response.json();
 
-        console.log("Loaded reviews:", reviews);
-
         if (!Array.isArray(reviews)) return;
 
         reviews.forEach(r => {
             const card = document.createElement("div");
-            card.classList.add("review-card");
+            card.className = "review-card";
 
             card.innerHTML = `
                 <div class="review-name">${r.name}</div>
@@ -82,6 +68,6 @@ async function loadReviews() {
         });
 
     } catch (err) {
-        console.error("Reviews loading failed:", err);
+        console.error("Error loading reviews:", err);
     }
 }
