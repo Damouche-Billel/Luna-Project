@@ -97,7 +97,7 @@ body:has(.greeting-section) {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40px;
+    padding: 0 30px;
 }
 
 /* logo */
@@ -121,7 +121,7 @@ body:has(.greeting-section) {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 38px;
+    gap: 32px;
     align-items: center;
 }
 
@@ -136,11 +136,12 @@ body:has(.greeting-section) {
     color: #FFFFFF;
     text-decoration: none;
     transition: all 0.3s ease;
-    padding: 12px 20px;
+    padding: 10px 16px;
     border-radius: 25px;
     position: relative;
     letter-spacing: 0.5px;
     text-transform: none;
+    white-space: nowrap;
 }
 
 .nav-link::before {
@@ -201,12 +202,28 @@ body:has(.greeting-section) {
 /* tablet layout */
 @media (max-width: 1200px) and (min-width: 1025px) {
     .nav-menu {
-        gap: 30px;
+        gap: 20px;
     }
     
     .nav-link {
-        font-size: 1rem;
-        padding: 10px 15px;
+        font-size: 0.95rem;
+        padding: 10px 12px;
+    }
+    
+    .logo {
+        font-size: 2.2rem;
+    }
+}
+
+/* medium screens - tighter spacing */
+@media (max-width: 1300px) and (min-width: 1201px) {
+    .nav-menu {
+        gap: 28px;
+    }
+    
+    .nav-link {
+        font-size: 1.05rem;
+        padding: 10px 16px;
     }
 }
 
