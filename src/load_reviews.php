@@ -1,6 +1,6 @@
 <?php
 // load_reviews.php
-require './database.php';
+require '../database.php';
 
 header('Content-Type: application/json; charset=utf-8');
 

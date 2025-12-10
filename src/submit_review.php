@@ -3,16 +3,16 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // IMPORTANT: FIRST include PHPMailer classes
-require './phpmailer/src/PHPMailer.php';
-require './phpmailer/src/SMTP.php';
-require './phpmailer/src/Exception.php';
+require '../phpmailer/src/PHPMailer.php';
+require '../phpmailer/src/SMTP.php';
+require '../phpmailer/src/Exception.php';
 
 // THEN declare namespaces
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // then include your database
-require './database.php';
+require '../database.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -43,6 +43,7 @@ if (!$stmt->execute()) {
 
 // ========== SEND EMAIL ==========
 
+/* BUGGY CODE - PLEASE FIX LATER
 $mail = new PHPMailer(true);
 
 try {
@@ -77,7 +78,7 @@ try {
 } catch (Exception $e) {
     // Do not break JSON!
     // Optional: log error to file
-}
+}*/
 
 // SUCCESS response
 echo json_encode(['status' => 'ok']);

@@ -2,7 +2,7 @@
 $servername="localhost";
 $username="root";
 $password="";
-$database="luna_reviews_db";
+$database="Luna";
 
 $conn=mysqli_connect($servername, $username, $password, $database);
 if(!$conn)

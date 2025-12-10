@@ -4,7 +4,7 @@
  * Handles sending welcome emails via Brevo API
  */
 
-require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/../../config.php';
 
 /**
  * Send welcome email to new subscriber using Brevo API

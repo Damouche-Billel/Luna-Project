@@ -1,11 +1,31 @@
 <?php
 /**
  * LUNA Newsletter Subscription API
- * Handles newsletter form submissions and stores emails in SQL Server database
+ * Handles newsletter form submissions and stores emails in MySQL database
  */
 
-require_once 'config.php';
-require_once 'email-service.php';
+// Set proper headers
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Headers: Content-Type');
+
+// Enable error reporting for debugging (remove in production)
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+
+// Database configuration
+$servername = "localhost";
+$username = "root";
+$password = "IsogkZwA=zT6";
+$dbname = "Luna";
+
+// Throw exceptions on mysqli errors so we can catch them below
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+// Email helper
+require_once __DIR__ . '/email-service.php';
 
 /**
  * Validate email address
@@ -27,70 +47,49 @@ function sanitizeEmail($email) {
 
 /**
  * Check if email already exists in database
- * @param resource $conn Database connection
+ * @param mysqli $conn Database connection
  * @param string $email Email to check
- * @return bool True if exists
+ * @return array|null Row data if exists, null otherwise
  */
 function emailExists($conn, $email) {
-    $sql = "SELECT Id FROM [dbo].[NewsletterEmails] WHERE EmailAddress = ?";
-    $params = array($email);
+    $stmt = $conn->prepare("SELECT id, is_active FROM NewsletterEmails WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $stmt->close();
     
-    $stmt = sqlsrv_query($conn, $sql, $params);
-    
-    if ($stmt === false) {
-        error_log("Email check query failed: " . print_r(sqlsrv_errors(), true));
-        return false;
-    }
-    
-    $exists = sqlsrv_fetch($stmt) !== false;
-    sqlsrv_free_stmt($stmt);
-    
-    return $exists;
+    return $row;
 }
 
 /**
  * Insert new email subscription
- * @param resource $conn Database connection
+ * @param mysqli $conn Database connection
  * @param string $email Email to insert
  * @return bool True on success
  */
 function insertEmail($conn, $email) {
-    $sql = "INSERT INTO [dbo].[NewsletterEmails] (EmailAddress, IsActive, CreatedDate) 
-            VALUES (?, 1, GETDATE())";
-    $params = array($email);
+    $stmt = $conn->prepare("INSERT INTO NewsletterEmails (email, is_active, created_at) VALUES (?, 1, NOW())");
+    $stmt->bind_param("s", $email);
+    $success = $stmt->execute();
+    $stmt->close();
     
-    $stmt = sqlsrv_query($conn, $sql, $params);
-    
-    if ($stmt === false) {
-        error_log("Email insert failed: " . print_r(sqlsrv_errors(), true));
-        return false;
-    }
-    
-    sqlsrv_free_stmt($stmt);
-    return true;
+    return $success;
 }
 
 /**
  * Reactivate existing inactive email
- * @param resource $conn Database connection
+ * @param mysqli $conn Database connection
  * @param string $email Email to reactivate
  * @return bool True on success
  */
 function reactivateEmail($conn, $email) {
-    $sql = "UPDATE [dbo].[NewsletterEmails] 
-            SET IsActive = 1, CreatedDate = GETDATE() 
-            WHERE EmailAddress = ?";
-    $params = array($email);
+    $stmt = $conn->prepare("UPDATE NewsletterEmails SET is_active = 1, created_at = NOW() WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $success = $stmt->execute();
+    $stmt->close();
     
-    $stmt = sqlsrv_query($conn, $sql, $params);
-    
-    if ($stmt === false) {
-        error_log("Email reactivation failed: " . print_r(sqlsrv_errors(), true));
-        return false;
-    }
-    
-    sqlsrv_free_stmt($stmt);
-    return true;
+    return $success;
 }
 
 /**
@@ -110,6 +109,20 @@ function sendResponse($success, $message, $code = 200) {
 
 // Main execution
 try {
+    // Connect to database
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn->set_charset('utf8mb4');
+
+    // Ensure newsletter table exists
+    $sql = "CREATE TABLE IF NOT EXISTS `NewsletterEmails` (
+        id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        email VARCHAR(255) NOT NULL UNIQUE,
+        is_active TINYINT(1) DEFAULT 1,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        INDEX idx_email (email)
+    )";
+    $conn->query($sql);
+
     // Only accept POST requests
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         sendResponse(false, 'Invalid request method. Only POST is allowed.', 405);
@@ -139,51 +152,57 @@ try {
         sendResponse(false, 'Invalid email address format.', 400);
     }
     
-    // Get database connection
-    $conn = getDBConnection();
-    
-    if (!$conn) {
-        sendResponse(false, 'Database connection failed. Please try again later.', 500);
-    }
-    
     // Check if email already exists
-    if (emailExists($conn, $email)) {
-        // Check if inactive and reactivate
-        $checkActive = sqlsrv_query($conn, "SELECT IsActive FROM [dbo].[NewsletterEmails] WHERE EmailAddress = ?", array($email));
-        $row = sqlsrv_fetch_array($checkActive, SQLSRV_FETCH_ASSOC);
-        sqlsrv_free_stmt($checkActive);
-        
-        if ($row && !$row['IsActive']) {
+    $existingEmail = emailExists($conn, $email);
+    
+    if ($existingEmail) {
+        if (!$existingEmail['is_active']) {
             // Reactivate inactive subscription
-            reactivateEmail($conn, $email);
-            closeDBConnection($conn);
-            
-            // Send welcome back email
-            sendWelcomeEmail($email, true);
-            
-            sendResponse(true, 'Welcome back! Your subscription has been reactivated.', 200);
-        } else if ($row && $row['IsActive']) {
+            if (reactivateEmail($conn, $email)) {
+                $conn->close();
+                // fire-and-forget email, but do not fail the API if email send fails
+                try {
+                    sendWelcomeEmail($email, true);
+                } catch (Exception $mailEx) {
+                    error_log('Newsletter reactivation email failed: ' . $mailEx->getMessage());
+                }
+                sendResponse(true, 'Welcome back! Your subscription has been reactivated.', 200);
+            } else {
+                $conn->close();
+                sendResponse(false, 'Failed to reactivate subscription.', 500);
+            }
+        } else {
             // Already active
-            closeDBConnection($conn);
+            $conn->close();
             sendResponse(true, 'You are already subscribed to our newsletter.', 200);
         }
     }
     
     // Insert new email
     if (insertEmail($conn, $email)) {
-        closeDBConnection($conn);
-        
-        // Send welcome email
-        sendWelcomeEmail($email, false);
-        
+        $conn->close();
+        try {
+            sendWelcomeEmail($email, false);
+        } catch (Exception $mailEx) {
+            error_log('Newsletter welcome email failed: ' . $mailEx->getMessage());
+        }
         sendResponse(true, 'Thank you for subscribing! You\'ll receive updates soon.', 201);
     } else {
-        closeDBConnection($conn);
+        $conn->close();
         sendResponse(false, 'Failed to subscribe. Please try again later.', 500);
     }
     
+} catch (mysqli_sql_exception $e) {
+    error_log("Newsletter database error: " . $e->getMessage());
+    if (isset($conn) && $conn instanceof mysqli) {
+        $conn->close();
+    }
+    sendResponse(false, 'Database error. Please try again later.', 500);
 } catch (Exception $e) {
     error_log("Newsletter subscription error: " . $e->getMessage());
+    if (isset($conn)) {
+        $conn->close();
+    }
     sendResponse(false, 'An unexpected error occurred. Please try again later.', 500);
 }
 ?>

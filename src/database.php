@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
 $user = 'root';
-$pass = '';           
-$db   = 'luna_reviews_db';   
+$pass = 'IsogkZwA=zT6';
+$db   = 'Luna';   
 
 $conn = new mysqli($host, $user, $pass, $db);
 

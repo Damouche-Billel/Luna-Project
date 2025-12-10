@@ -473,69 +473,104 @@ if (document.readyState === 'loading') {
 }
 
 // reviews carousel interaction handler
-function initReviewsCarousel() {
-    const track = document.querySelector('.reviews-track');
-    const slides = document.querySelectorAll('.review-slide');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    const dotsContainer = document.querySelector('.carousel-dots');
+async function initReviewsCarousel() {
+    const track = document.getElementById('indexReviewsTrack');
+    const dotsContainer = document.getElementById('indexCarouselDots');
+    const prevBtn = document.querySelector('.reviews-section .prev-btn');
+    const nextBtn = document.querySelector('.reviews-section .next-btn');
     
-    if (!track || slides.length === 0) return;
+    if (!track || !dotsContainer) return;
     
-    let currentIndex = 0;
-    
-    // generate navigation dots
-    slides.forEach((_, index) => {
-        const dot = document.createElement('button');
-        dot.classList.add('dot');
-        dot.setAttribute('aria-label', `Go to review ${index + 1}`);
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(index));
-        dotsContainer.appendChild(dot);
-    });
-    
-    const dots = document.querySelectorAll('.dot');
-    
-    // navigate to a specific review slide
-    function goToSlide(index) {
-        currentIndex = index;
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        updateDots();
-        updateButtons();
-    }
-    
-    // highlight the active navigation dot
-    function updateDots() {
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
+    // Load reviews from database
+    try {
+        const response = await fetch('load_reviews.php');
+        const reviews = await response.json();
+        
+        if (!Array.isArray(reviews) || reviews.length === 0) return;
+        
+        // Populate carousel with reviews
+        track.innerHTML = '';
+        dotsContainer.innerHTML = '';
+        
+        reviews.forEach((review, index) => {
+            // Create slide
+            const slide = document.createElement('div');
+            slide.classList.add('review-slide');
+            slide.innerHTML = `
+                <div class="star-rating" aria-label="${review.rating} out of 5 stars">${"★".repeat(review.rating)}</div>
+                <p class="review-quote">"${escapeHtml(review.message)}"</p>
+                <cite class="review-author">— ${escapeHtml(review.name)}</cite>
+            `;
+            track.appendChild(slide);
+            
+            // Create dot
+            const dot = document.createElement('button');
+            dot.classList.add('dot');
+            dot.setAttribute('aria-label', `Go to review ${index + 1}`);
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
         });
-    }
-    
-    // disable navigation buttons at carousel boundaries
-    function updateButtons() {
-        prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex === slides.length - 1;
-    }
-    
-    // handle previous and next button clicks
-    prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) goToSlide(currentIndex - 1);
-    });
-    
-    nextBtn.addEventListener('click', () => {
-        if (currentIndex < slides.length - 1) goToSlide(currentIndex + 1);
-    });
-    
-    // enable arrow key navigation
-    track.parentElement.parentElement.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft' && currentIndex > 0) {
-            goToSlide(currentIndex - 1);
-        } else if (e.key === 'ArrowRight' && currentIndex < slides.length - 1) {
-            goToSlide(currentIndex + 1);
+        
+        const slides = document.querySelectorAll('.review-slide');
+        const dots = document.querySelectorAll('.carousel-dots .dot');
+        let currentIndex = 0;
+        
+        // Navigate to specific slide
+        function goToSlide(index) {
+            currentIndex = index;
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            updateDots();
+            updateButtons();
         }
-    });
-    
-    updateButtons();
+        
+        // Update active dot
+        function updateDots() {
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+        
+        // Update button states
+        function updateButtons() {
+            if (prevBtn) prevBtn.disabled = currentIndex === 0;
+            if (nextBtn) nextBtn.disabled = currentIndex === slides.length - 1;
+        }
+        
+        // Button click handlers
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) goToSlide(currentIndex - 1);
+            });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < slides.length - 1) goToSlide(currentIndex + 1);
+            });
+        }
+        
+        // Keyboard navigation
+        track.parentElement.parentElement.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                goToSlide(currentIndex - 1);
+            } else if (e.key === 'ArrowRight' && currentIndex < slides.length - 1) {
+                goToSlide(currentIndex + 1);
+            }
+        });
+        
+        updateButtons();
+        
+    } catch (error) {
+        console.error('Failed to load reviews:', error);
+    }
+}
+
+// Helper function to escape HTML
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
 }
 
 if (document.readyState === 'loading') {

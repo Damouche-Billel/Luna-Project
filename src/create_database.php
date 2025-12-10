@@ -1,7 +1,7 @@
 <?php
 $servername="localhost";
 $username="root";
-$password="";
+$password="IsogkZwA=zT6";
 
 $conn=mysqli_connect($servername, $username, $password);
 if($conn)
@@ -12,7 +12,7 @@ if($conn)
 }
 
 
-$sql="CREATE DATABASE luna_reviews_db";
+$sql="CREATE DATABASE Luna";
 $create_db=mysqli_query($conn, $sql);
 if($create_db)
 {

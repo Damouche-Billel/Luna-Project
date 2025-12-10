@@ -1,34 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - LUNA Film</title>
-    <meta name="description"
-        content="Get in touch with the LUNA film team. Connect with us for inquiries, screenings, and collaboration opportunities.">
-
+    <title>Cast & crew - LUNA Film</title>
+    <meta name="description" content="Get in touch with the LUNA film team. Connect with us for inquiries, screenings, and collaboration opportunities.">
     <!-- Favicon (placeholder) -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-    <!-- preload custom font -->
-    <link rel="preload" href="fonts/Lemon Love.otf" as="font" type="font/otf" crossorigin>
-
+    
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
-
+    <link rel="stylesheet" href="luna.css">
+    
     <!-- font awesome icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Contact Us - LUNA Film">
     <meta property="og:description" content="Get in touch with the LUNA film team for inquiries and collaborations.">
     <meta property="og:type" content="website">
 </head>
-
 <body>
-    <!-- navigation bar -->
+    <!-- navigation section -->
     <nav class="navbar">
         <div class="nav-container">
             <!-- site logo -->
@@ -45,7 +38,7 @@
                     <a href="story.html" class="nav-link">Story</a>
                 </li>
                 <li class="nav-item">
-                    <a href="cast.html" class="nav-link">Cast & Crew</a>
+                    <a href="cast-and-crew.html" class="nav-link">Cast & Crew</a>
                 </li>
                 <li class="nav-item">
                     <a href="gallery.html" class="nav-link">Gallery</a>
@@ -60,7 +53,7 @@
                     <a href="blog.html" class="nav-link">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a href="contact.html" class="nav-link">Contact Us</a>
+                    <a href="contact-us.php" class="nav-link">Contact Us</a>
                 </li>
 
             </ul>
@@ -73,38 +66,89 @@
             </button>
         </div>
     </nav>
-
+    
     <!-- main content -->
-    <main>
-        <section class="page-hero">
-            <div class="page-content">
+<main>
                 <!-- contact content goes here -->
-            </div>
-        </section>
-    </main>
+                 <div class="title-contact-us">
+      <h1>Cast & crew</h1>
+    </div>
+    <section class="section">
+    <h2>Cast</h2>
+      <div class="grid">
+        <div class="person">
+          <img src="Luna actors and crew photos/julia.jpg" alt="Julia Rowlands">
+          <h3>Julia Rowlands</h3>
+          <p>as Luna Hope</p>
+        </div>
+        <div class="person">
+          <img src="Luna actors and crew photos/daniel.jpg" alt="Daniel Palazzi">
+          <h3>Daniel Palazzi</h3>
+          <p>as Tyler Waves</p>
+        </div>
+        <div class="person">
+          <img src="Luna actors and crew photos/ema.jpg" alt="Ema Pasic">
+          <h3>Ema Pasic</h3>
+          <p>as Tara Amber</p>
+        </div>
+      </div>
+    </section>
 
+    <!-- Crew Section -->
+    <section class="section">
+      <h2>Crew</h2>
+      <div class="grid">
+        <div class="person">
+          <img src="data/photos/Headshots - Luna/Richie.jpg" alt="Director">
+          <h3>Richard Kovacs</h3>
+          <p>Director</p>
+        </div>
+        <div class="person">
+          <img src="data/photos/Headshots - Luna/Brianna.jpg" alt="Producer 1">
+          <h3>Brianna Gibson</h3>
+          <p>Producer</p>
+        </div>
+        <div class="person">
+          <img src="Luna actors and crew photos/dan.jpg" alt="Dan Luke">
+          <h3>Dan Luke</h3>
+          <p>Producer</p>
+        </div>
+        <div class="person">
+          <img src="Luna actors and crew photos/mahil.jpg" alt="Mahil Kotadoo">
+          <h3>Mahil Kotadoo</h3>
+          <p>Director of Photography</p>
+        </div>
+        <div class="person">
+          <img src="Luna actors and crew photos/Jarrakeh.jpeg" alt="Jarrakeh Jarra">
+          <h3>Jarrakeh Jarra</h3>
+          <p>Executive producer</p>
+        </div>
+      </div>
+    </section>
+  </main>
+    
     <!-- footer area -->
     <footer>
         <div class="footer-container">
-            <!-- big logo -->
+            <!-- footer logo -->
             <div class="footer-logo fade-in">LUNA</div>
-
-            <!-- subtitle text -->
+            
+            <!-- footer subtitle -->
             <div class="footer-subtitle fade-in">A Short Romance Film | © 2025</div>
-
-            <!-- footer links -->
+            
+            <!-- footer navigation -->
             <nav class="footer-nav fade-in">
                 <a href="index.html">Home</a>
                 <a href="story.html">Story</a>
-                <a href="cast.html">Cast</a>
+                <a href="cast-and-crew.html">Cast</a>
                 <a href="gallery.html">Gallery</a>
                 <a href="reviews.html">Reviews</a>
                 <a href="faq.html">FAQ</a>
                 <a href="blog.html">Blog</a>
-                <a href="contact.html">Contact</a>
+                <a href="contact-us.php">Contact</a>
             </nav>
-
-            <!-- director's social links -->
+            
+            <!-- directors's social media links -->
             <div class="social-icons fade-in">
                 <a href="https://www.instagram.com/lunafilm2025/" target="_blank" rel="noopener noreferrer" class="social-link instagram" aria-label="Follow us on Instagram">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -122,9 +166,8 @@
             </div>
         </div>
     </footer>
-
+    
     <!-- my javascript file -->
     <script src="script.js"></script>
 </body>
-
 </html>
