@@ -1,3 +1,73 @@
+<?php
+// Database configuration
+$servername = "localhost"; // Usually 'localhost'
+$username = "root"; // Your DB username
+$password = ""; // Your DB password
+$dbname = "lunacontact";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+}
+
+// Create database if it doesn't exist
+$sql = "CREATE DATABASE IF NOT EXISTS $dbname";
+if (!$conn->query($sql)) {
+die("Error creating database: " . $conn->error);
+}
+
+// Select the database
+$conn->select_db($dbname);
+
+// Create table if it doesn't exist
+$sql = "CREATE TABLE IF NOT EXISTS `Contact_Details` (
+id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+Firstname VARCHAR(50) NOT NULL,
+Surname VARCHAR(50) NOT NULL,
+
+Email VARCHAR(100) NOT NULL,
+Message TEXT NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)";
+if (!$conn->query($sql)) {
+die("Error creating table: " . $conn->error);
+}
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Collect and sanitize input
+$firstname = $conn->real_escape_string(trim($_POST['fname']));
+$surname = $conn->real_escape_string(trim($_POST['lname']));
+$email = $conn->real_escape_string(trim($_POST['email']));
+$message = $conn->real_escape_string(trim($_POST['message']));
+
+// Prepare and bind
+$stmt = $conn->prepare("INSERT INTO `Contact_Details` (Firstname, Surname, Email, Message) VALUES
+(?, ?, ?, ?)");
+$stmt->bind_param("ssss", $firstname, $surname, $email, $message);
+
+// Execute
+if ($stmt->execute()) {
+    echo "<script>document.addEventListener('DOMContentLoaded', ()=>{ 
+            document.getElementById('thankYouModal').style.display = 'block';
+        });</script>";
+}
+
+else {
+echo "Error: " . $stmt->error;
+}
+
+$stmt->close();
+
+}
+
+$conn->close();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,6 +119,12 @@
                 <li class="nav-item">
                     <a href="contact.html" class="nav-link">Contact Us</a>
                 </li>
+                <li class="nav-item">
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
             </ul>
             
             <!-- hamburger menu for mobile -->
@@ -59,66 +135,91 @@
             </button>
         </div>
     </nav>
-    
-    <!-- main content -->
+     <!-- main content -->
     <main>
         <div class="page-content">
-       
-            <!-- contact content goes here -->
-                 <div class="title-contact-us">
-      <h1>Contact Us</h1>
-    </div>
+            <section class="reviews-section fade-in">
+                <h1 class="section-title">Contact  us</h1>
+             <p>We’d love to hear from you!</p>
 
-  <form id="contactForm" action="#" method="post">
-  <div>
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="fname">
-    <div class="error"></div>
+                <div id="successMessage" class="success-message" style="display:none;">
+              <p class="section-subtitle">Need more info? Drop us a message.</p>
+
+                </div>
+<form id="reviewForm" method="POST">
+
+  <!-- Name -->
+  <div class="form-group">
+    <label for="name">Your Name</label>
+    <input 
+        type="text" 
+        id="name" 
+        name="name" 
+        required
+        title="Please enter your name"
+        placeholder="Your name"
+    >
   </div>
 
-  <div>
-    <label for="lname">Surname</label>
-    <input type="text" id="lname" name="lname">
-    <div class="error"></div>
+  <!-- Surname -->
+  <div class="form-group">
+    <label for="lname">Your Surname</label>
+    <input 
+        type="text" 
+        id="lname" 
+        name="lname" 
+        required
+        title="Please enter your surname"
+        placeholder="Your surname"
+    >
   </div>
 
-  <div>
-    <label for="email">Email</label>
-    <input type="text" id="email" name="email">
-    <div class="error"></div>
+  <!-- Email -->
+     <div class="form-group">
+    <label for="lname">Email</label>
+<input 
+    type="text" 
+    id="email" 
+    name="email" 
+    required
+    pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.(com|co\.uk|uk|org)$"
+    title="Please enter a valid email ending in .com, .co.uk, .uk, or .org"
+    placeholder="you@example.com"
+/>
   </div>
 
-  <div>
-    <label for="message">Message</label>
-    <textarea id="message" name="message"></textarea>
-    <div class="error"></div>
+  <!-- Message -->
+  <div class="form-group">
+    <label for="message">Your Message</label>
+    <textarea 
+        id="message" 
+        name="message" 
+        required 
+        minlength="10"
+        title="Message must be at least 10 characters"
+        placeholder="Type your message here..."
+    ></textarea>
   </div>
 
-  <button type="submit">Submit</button>
+  <!-- Submit -->
+  <div class="form-group">
+    <button type="submit" class="submit-review-btn">Submit Review</button>
+  </div>
+
 </form>
-    <div class="contact-info">
-      <p>Email: info@lunafilm.com</p>
-      <p>Find us on social media:</p>
 
-   
-            <!-- director's social links -->
-            <div class="social-icons fade-in">
-                <a href="https://www.instagram.com/richardkcinematics/" target="_blank" rel="noopener noreferrer" class="social-link instagram" aria-label="Follow us on Instagram">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                </a>
+<!-- Add this somewhere in your body, outside the form -->
+<div id="thankYouModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Thank You!</h2>
+    <p>We’ve received your submission. We'll get back to you soon.</p>
+  </div>
+</div>
 
-                <a href="https://www.facebook.com/SheeNdruMMerboY/" target="_blank" rel="noopener noreferrer" class="social-link facebook" aria-label="Like us on Facebook">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
-                </a>
-            </div>
     </div>
-        </div>
-    </main>
-    
+              
+
     <!-- footer area -->
     <footer>
         <div class="footer-container">
@@ -155,43 +256,46 @@
         </div>
     </footer>
     
-   <script>
-const form = document.getElementById('contactForm');
 
-form.addEventListener('submit', function(e) {
-  e.preventDefault(); // stop form from submitting by default
-  let valid = true;
+     <script src="script.js"></script>
 
-  const fields = ['fname', 'lname', 'email', 'message'];
-  fields.forEach(id => {
-    const input = document.getElementById(id);
-    const errorDiv = input.nextElementSibling;
-    input.classList.remove('error-border');
-    errorDiv.textContent = '';
+<script>
+const form = document.getElementById("reviewForm");
+const emailField = document.getElementById("email");
+const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.(com|co\.uk|uk|org)$/;
 
-    // Check if input is empty
-    if (input.value.trim() === '') {
-      errorDiv.textContent = 'Input required'; // show message for every field
-      input.classList.add('error-border');
-      valid = false;
+// modal elements
+const modal = document.getElementById("thankYouModal");
+const closeBtn = modal.querySelector(".close");
+
+// real-time email feedback
+emailField.addEventListener("input", () => {
+    const value = emailField.value.trim();
+    if (!emailPattern.test(value)) {
+        emailField.setCustomValidity("Please enter a valid email ending in .com, .co.uk, .uk, or .org");
+    } else {
+        emailField.setCustomValidity("");
     }
-
-    // Additional email validation
-    if (id === 'email' && input.value.trim() !== '') {
-      if (!input.value.includes('@') || !input.value.includes('.com')) {
-        errorDiv.textContent = 'Email must contain @ or .com';
-        input.classList.add('error-border');
-        valid = false;
-      }
-    }
-  });
-
-  if (valid) {
-    form.submit(); // submit form if everything is ok
-  }
 });
+
+// handle form submission
+form.addEventListener("submit", (e) => {
+    if (!emailPattern.test(emailField.value.trim())) {
+        e.preventDefault();
+        emailField.reportValidity();
+    } else {
+        e.preventDefault(); // remove if you want to actually submit
+        modal.style.display = "block"; // show modal
+        form.reset();
+    }
+});
+
+// close modal
+closeBtn.onclick = () => modal.style.display = "none";
+window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
 </script>
 
-    <script src="script.js"></script>
+
+
 </body>
 </html>
