@@ -66,17 +66,17 @@
 
     <!-- main content -->
     <main>
-        <section class="nav-trigger" aria-hidden="true"></section>
-        <section class="page-hero">
-            <div class="page-content">
-                <div class="reviews-section fade-in">
+        <div class="page-content">
+            <section class="reviews-section fade-in">
                 <h1 class="section-title">Audience Reviews</h1>
                 <p class="section-subtitle">Share your experience watching <em>LUNA</em>.</p>
 
                 <!-- Сообщение об успехе -->
-                <div id="successMessage" class="success-message" style="display:none;">
-                    Thanks you for your review!
+                <div id="successMessage" class="success-message" aria-live="polite">
+                    <span class="success-icon">✔</span>
+                    <span class="success-text">Thanks for your review!</span>
                 </div>
+
 
                 <!-- Форма -->
                 <div class="review-form-container">
@@ -113,12 +113,11 @@
                 <div id="reviewsList" class="reviews-grid">
                     <!-- карточки добавляет JS -->
                 </div>
-                </div>
+            </section>
 
-                <script src="reviews.js"></script>
+            <script src="reviews.js"></script>
 
-            </div>
-        </section>
+        </div>
     </main>
 
     <!-- footer -->
