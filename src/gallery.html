@@ -11,6 +11,9 @@
     <!-- Favicon (placeholder) -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
+    <!-- preload custom font -->
+    <link rel="preload" href="fonts/Lemon Love.otf" as="font" type="font/otf" crossorigin>
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
 
@@ -53,14 +56,12 @@
                     <a href="faq.html" class="nav-link">FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a href="reviews.html" class="nav-link">Reviews</a>
-                </li>
-                <li class="nav-item">
                     <a href="blog.html" class="nav-link">Blog</a>
                 </li>
                 <li class="nav-item">
                     <a href="contact.html" class="nav-link">Contact Us</a>
                 </li>
+
             </ul>
             
             <!-- mobile menu toggle -->
@@ -74,7 +75,9 @@
 
     <!-- =====Main Content For Slideshow=========== -->
     <main>
-      <h1> Gallery Page</h1>
+      <section class="gallery-hero">
+        <h1> Gallery Page</h1>
+      </section>
 
 <!-- First Slideshow -->
 <div class="wrap">
@@ -84,9 +87,9 @@
         <!-- 6 slides total set here -->
 
 
-        <div class="slide" data-index="0">
+ <div class="slide" data-index="0">
               <div class="meta">
-              <h3>Image 1</h3>
+              <h3>Behind the Scenes – Setup Shot</h3>
           <img src="data/photos/BTS/Behind The Scenes 1.jpeg" alt="Behind the scenes 1">
           <div class="caption" data-pos="bottom">
             </div>
@@ -95,7 +98,7 @@
 
         <div class="slide" data-index="1">
             <div class="meta">
-              <h3>Image 2</h3>
+              <h3>Behind the Scenes – Camera Crew</h3>
               <img src="data/photos/BTS/Behind The Scenes 2.jpeg" alt="Behind the scenes 2">
           <div class="caption" data-pos="top">
             </div>
@@ -104,7 +107,7 @@
 
         <div class="slide" data-index="2">
             <div class="meta">
-              <h3>Image 3</h3>
+              <h3>Behind the Scenes – Cast Preparation</h3>
               <img src="data/photos/BTS/Behind The Scenes 3.jpeg" alt="Behind the scenes 3">
           <div class="caption" data-pos="bottom">
             </div>
@@ -112,7 +115,7 @@
         </div>
         <div class="slide" data-index="3">
             <div class="meta">
-              <h3>Image 4</h3>
+              <h3>Behind the Scenes – Lighting Scene</h3>
               <img src="data/photos/BTS/Behind The Scenes 4.jpeg" alt="Behind the scenes 4">
           <div class="caption" data-pos="top">
             </div>
@@ -120,7 +123,7 @@
         </div>
         <div class="slide" data-index="4">
             <div class="meta">
-              <h3>Image 5</h3>
+              <h3>Behind the Scenes - Night Outdoor London Lights Shot</h3>
               <img src="data/photos/Stills/Slideshow Image 7.jpeg" alt="Behind the scenes 5">
           <div class="caption" data-pos="bottom">
             </div>
@@ -128,7 +131,7 @@
         </div>
         <div class="slide" data-index="5">
             <div class="meta">
-              <h3>Image 6</h3>
+              <h3>Behind the Scenes - Shot of the letter between Luna and Tyler in the movie</h3>
               <img src="data/photos/BTS/Behind The Scenes 5.jpeg" alt="Behind the scenes 6">
           <div class="caption" data-pos="top">
             </div>
@@ -155,7 +158,7 @@
         <!-- 6 slides total -->
         <div class="slide" data-index="0">
           <div class="meta2">
-              <h4>Still 1</h4>
+              <h4>Film Still – Luna Artwork</h4>
               <p></p>
           <img src="data/photos/Stills/Luna Painting.jpeg" alt="Still 1">
           <div class="caption" data-pos="bottom">
@@ -164,7 +167,7 @@
         </div>
         <div class="slide" data-index="1">
           <div class="meta">
-              <h4>Still 2</h4>
+              <h4>Film Still – Character Close-Up</h4>
           <img src="data/photos/Stills/Luna Slideshow Image 2.jpeg" alt="Still 2">
           <div class="caption" data-pos="top">
               <p></p>
@@ -173,7 +176,7 @@
         </div>
         <div class="slide" data-index="2">
           <div class="meta">
-              <h4>Still 3</h4>
+              <h4>Film Still – Street Scene</h4>
           <img src="data/photos/Stills/Slideshow Image 3.jpeg" alt="Still 3">
           <div class="caption" data-pos="bottom">
               <p></p>
@@ -182,7 +185,7 @@
         </div>
         <div class="slide" data-index="3">
           <div class="meta">
-              <h4>Still 4</h4>
+              <h4>Film Still – Rooftop Moment</h4>
           <img src="data/photos/Stills/Slideshow Image 4.jpeg" alt="Still 4">
           <div class="caption" data-pos="top">
               <p></p>
@@ -191,7 +194,7 @@
         </div>
         <div class="slide" data-index="4">
            <div class="meta">
-              <h4>Still 5</h4>
+              <h4>Film Still – Night Walk</h4>
           <img src="data/photos/Stills/Slideshow Image 5.jpeg" alt="Still 5">
           <div class="caption" data-pos="bottom">
               <p></p>
@@ -200,7 +203,7 @@
         </div>
         <div class="slide" data-index="5">
             <div class="meta">
-              <h4>Still 6</h4>
+              <h4>Film Still – Letter Between Luna and Tyler in the movie</h4>
           <img src="data/photos/Stills/Slideshow Image 6.jpeg" alt="Still 6">
           <div class="caption" data-pos="top">
             </div>
@@ -218,6 +221,7 @@
     </div>
   </div>
 </div>
+
 
         <!-- Poster Section -->
         <section class="poster-section">
@@ -245,7 +249,6 @@
                 <a href="gallery.html">Gallery</a>
                 <a href="reviews.html">Reviews</a>
                 <a href="faq.html">FAQ</a>
-                <a href="reviews.html">Reviews</a>
                 <a href="blog.html">Blog</a>
                 <a href="contact.html">Contact</a>
             </nav>

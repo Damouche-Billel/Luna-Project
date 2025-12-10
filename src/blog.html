@@ -7,28 +7,51 @@
     <title>Blog - LUNA Film</title>
     <meta name="description" content="Blog LUNA - Insights, stories, and updates about the romantic short film LUNA.">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preload" href="fonts/Lemon Love.otf" as="font" type="font/otf" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         crossorigin="anonymous">
 </head>
 
 <body>
-    <!-- navigation -->
+    <!-- navigation bar -->
     <nav class="navbar">
         <div class="nav-container">
+            <!-- site logo -->
             <a href="index.html" class="logo">LUNA</a>
+            
+            <!-- desktop navigation menu -->
             <ul class="nav-menu">
+                <!-- close menu button -->
                 <button class="close-menu" aria-label="Close Menu">&times;</button>
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="story.html" class="nav-link">Story</a></li>
-                <li><a href="cast.html" class="nav-link">Cast & Crew</a></li>
-                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-                <li><a href="faq.html" class="nav-link">FAQ</a></li>
-                <li><a href="reviews.html" class="nav-link">Reviews</a></li>
-                <li><a href="blog.html" class="nav-link active">Blog</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="story.html" class="nav-link">Story</a>
+                </li>
+                <li class="nav-item">
+                    <a href="cast.html" class="nav-link">Cast & Crew</a>
+                </li>
+                <li class="nav-item">
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact Us</a>
+                </li>
 
+            </ul>
+            
+            <!-- mobile menu toggle -->
             <button class="menu-toggle" aria-label="Open Menu">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>

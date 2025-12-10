@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUNA - A Short Romance Film</title>
-    <meta name="description" content="LUNA - A cinematic short romance film set against the London night skyline. Experience love, passion, and emotion in this beautiful visual story.">
+    <title>LUNA - A Short Romance Film | London Love Story</title>
+    <meta name="description" content="LUNA - A cinematic short romance film set against the London night skyline. Experience love, passion, and emotion in this beautiful visual story. Directed by Richard Kovacs.">
+    <meta name="keywords" content="LUNA film, short romance film, London romance, independent film, short film, romantic cinema, British film, Richard Kovacs">
+    
+    <link rel="canonical" href="https://yourdomain.com/">
     
     <!-- favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- preload custom font -->
+    <link rel="preload" href="fonts/Lemon Love.otf" as="font" type="font/otf" crossorigin>
     
     <!-- stylesheet -->
     <link rel="stylesheet" href="styles.css">
@@ -17,14 +23,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
     
     <!-- open graph meta tags -->
-    <meta property="og:title" content="LUNA - A Short Romance Film">
-    <meta property="og:description" content="A cinematic short romance film set against the London night skyline.">
+    <meta property="og:title" content="LUNA - A Short Romance Film | London Love Story">
+    <meta property="og:description" content="A cinematic short romance film set against the London night skyline. Experience love, passion, and emotion.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/">
+    <meta property="og:image" content="https://yourdomain.com/data/photos/Stills/HMPG_01.jpg">
+    <meta property="og:image:alt" content="LUNA Film Official Poster">
     
     <!-- twitter card meta tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LUNA - A Short Romance Film">
     <meta name="twitter:description" content="A cinematic short romance film set against the London night skyline.">
+    <meta name="twitter:image" content="https://yourdomain.com/data/photos/Stills/HMPG_01.jpg">
     
     <!-- SEO OPTIMIZATION -->
     <script type="application/ld+json">
@@ -33,40 +43,37 @@
       "@graph": [
         {
           "@type": "WebSite",
-          "@id": "https://example.com/#website",
-          "url": "https://example.com/",
+          "@id": "https://yourdomain.com/#website",
+          "url": "https://yourdomain.com/",
           "name": "LUNA Film",
           "description": "A cinematic short romance film set against the London night skyline",
           "publisher": {
-            "@id": "https://example.com/#organization"
+            "@id": "https://yourdomain.com/#organization"
           }
         },
         {
           "@type": "Organization",
-          "@id": "https://example.com/#organization",
+          "@id": "https://yourdomain.com/#organization",
           "name": "LUNA Film Production",
-          "url": "https://example.com/",
+          "url": "https://yourdomain.com/",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://example.com/data/photos/poster-placeholder.jpg"
-          }
+            "url": "https://yourdomain.com/data/photos/Stills/HMPG_01.jpg"
+          },
+          "sameAs": [
+            "https://www.instagram.com/richardkcinematics/",
+            "https://www.facebook.com/SheeNdruMMerboY/"
+          ]
         },
         {
           "@type": "Movie",
-          "@id": "https://example.com/#movie",
+          "@id": "https://yourdomain.com/#movie",
           "name": "LUNA",
           "alternateName": "LUNA - A Short Romance Film",
           "description": "A cinematic short romance film exploring connection, distance, and reflection. Two souls discover that love isn't found—it's felt in the details, whispered through the London night.",
           "genre": ["Romance", "Drama", "Short Film"],
           "contentRating": "Not Rated",
-          "image": "https://example.com/data/photos/poster-placeholder.jpg",
-          "potentialAction": {
-            "@type": "WatchAction",
-            "target": {
-              "@type": "EntryPoint",
-              "urlTemplate": "https://example.com/story.html#trailer"
-            }
-          },
+          "image": "https://yourdomain.com/data/photos/Stills/HMPG_01.jpg",
           "director": {
             "@type": "Person",
             "name": "Richard Kovacs"
@@ -205,7 +212,9 @@
                             <!-- director -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar"></div>
+                                    <div class="card-avatar">
+                                        <img src="data/photos/Headshots - Luna/Richie.jpg" alt="Richard Kovacs" loading="lazy">
+                                    </div>
                                     <div class="card-info">
                                         <h3 class="card-name">Richard Kovacs</h3>
                                         <p class="card-role">Director</p>
@@ -216,7 +225,9 @@
                             <!-- producer -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar"></div>
+                                    <div class="card-avatar">
+                                        <img src="data/photos/Headshots - Luna/Brianna.jpg" alt="Brianna Gibson" loading="lazy">
+                                    </div>
                                     <div class="card-info">
                                         <h3 class="card-name">Brianna Gibson</h3>
                                         <p class="card-role">Producer</p>
@@ -292,35 +303,15 @@
                                 </a>
                             </li>
 
-                            <!-- lighting gaffer -->
+                            <!-- social media manager -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar"></div>
-                                    <div class="card-info">
-                                        <h3 class="card-name">Charlie Richmond</h3>
-                                        <p class="card-role">Gaffer</p>
+                                    <div class="card-avatar">
+                                        <img src="data/photos/Headshots - Luna/gigi.jpg" alt="Gigi" loading="lazy">
                                     </div>
-                                </a>
-                            </li>
-
-                            <!-- sound recordist -->
-                            <li class="cast-card">
-                                <a href="cast.html" class="card-link">
-                                    <div class="card-avatar"></div>
                                     <div class="card-info">
-                                        <h3 class="card-name">Keli Kobina Asorwoe-Osmunda</h3>
-                                        <p class="card-role">Sound Recordist</p>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <!-- set designer -->
-                            <li class="cast-card">
-                                <a href="cast.html" class="card-link">
-                                    <div class="card-avatar"></div>
-                                    <div class="card-info">
-                                        <h3 class="card-name">Phoebe Hunter Gordon</h3>
-                                        <p class="card-role">Set Designer</p>
+                                        <h3 class="card-name">Gigi</h3>
+                                        <p class="card-role">Social Media Manager</p>
                                     </div>
                                 </a>
                             </li>
@@ -328,21 +319,12 @@
                             <!-- executive producer -->
                             <li class="cast-card">
                                 <a href="cast.html" class="card-link">
-                                    <div class="card-avatar"></div>
-                                    <div class="card-info">
-                                        <h3 class="card-name">Jarrahkeh Jarra</h3>
-                                        <p class="card-role">Executive Producer</p>
+                                    <div class="card-avatar">
+                                        <img src="data/photos/Headshots - Luna/jarrakeh.jpg" alt="Jarrakeh Jarra" loading="lazy">
                                     </div>
-                                </a>
-                            </li>
-
-                            <!-- vfx artist -->
-                            <li class="cast-card">
-                                <a href="cast.html" class="card-link">
-                                    <div class="card-avatar"></div>
                                     <div class="card-info">
-                                        <h3 class="card-name">Anastasiia Tkhir</h3>
-                                        <p class="card-role">VFX Artist</p>
+                                        <h3 class="card-name">Jarrakeh Jarra</h3>
+                                        <p class="card-role">Executive Producer</p>
                                     </div>
                                 </a>
                             </li>
@@ -475,7 +457,7 @@
                 <div class="carousel-dots"></div>
 
                 <!-- link to full reviews page -->
-                <a href="reviews.html" class="view-all-reviews">View all reviews</a>
+                <a href="reviews.html" class="view-all-reviews">Write a review</a>
             </div>
         </section>
 
@@ -532,7 +514,13 @@
         <div class="blog-cta-content">
             <h2 class="blog-title">Behind the Scenes</h2>
             <p class="blog-subtitle">Explore stories from the making of LUNA</p>
-            <a href="blog.html" class="blog-link">Read the Blog</a>
+            <div class="blog-cta-links">
+                <a href="blog.html" class="blog-link">Read the Blog</a>
+                <a href="https://m.imdb.com/title/tt39050758" target="_blank" rel="noopener noreferrer" class="imdb-link">
+                    <img src="data/photos/ticket-8-svgrepo-com.svg" alt="Ticket icon" class="ticket-icon">
+                    <span>Check out our IMDb</span>
+                </a>
+            </div>
         </div>
     </section>
     
@@ -577,8 +565,6 @@
                 <a href="gallery.html">Gallery</a>
                 <a href="reviews.html">Reviews</a>
                 <a href="faq.html">FAQ</a>
-                <a href="review">Review</a>
-                <a href="reviews.html">Reviews</a>
                 <a href="blog.html">Blog</a>
                 <a href="contact.html">Contact</a>
             </nav>
