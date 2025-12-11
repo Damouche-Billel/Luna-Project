@@ -294,17 +294,6 @@ body:has(.greeting-section) {
     min-height: 100vh;
     padding-bottom: 50px;
 }
-.reviews-page main {
-    padding: 100px 20px;
-    min-height: 100vh;
-}
-
-.reviews-page .page-content {
-    max-width: 1400px;
-    margin: 0 auto;
-    background: transparent;
-    padding: 0;
-}
 
 /* gradient fade overlay */
 .greeting-section::after {
@@ -649,10 +638,6 @@ main:has(.story-hero) + footer {
     .page-content {
         padding: 0 15px;
     }
-
-    .reviews-page main {
-        padding: 80px 15px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -941,7 +926,10 @@ main:has(.story-hero) + footer {
 }
 
 .post-image {
-    width: 100%;
+    width: 60%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: block;
     border-radius: 18px;
     object-fit: cover;
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
@@ -1202,10 +1190,29 @@ textarea {
     transition: transform 0.3s ease;
     margin: 0 auto;
     isolation: isolate;
+    animation: envelopeFloat 6s ease-in-out infinite alternate;
+    will-change: transform;
 }
 
 .letter-container:hover {
     transform: translateY(-12px);
+    animation-play-state: paused;
+}
+
+.letter-container.open {
+    animation-play-state: paused;
+}
+
+.letter-container:hover .envelope,
+.letter-container.open .envelope {
+    animation-play-state: paused;
+}
+
+/* gentle floating animation for envelopes */
+@keyframes envelopeFloat {
+    0%   { transform: translate3d(0, 0px, 0) rotate(-0.2deg); }
+    50%  { transform: translate3d(0, -8px, 0) rotate(0.35deg); }
+    100% { transform: translate3d(0, 6px, 0) rotate(-0.25deg); }
 }
 
 /* envelope wrapper */
@@ -1217,6 +1224,9 @@ textarea {
     left: 0;
     transform-style: preserve-3d;
     transition: transform 0.3s ease;
+    animation: envelopeFloat 7s ease-in-out infinite alternate;
+    animation-delay: 0.4s;
+    will-change: transform;
 }
 
 /* envelope body styling */
@@ -1349,7 +1359,7 @@ textarea {
     top: 42%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-3deg);
-    font-family: 'Satisfy', cursive;
+    font-family: 'Lemon Love', cursive;
     font-size: 2rem;
     font-weight: 400;
     color: #000000;

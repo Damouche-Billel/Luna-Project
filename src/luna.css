@@ -64,10 +64,6 @@ main {
 
 main {
     width: 100vw;
-    background-image: url('data/photos/bg-alt.png');
-    background-size: cover;     /* cover entire container */
-    background-position: center; /* center the image */
-    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -968,11 +964,7 @@ main:has(.story-hero) {
     opacity: 1;
 }
 
-/* Cast and crew page    */
-
-main{
-    background-color: #000000;
-}
+/* Cast and crew page */
 .section {
   padding: 32px; /* 2rem = 32px */
   text-align: center;
@@ -996,7 +988,14 @@ main{
   border-radius: 20px;
   padding: 15px;
   width: 235px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    overflow: hidden; /* keeps scaled image clipped */
+}
+
+.person:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.45);
 }
 
 .person img {
@@ -1004,6 +1003,13 @@ main{
   height: 250px;
   object-fit: cover;
   border-radius: 6px;
+    transition: transform 0.4s ease, filter 0.35s ease;
+    will-change: transform;
+}
+
+.person:hover img {
+    transform: scale(1.08);
+    filter: brightness(1.05) saturate(1.08);
 }
 
 /* Modal styling */
