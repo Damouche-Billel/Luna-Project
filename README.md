@@ -70,7 +70,7 @@ The design appeals to both general audiences and industry-level visitors.
 -	Built the nav bar and footer, which is the base layout for the website, asked everyone in the team to make their own branches, so our work stayed organised.
 -	Home page
 - Story page
-- Merged all branches to the main (most difficult part of the project - personally)
+- Merged all branches to the main
 -	SEO implementation and newsletter backend with SMTP and popup feature.
 -	User personas document.
 -	Branding and visual identity document.
