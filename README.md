@@ -1,6 +1,9 @@
 # LUNA Film Website – Academic Project README
 
-## Introduction - See on Github Project Description
+**Live Website:** [luna-film.com](https://luna-film.com)  
+**GitHub Repository:** [https://github.com/Damouche-Billel/Luna-Project.git](https://github.com/Damouche-Billel/Luna-Project.git)
+
+## Introduction
 We developed the **LUNA Film website** as part of a university project exploring digital media, web design, film promotion, and interactive storytelling. The website functions as the official online platform for **LUNA**, a short romance film set in London.
 
 Our aim was to create a visually compelling and technically functional website that communicates the film’s themes of connection, artistry, and emotion, while demonstrating skills in development, design, SEO, and collaborative teamwork.
@@ -63,14 +66,17 @@ The design appeals to both general audiences and industry-level visitors.
 ### Bilal
 -	Week 8 presentation and the final presentation for the project.
 -	Slides for the film students so we could join our work together for the final presentation.
--	Set up the GitHub main branch and organised the project structure and merged the teams’ branches into the main.
+-	Set up the GitHub main branch and organised the project structure.
 -	Built the nav bar and footer, which is the base layout for the website, asked everyone in the team to make their own branches, so our work stayed organised.
--	Home page and the Story page of the website.
+-	Home page
+- Story page
+- Merged all branches to the main (most difficult part of the project - personally)
 -	SEO implementation and newsletter backend with SMTP and popup feature.
 -	User personas document.
--	Branding and visual identity document. 
+-	Branding and visual identity document.
+- Domain & Hosting
 -	Created first prototype of the website to show the film students. They liked it, and we used that design.
--	General code assistance for team members.
+-	Code assistance & bug fixing for team members.
 ---
 
 ## Website Structure & Page Features
@@ -181,50 +187,56 @@ This project reflects our skills in web technologies, creative media, and collab
 
 ---
 
-## How to Run the Project Locally
+## How to Run the Project
 
 ### Live Site
-- Production URL: https://luna-film.com/
-- Hosted on AWS (LAMP stack: Linux, Apache, MySQL, PHP)
+- **URL:** [https://luna-film.com/](https://luna-film.com/)
+- **Hosting:** Cloud Server (LAMP stack: Linux, Apache, MySQL, PHP)
 
 ### Prerequisites
-- PHP 8.x (built-in server is fine for local dev)
-- MySQL 5.7+ (or MariaDB equivalent)
-- Composer (only if you want to manage PHPMailer via Composer instead of the bundled copy)
+- **PHP 8.x** (with `php-curl` enabled for email services)
+- **MySQL 5.7+** or **MariaDB**
+- **Apache Web Server** (recommended) or PHP built-in server for testing
 
-### 1) Clone and install (optional)
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/Damouche-Billel/Luna-Project.git
 cd Luna-Project
-# If you prefer vendor-managed PHPMailer (optional):
-# composer install --working-dir=phpmailer
 ```
 
-### 2) Configure environment
-- Update database/SMTP settings in `config.php` (DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD, Brevo/SMTP keys).
-- For security, avoid committing real credentials; use local-only values or environment injection if you deploy.
+### 2. Configuration
+1. Open `config.php` in the root directory.
+2. Update the **Database Configuration**:
+   ```php
+   define('DB_HOST', '127.0.0.1');
+   define('DB_NAME', 'Luna');
+   define('DB_USERNAME', 'root');
+   define('DB_PASSWORD', 'your_password');
+   ```
+3. Update the **Brevo API Configuration** (for emails):
+   ```php
+   define('BREVO_API_KEY', 'your_brevo_api_key');
+   ```
 
-### 3) Prepare the database
-You can let the contact/review scripts create tables on first run, or explicitly run the helpers:
+### 3. Database Setup
+Initialize the database and tables using the setup script:
 ```bash
-# From repo root
-php src/create_database.php   # creates the 'Luna' database if missing
-php src/createtable.php       # creates required tables for reviews
+# From the project root
+php src/setup_tables.php
 ```
+*Alternatively, you can access `http://localhost/Luna-Project/src/setup_tables.php` in your browser.*
 
-### 4) Run the site locally
-Use PHP’s built-in server from the `src` directory (where the HTML/PHP live):
+### 4. Run Locally
+You can use PHP's built-in server for testing:
 ```bash
 cd src
 php -S localhost:8000
 ```
-Then open http://localhost:8000/index.html
+Then open [http://localhost:8000](http://localhost:8000) in your browser.
 
-### 5) Email / newsletter
-- Outbound email/newsletter uses Brevo SMTP settings from `config.php`.
-- If you don’t need email in local dev, you can leave credentials blank or use a dummy SMTP sandbox.
-
-### 6) Troubleshooting
-- If you see a blank/black screen, ensure `styles.css` is loading (check network tab) and `luna.css` is not overriding backgrounds.
+### 5. Troubleshooting
+- **Email Issues:** Ensure `php-curl` is installed and enabled. Check `config.php` for correct API keys.
+- **Database Connection:** Ensure MySQL is running and credentials in `config.php` are correct.
+- **Styles Not Loading:** Check that `styles.css` and `luna.css` paths are correct relative to the HTML files.
 - If forms fail to submit, verify MySQL is running and credentials in `config.php` match your local DB.
 - For CORS issues when hosting assets elsewhere, serve everything from the same origin during local dev.
