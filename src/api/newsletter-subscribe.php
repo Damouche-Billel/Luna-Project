@@ -10,16 +10,13 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
-// Enable error reporting for debugging (remove in production)
+// Enable error reporting for debugging (remove/adjust in production)
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 
-// Database configuration
-$servername = "localhost";
-$username = "root";
-$password = "IsogkZwA=zT6";
-$dbname = "Luna";
+// Central config (DB + Brevo)
+require_once __DIR__ . '/../../config.php';
 
 // Throw exceptions on mysqli errors so we can catch them below
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
@@ -109,19 +106,12 @@ function sendResponse($success, $message, $code = 200) {
 
 // Main execution
 try {
-    // Connect to database
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Connect to database using shared config
+    $conn = getDBConnection();
+    if (!$conn) {
+        sendResponse(false, 'Database connection failed.', 500);
+    }
     $conn->set_charset('utf8mb4');
-
-    // Ensure newsletter table exists
-    $sql = "CREATE TABLE IF NOT EXISTS `NewsletterEmails` (
-        id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        email VARCHAR(255) NOT NULL UNIQUE,
-        is_active TINYINT(1) DEFAULT 1,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        INDEX idx_email (email)
-    )";
-    $conn->query($sql);
 
     // Only accept POST requests
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

@@ -14,27 +14,39 @@ require_once __DIR__ . '/../../config.php';
  */
 function sendWelcomeEmail($email, $isReactivation = false) {
     // Brevo API configuration
+    if (!defined('BREVO_API_KEY') || empty(BREVO_API_KEY)) {
+        error_log("BREVO_API_KEY is not defined or empty");
+        return false;
+    }
     $rest_api_key = BREVO_API_KEY;
     $api_url = 'https://api.brevo.com/v3/smtp/email';
-    
-    $api_user = '9bc124001@smtp-brevo.com';
-    $api_pass = BREVO_API_PASSWORD;
     
     // Email subject and content
     $subject = $isReactivation ? 'Welcome Back to LUNA' : 'Welcome to LUNA';
     
-    // Load email template
+    // Load email template with fallback
     $templatePath = __DIR__ . '/email-templates/welcome-email.html';
-    $htmlContent = file_get_contents($templatePath);
+    $htmlContent = @file_get_contents($templatePath);
     
-    // Replace placeholders
-    $title = $isReactivation ? 'Welcome Back' : 'Welcome to LUNA';
-    $greetingMessage = $isReactivation 
-        ? 'We\'re delighted to have you back. Your subscription to the LUNA newsletter has been successfully reactivated.'
-        : 'Thank you for joining our community. Your subscription to the LUNA newsletter is now active.';
-    
-    $htmlContent = str_replace('{{TITLE}}', $title, $htmlContent);
-    $htmlContent = str_replace('{{GREETING_MESSAGE}}', $greetingMessage, $htmlContent);
+    if ($htmlContent === false) {
+        error_log("Failed to load email template at: $templatePath");
+        // Fallback: simple HTML
+        $title = $isReactivation ? 'Welcome Back' : 'Welcome to LUNA';
+        $greetingMessage = $isReactivation 
+            ? 'We\'re delighted to have you back. Your subscription to the LUNA newsletter has been successfully reactivated.'
+            : 'Thank you for joining our community. Your subscription to the LUNA newsletter is now active.';
+        
+        $htmlContent = "<html><body><h1>$title</h1><p>$greetingMessage</p><p>LUNA - A Short Romance Film © 2025</p></body></html>";
+    } else {
+        // Replace placeholders
+        $title = $isReactivation ? 'Welcome Back' : 'Welcome to LUNA';
+        $greetingMessage = $isReactivation 
+            ? 'We\'re delighted to have you back. Your subscription to the LUNA newsletter has been successfully reactivated.'
+            : 'Thank you for joining our community. Your subscription to the LUNA newsletter is now active.';
+        
+        $htmlContent = str_replace('{{TITLE}}', $title, $htmlContent);
+        $htmlContent = str_replace('{{GREETING_MESSAGE}}', $greetingMessage, $htmlContent);
+    }
 
     // Plain text version
     $textContent = ($isReactivation ? 'Welcome Back to LUNA!' : 'Welcome to LUNA!') . "\n\n"
@@ -70,44 +82,47 @@ function sendWelcomeEmail($email, $isReactivation = false) {
         error_log("cURL not available - email not sent");
         return false;
     }
-    
+
     $ch = curl_init($api_url);
-    
+
     if ($ch === false) {
         error_log("Failed to initialize cURL");
         return false;
     }
-    
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'accept: application/json',
-        'api-key: ' . $rest_api_key,
-        'content-type: application/json'
-    ));
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-    
+
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_POST => true,
+        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_SSL_VERIFYHOST => 0,
+        CURLOPT_HTTPHEADER => [
+            'accept: application/json',
+            'api-key: ' . trim($rest_api_key),
+            'content-type: application/json'
+        ],
+        CURLOPT_POSTFIELDS => json_encode($data),
+        CURLOPT_TIMEOUT => 15,
+    ]);
+
     $response = curl_exec($ch);
     $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     $error = curl_error($ch);
-    
+
     curl_close($ch);
-    
+
     error_log("Email API Response - HTTP Code: $http_code, Response: $response");
-    
+
     if ($error) {
         error_log("Email sending failed - cURL error: " . $error);
         return false;
     }
-    
+
     if ($http_code >= 200 && $http_code < 300) {
         error_log("Email sent successfully to: $email");
         return true;
-    } else {
-        error_log("Email API error (HTTP $http_code): " . $response);
-        return false;
     }
+
+    error_log("Email API error (HTTP $http_code): " . $response);
+    return false;
 }
 ?>

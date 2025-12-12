@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUNA | Under Maintenance</title>
+  <style>
+    :root {
+      --bg: #0c0c10;
+      --card: #151720;
+      --accent: #f8d57e;
+      --text: #e9ecf5;
+      --muted: #9aa2b5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 20% 20%, #1e2335, var(--bg) 45%),
+                  radial-gradient(circle at 80% 10%, #2a1f3d, var(--bg) 40%),
+                  var(--bg);
+      color: var(--text);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      padding: 24px;
+    }
+    .card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 28px;
+      max-width: 540px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+      backdrop-filter: blur(8px);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(248, 213, 126, 0.12);
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      font-size: 13px;
+    }
+    h1 {
+      margin: 16px 0 12px;
+      font-size: 28px;
+      letter-spacing: 0.01em;
+    }
+    p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+      font-size: 15px;
+    }
+    .eta {
+      color: var(--text);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .loader {
+      position: relative;
+      width: 64px;
+      height: 12px;
+      margin: 16px 0 6px;
+    }
+    .loader span {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: bounce 1s infinite ease-in-out;
+    }
+    .loader span:nth-child(2) { left: 18px; animation-delay: 0.12s; }
+    .loader span:nth-child(3) { left: 36px; animation-delay: 0.24s; }
+    .loader span:nth-child(4) { left: 54px; animation-delay: 0.36s; }
+    @keyframes bounce {
+      0%, 80%, 100% { transform: scale(0.4); opacity: 0.5; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+    .footnote {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card" aria-label="LUNA maintenance notice">
+    <div class="badge">● Under maintenance</div>
+    <h1>Were tuning up LUNA</h1>
+    <p>Were performing a quick reboot and updates to keep the experience smooth. Thanks for your patience.</p>
+    <div class="loader" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="eta">Back shortly. Please check again in a few minutes.</div>
+    <div class="footnote">If you need urgent help, reach us at damouchee@outlook.com.</div>
+  </main>
+</body>
+</html>

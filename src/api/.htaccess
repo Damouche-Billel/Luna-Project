@@ -1,7 +1,7 @@
 # Apache configuration for LUNA Newsletter API
 
 # Enable rewrite engine
-RewriteEngine On
+# RewriteEngine On
 
 # Security: Prevent directory listing
 Options -Indexes
@@ -17,9 +17,11 @@ Options -Indexes
 # </Files>
 
 # CORS headers
-Header always set Access-Control-Allow-Origin "*"
-Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS"
-Header always set Access-Control-Allow-Headers "Content-Type"
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type"
+</IfModule>
 
 # Enforce HTTPS (uncomment when deployed with SSL)
 # RewriteCond %{HTTPS} off

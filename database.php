@@ -1,10 +1,11 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$pass = 'IsogkZwA=zT6';
-$db   = 'Luna';   
+require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/src/setup_tables.php';
 
-$conn = new mysqli($host, $user, $pass, $db);
+// Ensure DB and tables exist on startup (idempotent).
+ensureSchema();
+
+$conn = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
 if ($conn->connect_error) {
     die('Database connection failed: ' . $conn->connect_error);

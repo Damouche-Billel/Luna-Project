@@ -1,45 +1,14 @@
 <?php
-// Database configuration
-$servername = "localhost"; // Usually 'localhost'
-$username = "root"; // Your DB username
-$password = "IsogkZwA=zT6"; // Your DB password
-$dbname = "Luna";
+require_once __DIR__ . '/../database.php';
 
-// Create connection
-$conn = new mysqli($servername, $username, $password);
-
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-
-// Create database if it doesn't exist
-$sql = "CREATE DATABASE IF NOT EXISTS $dbname";
-if (!$conn->query($sql)) {
-die("Error creating database: " . $conn->error);
-}
-
-// Select the database
-$conn->select_db($dbname);
-
-// Create table if it doesn't exist
-$sql = "CREATE TABLE IF NOT EXISTS `Contact_Details` (
-id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-Firstname VARCHAR(50) NOT NULL,
-Surname VARCHAR(50) NOT NULL,
-
-Email VARCHAR(100) NOT NULL,
-Message TEXT NOT NULL,
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)";
-if (!$conn->query($sql)) {
-die("Error creating table: " . $conn->error);
+if (!$conn) {
+    die('Database connection failed.');
 }
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Collect and sanitize input
-$firstname = $conn->real_escape_string(trim($_POST['fname']));
+$firstname = $conn->real_escape_string(trim($_POST['name']));
 $surname = $conn->real_escape_string(trim($_POST['lname']));
 $email = $conn->real_escape_string(trim($_POST['email']));
 $message = $conn->real_escape_string(trim($_POST['message']));
@@ -94,12 +63,12 @@ $conn->close();
     <!-- navigation section -->
     <nav class="navbar">
         <div class="nav-container">
-            <!-- the logo bit -->
+            <!-- site logo -->
             <a href="index.html" class="logo">LUNA</a>
             
-            <!-- main menu for desktop -->
+            <!-- desktop navigation menu -->
             <ul class="nav-menu">
-                <!-- x button to close menu -->
+                <!-- close menu button -->
                 <button class="close-menu" aria-label="Close Menu">&times;</button>
                 <li class="nav-item">
                     <a href="index.html" class="nav-link">Home</a>
@@ -114,20 +83,21 @@ $conn->close();
                     <a href="gallery.html" class="nav-link">Gallery</a>
                 </li>
                 <li class="nav-item">
-                    <a href="faq.html" class="nav-link">FAQ</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact-us.php" class="nav-link">Contact Us</a>
-                </li>
-                <li class="nav-item">
                     <a href="reviews.html" class="nav-link">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a href="faq.html" class="nav-link">FAQ</a>
                 </li>
                 <li class="nav-item">
                     <a href="blog.html" class="nav-link">Blog</a>
                 </li>
+                <li class="nav-item">
+                    <a href="contact-us.php" class="nav-link">Contact Us</a>
+                </li>
+
             </ul>
             
-            <!-- hamburger menu for mobile -->
+            <!-- mobile menu toggle -->
             <button class="menu-toggle" aria-label="Open Menu">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
